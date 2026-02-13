@@ -1,0 +1,22 @@
+---
+title: cyber kill chain
+date: 2026-02-13 14:30:00 +0300
+categories: [Security Fundamentals, Threat Hunting]
+tags: [cyber-kill-chain, threat-hunting, incident-response, defense]
+---
+
+## Introduction to the Kill Chain
+
+The Cyber Kill Chain, developed by Lockheed Martin, has become one of the most fundamental frameworks for understanding how cyber attacks unfold. Originally adapted from military targeting doctrine, this seven-stage model breaks down the phases of a cyber intrusion from initial reconnaissance to final objectives. For defenders, understanding this framework is crucial because it reveals multiple opportunities to detect and disrupt an attack before significant damage occurs. Each stage represents a decision point where security teams can intervene, making the kill chain not just an academic concept but a practical tool for threat hunting and incident response.
+
+## Why Defenders Should Care
+
+Many security professionals focus heavily on perimeter defenses, but the kill chain teaches us that breaches are often inevitable. What matters is how quickly we can detect and respond at each stage. By mapping our defensive capabilities to each phase of the kill chain, we can identify gaps in our security posture and prioritize where to invest resources. For instance, if an attacker successfully establishes command and control, we've missed opportunities at reconnaissance, weaponization, delivery, exploitation, and installation. Understanding where detection failed helps us strengthen our defenses for the next attempt, and there will always be a next attempt.
+
+## Practical Application in Threat Hunting
+
+In my experience conducting threat hunts, the kill chain provides an excellent framework for hypothesis generation. Rather than waiting for alerts, proactive hunters can ask questions like: "What reconnaissance activity might we be missing in our DNS logs?" or "Are there any unusual installation patterns in our endpoint data?" This approach shifts security from reactive to proactive. By hunting for indicators of each kill chain stage, we can discover threats that bypassed our automated defenses. The key is having the right visibility and understanding what normal looks like in your environment, because abnormal activity at any stage could indicate an active intrusion.
+
+## Building a Kill Chain-Aware Defense
+
+Implementing kill chain awareness across your security operations requires more than just understanding the model. It demands comprehensive logging, robust detection rules, clear escalation procedures, and regular testing through exercises like red team engagements or purple team collaborations. Start by mapping your current security controls to each stage and identifying where coverage is weak. Then prioritize improvements based on your organization's risk profile and threat landscape. Remember, the goal isn't to prevent every attack at the first stage but to ensure you have multiple opportunities to detect and respond throughout the kill chain. Defense in depth isn't just about layered controls; it's about layered opportunities to stop an adversary's progress.
