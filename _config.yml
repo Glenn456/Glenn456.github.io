@@ -70,7 +70,7 @@ theme_mode: dark
 
 cdn:
 
-avatar: # add your photo path here once uploaded e.g. assets/img/ongalo.jpg
+avatar: assets/img/Ongalo.jpg # add your photo path here once uploaded e.g. assets/img/ongalo.jpg
 
 social_preview_image:
 
