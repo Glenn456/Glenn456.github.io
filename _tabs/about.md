@@ -1,46 +1,67 @@
 ---
-# the default layout is 'page'
-icon: fas fa-info-circle
-order: 4
+layout: page
+title: About
+permalink: /about/
 ---
 
 # Ongalo Glenn
-**SOC Analyst | Threat Detection & Incident Response**  
+
+**Head of IT Infrastructure and Innovation | Cyber Risk Consulting | SOC Analyst**
 📍 Nairobi, Kenya · 📧 ongaloglenn45@gmail.com
 
 ---
 
 ## About Me
 
-I'm a SOC Analyst with a strong background in data analysis, now fully focused on cybersecurity and security operations. My analytical foundation — built over 2+ years working with complex datasets, statistical models, and risk reporting — gives me a sharp eye for anomalies, patterns, and indicators of compromise that others might miss.
+I am a cybersecurity professional and risk consultant based in Nairobi, currently serving as **Head of IT Infrastructure and Innovation at Digi Africa**, where I lead cyber insurance services for the betting and gaming industry. I recently graduated top of my class from the **Cyber Shujaa** programme and was promoted within MGA Group into my current role after two months of demonstrated impact.
 
-I'm actively training on **Hack The Box Academy**, running a personal home lab, and building hands-on skills in threat detection, log analysis, network enumeration, and incident response. My goal is to work on the front lines of a Security Operations Centre, protecting organizations from real-world threats.
+My analytical foundation, built over 2+ years working with complex datasets, statistical models, and risk reporting, gives me a sharp eye for anomalies, patterns, and indicators of compromise that others might miss.
+
+I actively train on **Hack The Box Academy**, run a personal home lab, and document what I learn here. My work sits at the intersection of security operations, infrastructure, and cyber risk -- and I write about all of it.
 
 ---
 
 ## Experience
 
-### Research Analyst — MGA Group
-**November 2024 – Present · Nairobi, Kenya**
+### Head of IT Infrastructure and Innovation — Digi Africa
+**March 2026 – Present · Nairobi, Kenya**
 
-- Investigated complex datasets to identify patterns and anomalies — directly transferable to alert triage and threat investigation
-- Built statistical models in Python & R for predictive analysis — applied to behavioural anomaly detection concepts
-- Produced structured risk reports for senior stakeholders — mirrors incident report writing in a SOC environment
-- Ensured compliance with regulatory standards — foundational for security policy and audit work
+Digi Africa is a subsidiary of MGA Group, specialising in cyber insurance for the betting and gaming sector.
+
+- Lead IT infrastructure strategy and innovation across the organisation
+- Deliver cyber insurance risk consulting services to betting and gaming companies, assessing security posture and advising on coverage requirements
+- Handle Anti-Money Laundering (AML) and Counter-Terrorism Financing (CTF) compliance, identifying suspicious financial patterns and ensuring regulatory adherence
+- Lead incident response for fiduciary data leaks, coordinating investigation, containment, and post-incident reporting
+- Evaluate third-party risk, incident response readiness, and security controls for clients operating in a high-value, high-risk sector
+
+### Research Analyst — MGA Group
+**November 2024 – February 2026 · Nairobi, Kenya**
+
+MGA Group is the parent company of Digi Africa.
+
+- Investigated complex datasets to identify patterns and anomalies -- directly transferable to alert triage and threat investigation
+- Built statistical models in Python & R for predictive analysis -- applied to behavioural anomaly detection concepts
+- Produced structured risk reports for senior stakeholders -- mirrors incident report writing in a SOC environment
+- Ensured compliance with regulatory standards -- foundational for security policy and audit work
 
 ### Data Analyst — House of Procurement
 **January 2024 – June 2024 · Nairobi, Kenya**
 
 - Gathered, cleaned, and analysed large multi-source datasets for KPI reporting
 - Built interactive Tableau & Power BI dashboards for real-time stakeholder visibility
-- Conducted root cause analysis investigations — improved process efficiency by 30%
+- Conducted root cause analysis investigations -- improved process efficiency by 30%
 
 ---
 
 ## Education
 
-**Bachelor of Business Information Technology**  
-Jomo Kenyatta University of Agriculture & Technology — *2020 – 2023*
+**Cyber Shujaa -- Security Analyst Track**
+Serianu / USIU-Africa / Kenya Bankers Association -- *Graduated 2026 | Top of Class*
+
+Intensive, industry-designed programme covering network security, application security, cloud security, incident response, security architecture, IoT security, and forensics. Selected through a competitive application process from thousands of applicants nationally.
+
+**Bachelor of Business Information Technology**
+Jomo Kenyatta University of Agriculture & Technology -- *2020 – 2023*
 
 ---
 
@@ -48,47 +69,34 @@ Jomo Kenyatta University of Agriculture & Technology — *2020 – 2023*
 
 | Course | Platform | Status |
 |---|---|---|
-| Introduction to Academy | Hack The Box | ✅ Completed |
-| Windows Fundamentals | Hack The Box | ✅ Completed |
-| Linux Fundamentals | Hack The Box | ✅ Completed |
-| Introduction to Web Applications | Hack The Box | ✅ Completed |
-| Getting Started | Hack The Box | ✅ Completed |
-| Introduction to Networking | Hack The Box | ✅ Completed |
-| Network Enumeration with Nmap | Hack The Box | ✅ Completed |
-| Vulnerability Assessment | Hack The Box | ✅ Completed |
-| Using the Metasploit Framework | Hack The Box | ✅ Completed |
+| Cyber Shujaa Security Analyst Track | Serianu / USIU-Africa | Completed -- Top of Class |
+| SOC Analyst Learning Path | Hack The Box Academy | In Progress |
+| Network Security Fundamentals | Hack The Box Academy | Completed |
+| Blue Team Modules | TryHackMe | Completed |
+| Pre-Security & SOC Level 1 Path | TryHackMe | In Progress |
+| Cloud Security Fundamentals | TryHackMe / HTB Academy | In Progress |
 
 ---
 
 ## Skills
 
-**Cybersecurity & SOC**  
-`SIEM` `Log Analysis` `Threat Detection` `Incident Response` `Network Monitoring` `OSINT` `Wireshark` `Nmap` `Metasploit` `Kali Linux` `OpenVAS` `MITRE ATT&CK` `CVSS Scoring` `Vulnerability Assessment`
+**Security Operations:** SIEM triage, alert investigation, log analysis, threat detection, incident response
 
-**Data & Programming**  
-`Python` `R` `SQL` `SPSS` `Statistical Modeling` `Hypothesis Testing` `Regression Analysis` `A/B Testing` `Time Series Analysis`
+**Networking:** TCP/IP, DNS, HTTP/S, packet analysis, Wireshark, network enumeration
 
-**Visualisation & BI**  
-`Tableau` `Power BI` `Dashboard Design` `KPI Tracking`
+**Frameworks:** MITRE ATT&CK, Cyber Kill Chain, Zero Trust principles
 
-**Other**  
-`Advanced Excel` `Power Query` `ETL Pipelines` `Database Design`
+**Tools:** Splunk, Wireshark, Nmap, Metasploit (learning), Hack The Box labs
 
-**Languages**  
-`English (Fluent)` `Swahili (Native)` `French (B2)`
+**Programming:** Python (scripting, data analysis), R, Bash
+
+**Analytics:** Statistical modelling, anomaly detection, Tableau, Power BI
 
 ---
 
-## Awards
+## Currently Working On
 
-🏆 **Rotaractor of the Year** — Rotary International, Youth Connect Kenya *(August 2024)*  
-Active in community development, polio vaccination advocacy, and public health education.
-
----
-
-## Let's Connect
-
-- 🔗 [LinkedIn](https://www.linkedin.com/in/ongalo-glenn)
-- 🐙 [GitHub](https://github.com/glenn456)
-- ✉️ [ongaloglenn45@gmail.com](mailto:ongaloglenn45@gmail.com)
-- 📞 (+254) 745-530-525
+- Building detection use cases mapped to MITRE ATT&CK
+- Completing the HTB SOC Analyst path
+- Documenting home lab projects and investigations on this blog
+- Pursuing further certifications in blue team operations
