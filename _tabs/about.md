@@ -4,32 +4,29 @@ title: About
 permalink: /about/
 ---
 
-# Ongalo Glenn
+# Ongalo E. Glenn
 
-**Head of IT Infrastructure and Innovation | Cyber Risk Consulting | SOC Analyst**
-📍 Nairobi, Kenya · 📧 ongaloglenn45@gmail.com
-
----
-
-## About Me
-
-I am a cybersecurity professional and risk consultant based in Nairobi, currently serving as **Head of IT Infrastructure and Innovation at Digi Africa**, where I lead cyber insurance services for the betting and gaming industry. I recently graduated top of my class from the **Cyber Shujaa** programme and was promoted within MGA Group into my current role after two months of demonstrated impact.
-
-My analytical foundation, built over 2+ years working with complex datasets, statistical models, and risk reporting, gives me a sharp eye for anomalies, patterns, and indicators of compromise that others might miss.
-
-I actively train on **Hack The Box Academy**, run a personal home lab, and document what I learn here. My work sits at the intersection of security operations, infrastructure, and cyber risk -- and I write about all of it.
+**Head of IT Infrastructure and Innovation | Cyber Risk Consultant | SOC Analyst**
+📍 Nairobi, Kenya &nbsp;|&nbsp; 📧 ongaloglenn45@gmail.com &nbsp;|&nbsp; 📞 (+254) 745-530-525
+🔗 [linkedin.com/in/ongalo-glenn](https://linkedin.com/in/ongalo-glenn) &nbsp;|&nbsp; 🐙 [github.com/glenn456](https://github.com/Glenn456)
 
 ---
 
-## Experience
+## Objective
+
+Cybersecurity professional and risk consultant with 2+ years of experience in data analysis, financial risk, and security operations. Currently serving as Head of IT Infrastructure and Innovation at Digi Africa, where I lead cyber insurance risk consulting for the betting and gaming sector, handle AML and CTF compliance, and drive incident response for fiduciary data leaks. I recently graduated top of my class from the Cyber Shujaa programme and actively build hands-on skills through Hack The Box Academy, TryHackMe, and a personal home lab. I write about what I learn here.
+
+---
+
+## Professional Experience
 
 ### Head of IT Infrastructure and Innovation — Digi Africa
 **March 2026 – Present · Nairobi, Kenya**
 
-Digi Africa is a subsidiary of MGA Group, specialising in cyber insurance for the betting and gaming sector.
+Digi Africa is a subsidiary of MGA Group specialising in cyber insurance for the betting and gaming sector.
 
 - Lead IT infrastructure strategy and innovation across the organisation
-- Deliver cyber insurance risk consulting services to betting and gaming companies, assessing security posture and advising on coverage requirements
+- Deliver cyber insurance risk consulting to betting and gaming companies, assessing security posture and advising on coverage requirements
 - Handle Anti-Money Laundering (AML) and Counter-Terrorism Financing (CTF) compliance, identifying suspicious financial patterns and ensuring regulatory adherence
 - Lead incident response for fiduciary data leaks, coordinating investigation, containment, and post-incident reporting
 - Evaluate third-party risk, incident response readiness, and security controls for clients operating in a high-value, high-risk sector
@@ -39,17 +36,20 @@ Digi Africa is a subsidiary of MGA Group, specialising in cyber insurance for th
 
 MGA Group is the parent company of Digi Africa.
 
-- Investigated complex datasets to identify patterns and anomalies -- directly transferable to alert triage and threat investigation
-- Built statistical models in Python & R for predictive analysis -- applied to behavioural anomaly detection concepts
-- Produced structured risk reports for senior stakeholders -- mirrors incident report writing in a SOC environment
-- Ensured compliance with regulatory standards -- foundational for security policy and audit work
+- Conducted comprehensive analysis of investment banking securities and portfolio performance, identifying investment trends and assessing risk-return profiles for strategic decision-making
+- Developed statistical models using R and Python to forecast market movements and evaluate investment opportunities, improving investment decision accuracy by 25%
+- Analysed market volatility, credit risk, and investment performance metrics to inform risk management strategies and optimise portfolio allocation decisions
+- Collaborated with investment teams to translate complex financial analysis into actionable strategies and risk assessment reports for senior management
+- Ensured all analytical processes adhered to financial services regulations and investment banking compliance standards
 
 ### Data Analyst — House of Procurement
 **January 2024 – June 2024 · Nairobi, Kenya**
 
-- Gathered, cleaned, and analysed large multi-source datasets for KPI reporting
-- Built interactive Tableau & Power BI dashboards for real-time stakeholder visibility
-- Conducted root cause analysis investigations -- improved process efficiency by 30%
+- Gathered, cleaned, and analysed large datasets from multiple sources to identify key performance trends and support data-driven decision making
+- Created interactive Tableau and Power BI dashboards enabling stakeholders to visualise critical business metrics and KPIs in real-time
+- Collaborated with procurement, sales, and operations teams to align data strategies with business objectives
+- Conducted root cause analysis investigations and proposed data-backed solutions that improved process efficiency by 30%
+- Monitored industry trends and implemented process improvements that enhanced analytical precision and reporting accuracy
 
 ---
 
@@ -58,10 +58,10 @@ MGA Group is the parent company of Digi Africa.
 **Cyber Shujaa -- Security Analyst Track**
 Serianu / USIU-Africa / Kenya Bankers Association -- *Graduated 2026 | Top of Class*
 
-Intensive, industry-designed programme covering network security, application security, cloud security, incident response, security architecture, IoT security, and forensics. Selected through a competitive application process from thousands of applicants nationally.
+Intensive, industry-designed programme covering network security, application security, cloud security, incident response, security architecture, IoT security, and forensics. Selected through a competitive national application process.
 
 **Bachelor of Business Information Technology**
-Jomo Kenyatta University of Agriculture & Technology -- *2020 – 2023*
+Jomo Kenyatta University of Agriculture and Technology -- *September 2020 – August 2023*
 
 ---
 
@@ -80,17 +80,29 @@ Jomo Kenyatta University of Agriculture & Technology -- *2020 – 2023*
 
 ## Skills
 
-**Security Operations:** SIEM triage, alert investigation, log analysis, threat detection, incident response
+**Cybersecurity:** Threat detection, log analysis, incident response, AML/CTF compliance, cyber risk consulting, SIEM triage, network enumeration, packet analysis
 
-**Networking:** TCP/IP, DNS, HTTP/S, packet analysis, Wireshark, network enumeration
+**Frameworks & Tools:** MITRE ATT&CK, Cyber Kill Chain, Zero Trust, Splunk, Wireshark, Nmap, Metasploit
 
-**Frameworks:** MITRE ATT&CK, Cyber Kill Chain, Zero Trust principles
+**Data Analysis:** Python, R, SPSS, SQL, statistical modelling, hypothesis testing, regression analysis, A/B testing, time series analysis
 
-**Tools:** Splunk, Wireshark, Nmap, Metasploit (learning), Hack The Box labs
+**Visualisation:** Tableau, Power BI, dashboard creation, KPI tracking
 
-**Programming:** Python (scripting, data analysis), R, Bash
+**Database & Infrastructure:** SQL, database design and optimisation, ETL pipeline development, query performance tuning
 
-**Analytics:** Statistical modelling, anomaly detection, Tableau, Power BI
+**Advanced Excel:** Pivot tables, VLOOKUP, Power Query, advanced formulas
+
+**AI & Machine Learning:** Automation, predictive modelling
+
+**Languages:** English (Fluent), Swahili (Native), French (B2)
+
+---
+
+## Awards & Interests
+
+**Rotaractor of the Year (Youth Connect Kenya)** -- Rotary International, August 2024
+
+Active in community development projects, advocating for polio vaccination and public health education. Passionate about growing Kenya's cybersecurity talent pipeline and contributing to a safer digital East Africa.
 
 ---
 
@@ -99,4 +111,4 @@ Jomo Kenyatta University of Agriculture & Technology -- *2020 – 2023*
 - Building detection use cases mapped to MITRE ATT&CK
 - Completing the HTB SOC Analyst path
 - Documenting home lab projects and investigations on this blog
-- Pursuing further certifications in blue team operations
+- Pursuing further certifications in blue team operations and cloud security
