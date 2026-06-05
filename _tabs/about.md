@@ -4,111 +4,108 @@ title: About
 permalink: /about/
 ---
 
-# Ongalo E. Glenn
+# Ongalo Glenn
 
-**Head of IT Infrastructure and Innovation | Cyber Risk Consultant | SOC Analyst**
-📍 Nairobi, Kenya &nbsp;|&nbsp; 📧 ongaloglenn45@gmail.com &nbsp;|&nbsp; 📞 (+254) 745-530-525
-🔗 [linkedin.com/in/ongalo-glenn](https://linkedin.com/in/ongalo-glenn) &nbsp;|&nbsp; 🐙 [github.com/glenn456](https://github.com/Glenn456)
-
----
-
-## Objective
-
-Cybersecurity professional and risk consultant with 2+ years of experience in data analysis, financial risk, and security operations. Currently serving as Head of IT Infrastructure and Innovation at Digi Africa, where I lead cyber insurance risk consulting for the betting and gaming sector, handle AML and CTF compliance, and drive incident response for fiduciary data leaks. I recently graduated top of my class from the Cyber Shujaa programme and actively build hands-on skills through Hack The Box Academy, TryHackMe, and a personal home lab. I write about what I learn here.
+**Head of IT Infrastructure and Innovation | Cyber Risk Consulting | SOC Analyst**
+📍 Nairobi, Kenya &nbsp;·&nbsp; 📧 ongaloglenn45@gmail.com
 
 ---
 
-## Professional Experience
+## About Me
+
+I am a cybersecurity professional based in Nairobi, currently serving as **Head of IT Infrastructure and Innovation at Digi Africa**, where I lead cyber insurance services, risk consulting, and compliance operations for the betting and gaming industry. I graduated top of my class from the **Cyber Shujaa** programme and was promoted into my current leadership role within two months.
+
+My background spans data analysis, security operations, financial crime compliance, and infrastructure management. I handle **AML and CTF compliance** for fintech and betting clients, lead **incident response for fiduciary data leaks**, and advise on cyber insurance coverage requirements for high-risk sector organisations.
+
+Outside of work I am actively pushing my technical skills. I am currently at **OverTheWire Bandit levels 17 to 18**, working through Linux privilege escalation and SSH key-based authentication challenges. I recently started on **Blue Team Labs**, putting theory into practice on real-world defensive scenarios. This blog documents what I learn along the way.
+
+---
+
+## Experience
 
 ### Head of IT Infrastructure and Innovation — Digi Africa
-**March 2026 – Present · Nairobi, Kenya**
+**March 2026 – Present &nbsp;·&nbsp; Nairobi, Kenya**
 
 Digi Africa is a subsidiary of MGA Group specialising in cyber insurance for the betting and gaming sector.
 
-- Lead IT infrastructure strategy and innovation across the organisation
-- Deliver cyber insurance risk consulting to betting and gaming companies, assessing security posture and advising on coverage requirements
-- Handle Anti-Money Laundering (AML) and Counter-Terrorism Financing (CTF) compliance, identifying suspicious financial patterns and ensuring regulatory adherence
-- Lead incident response for fiduciary data leaks, coordinating investigation, containment, and post-incident reporting
-- Evaluate third-party risk, incident response readiness, and security controls for clients operating in a high-value, high-risk sector
+- Lead IT infrastructure strategy, innovation, and day-to-day security operations across the organisation
+- Deliver cyber insurance risk consulting to betting and gaming companies, assessing security posture and advising on coverage
+- Manage **Anti-Money Laundering (AML) and Counter-Terrorism Financing (CTF)** compliance, identifying suspicious financial patterns and ensuring regulatory adherence
+- Lead **incident response for fiduciary data leaks**, coordinating investigation, containment, root cause analysis, and post-incident reporting
+- Evaluate third-party risk, IR readiness, and security controls for clients in a high-value, high-regulation sector
 
 ### Research Analyst — MGA Group
-**November 2024 – February 2026 · Nairobi, Kenya**
+**November 2024 – February 2026 &nbsp;·&nbsp; Nairobi, Kenya**
 
 MGA Group is the parent company of Digi Africa.
 
-- Conducted comprehensive analysis of investment banking securities and portfolio performance, identifying investment trends and assessing risk-return profiles for strategic decision-making
-- Developed statistical models using R and Python to forecast market movements and evaluate investment opportunities, improving investment decision accuracy by 25%
-- Analysed market volatility, credit risk, and investment performance metrics to inform risk management strategies and optimise portfolio allocation decisions
-- Collaborated with investment teams to translate complex financial analysis into actionable strategies and risk assessment reports for senior management
-- Ensured all analytical processes adhered to financial services regulations and investment banking compliance standards
+- Investigated complex datasets to identify patterns, anomalies, and risk indicators
+- Built statistical models in Python and R for predictive analysis and risk scoring
+- Produced structured risk reports and compliance documentation for senior stakeholders
+- Ensured alignment with regulatory standards across multiple jurisdictions
 
 ### Data Analyst — House of Procurement
-**January 2024 – June 2024 · Nairobi, Kenya**
+**January 2024 – June 2024 &nbsp;·&nbsp; Nairobi, Kenya**
 
-- Gathered, cleaned, and analysed large datasets from multiple sources to identify key performance trends and support data-driven decision making
-- Created interactive Tableau and Power BI dashboards enabling stakeholders to visualise critical business metrics and KPIs in real-time
-- Collaborated with procurement, sales, and operations teams to align data strategies with business objectives
-- Conducted root cause analysis investigations and proposed data-backed solutions that improved process efficiency by 30%
-- Monitored industry trends and implemented process improvements that enhanced analytical precision and reporting accuracy
+- Gathered, cleaned, and analysed large multi-source datasets for KPI and performance reporting
+- Built interactive Tableau and Power BI dashboards for real-time stakeholder visibility
+- Conducted root cause investigations that improved process efficiency by 30%
 
 ---
 
 ## Education
 
-**Cyber Shujaa -- Security Analyst Track**
-Serianu / USIU-Africa / Kenya Bankers Association -- *Graduated 2026 | Top of Class*
+**Cyber Shujaa — Security Analyst Track**
+*2026 | Graduated Top of Class*
 
-Intensive, industry-designed programme covering network security, application security, cloud security, incident response, security architecture, IoT security, and forensics. Selected through a competitive national application process.
+Intensive, industry-designed programme covering network security, application security, cloud security, incident response, security architecture, IoT security, and digital forensics. Selected through a competitive national process.
 
 **Bachelor of Business Information Technology**
-Jomo Kenyatta University of Agriculture and Technology -- *September 2020 – August 2023*
+Jomo Kenyatta University of Agriculture and Technology &nbsp;·&nbsp; *2020 – 2023*
 
 ---
 
-## Certifications & Training
+## Certifications and Training
 
 | Course | Platform | Status |
 |---|---|---|
-| Cyber Shujaa Security Analyst Track | Serianu / USIU-Africa | Completed -- Top of Class |
+| Cyber Shujaa Security Analyst Track | Serianu / USIU-Africa | Completed — Top of Class |
 | SOC Analyst Learning Path | Hack The Box Academy | In Progress |
 | Network Security Fundamentals | Hack The Box Academy | Completed |
+| Blue Team Labs | Blue Team Labs Online | In Progress |
+| OverTheWire Bandit | OverTheWire | Level 17-18 |
 | Blue Team Modules | TryHackMe | Completed |
-| Pre-Security & SOC Level 1 Path | TryHackMe | In Progress |
+| Pre-Security and SOC Level 1 Path | TryHackMe | In Progress |
 | Cloud Security Fundamentals | TryHackMe / HTB Academy | In Progress |
 
 ---
 
-## Skills
+## Technical Skills
 
-**Cybersecurity:** Threat detection, log analysis, incident response, AML/CTF compliance, cyber risk consulting, SIEM triage, network enumeration, packet analysis
+**Security Operations**
+Incident Response · AML and CTF Compliance · Threat Detection · SIEM Triage · Log Analysis · Fiduciary Leak Investigation · Cyber Insurance Risk Assessment · Third-Party Risk
 
-**Frameworks & Tools:** MITRE ATT&CK, Cyber Kill Chain, Zero Trust, Splunk, Wireshark, Nmap, Metasploit
+**Networking and Protocols**
+TCP/IP · DNS · HTTP/S · Packet Analysis · Wireshark · Network Enumeration · Nmap
 
-**Data Analysis:** Python, R, SPSS, SQL, statistical modelling, hypothesis testing, regression analysis, A/B testing, time series analysis
+**Frameworks**
+MITRE ATT&CK · Cyber Kill Chain · Zero Trust Architecture · NIST CSF
 
-**Visualisation:** Tableau, Power BI, dashboard creation, KPI tracking
+**Tools**
+Splunk · Wireshark · Nmap · Metasploit (learning) · Hack The Box · TryHackMe · Blue Team Labs Online · OverTheWire
 
-**Database & Infrastructure:** SQL, database design and optimisation, ETL pipeline development, query performance tuning
+**Cloud and Infrastructure**
+IT Infrastructure Management · Cloud Security Fundamentals · Azure Entra ID
 
-**Advanced Excel:** Pivot tables, VLOOKUP, Power Query, advanced formulas
-
-**AI & Machine Learning:** Automation, predictive modelling
-
-**Languages:** English (Fluent), Swahili (Native), French (B2)
-
----
-
-## Awards & Interests
-
-**Rotaractor of the Year (Youth Connect Kenya)** -- Rotary International, August 2024
-
-Active in community development projects, advocating for polio vaccination and public health education. Passionate about growing Kenya's cybersecurity talent pipeline and contributing to a safer digital East Africa.
+**Programming and Analytics**
+Python · R · Bash Scripting · Power BI · Tableau · Statistical Modelling
 
 ---
 
 ## Currently Working On
 
-- Building detection use cases mapped to MITRE ATT&CK
-- Completing the HTB SOC Analyst path
-- Documenting home lab projects and investigations on this blog
+- OverTheWire Bandit (levels 17 to 18) — SSH keys, privilege escalation, and file redirection
+- Blue Team Labs Online — real-world defensive scenario investigation
+- HTB SOC Analyst learning path
+- Documenting technical labs and detection use cases on this blog
 - Pursuing further certifications in blue team operations and cloud security

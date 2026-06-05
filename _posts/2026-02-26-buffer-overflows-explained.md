@@ -5,6 +5,9 @@ categories: [Cybersecurity, Security Concepts]
 tags: [buffer overflow, memory corruption, exploit development, c programming, blue team, vulnerability research, beginner]
 author: Ongalo Glenn
 description: A beginner-friendly deep dive into buffer overflows — what they are, how memory works, how attackers exploit them, and how defenders detect and prevent them.
+image:
+  path: https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=1200&q=80
+  alt: Code vulnerability and buffer overflow exploit
 ---
 
 ## Introduction

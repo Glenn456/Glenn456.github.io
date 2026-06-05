@@ -5,6 +5,9 @@ categories: [Cybersecurity, Application Security]
 tags: [passwords, hashing, salting, cryptography, python, blue team, security engineering]
 author: Ongalo Glenn
 description: A deep dive into why plaintext password storage is catastrophic, how hashing works, why salting matters, and how to implement it correctly in Python.
+image:
+  path: https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1200&q=80
+  alt: Password security and cryptographic hashing
 ---
 
 ## Introduction

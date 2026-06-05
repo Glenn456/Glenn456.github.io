@@ -4,6 +4,9 @@ date: 2026-03-05 09:00:00 +0300
 categories: [Cybersecurity, Threat Intelligence]
 tags: [phishing, ai, social engineering, blue team, soc, threat detection]
 description: Attackers are now using large language models to generate hyper-personalised phishing emails at scale. Here is what SOC analysts need to know and watch for.
+image:
+  path: https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1200&q=80
+  alt: Dark hacker screen and phishing attack concept
 ---
 
 ## Introduction

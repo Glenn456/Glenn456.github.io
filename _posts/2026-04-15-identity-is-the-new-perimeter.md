@@ -4,6 +4,9 @@ date: 2026-04-15 09:00:00 +0300
 categories: [Cybersecurity, Threat Intelligence]
 tags: [identity, credentials, account takeover, blue team, soc, mfa, active directory]
 description: Stolen credentials are now the leading cause of breaches. Understanding how attackers abuse identity and what defenders can do about it is one of the most important skills in modern security operations.
+image:
+  path: https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80
+  alt: Identity and access management security
 ---
 
 ## Introduction

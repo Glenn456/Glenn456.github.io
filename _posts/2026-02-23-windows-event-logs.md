@@ -5,6 +5,9 @@ categories: [Cybersecurity, SOC]
 tags: [windows event logs, soc, threat detection, incident response, siem, blue team, log analysis]
 author: Ongalo Glenn
 description: A practical guide to Windows Event Logs — the Event IDs that matter most, what they tell you, and how SOC analysts use them to detect threats and investigate incidents.
+image:
+  path: https://images.unsplash.com/photo-1629654291663-b91ad427698f?w=1200&q=80
+  alt: Windows event logs and security monitoring
 ---
 
 ## Introduction

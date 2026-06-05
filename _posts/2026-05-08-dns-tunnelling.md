@@ -4,6 +4,9 @@ date: 2026-05-08 09:00:00 +0300
 categories: [Cybersecurity, Networking]
 tags: [dns, c2, network analysis, blue team, soc, threat detection, packet analysis]
 description: DNS is one of the most trusted protocols on any network. That trust is exactly why attackers use it to hide command and control traffic. Here is what DNS tunnelling looks like and how to detect it.
+image:
+  path: https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80
+  alt: Network infrastructure and DNS traffic
 ---
 
 ## Introduction
