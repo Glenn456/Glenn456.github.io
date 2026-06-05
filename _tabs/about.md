@@ -6,18 +6,22 @@ permalink: /about/
 
 # Ongalo Glenn
 
-**Head of IT Infrastructure and Innovation | Cyber Risk Consulting | SOC Analyst**
+**Security Analyst | Threat Detection · Incident Response · AML/CTF Compliance**
 📍 Nairobi, Kenya &nbsp;·&nbsp; 📧 ongaloglenn45@gmail.com
 
 ---
 
 ## About Me
 
-I am a cybersecurity professional based in Nairobi, currently serving as **Head of IT Infrastructure and Innovation at Digi Africa**, where I lead cyber insurance services, risk consulting, and compliance operations for the betting and gaming industry. I graduated top of my class from the **Cyber Shujaa** programme and was promoted into my current leadership role within two months.
+I hunt threats, investigate breaches, and build the detection logic that catches what automated tools miss.
 
-My background spans data analysis, security operations, financial crime compliance, and infrastructure management. I handle **AML and CTF compliance** for fintech and betting clients, lead **incident response for fiduciary data leaks**, and advise on cyber insurance coverage requirements for high-risk sector organisations.
+Currently operating as a **Security Analyst and Head of IT Infrastructure at Digi Africa**, I work at the intersection of cyber risk, financial crime compliance, and incident response for one of East Africa's most exposed sectors: betting and gaming. My day-to-day involves triaging alerts, tracing lateral movement, leading post-incident forensic reviews, and ensuring AML and CTF controls hold under real-world adversarial pressure.
 
-Outside of work I am actively pushing my technical skills. I am currently at **OverTheWire Bandit levels 17 to 18**, working through Linux privilege escalation and SSH key-based authentication challenges. I recently started on **Blue Team Labs**, putting theory into practice on real-world defensive scenarios. This blog documents what I learn along the way.
+I graduated **top of my class** from the **Cyber Shujaa** programme and was promoted into a leadership role within two months of joining MGA Group. My analytical foundation, built across two years of data-driven risk work, means I do not just respond to incidents. I build the context that explains them.
+
+On the technical side I am actively closing every gap. Currently pushing through **OverTheWire Bandit levels 17-18** (SSH key authentication and privilege escalation), grinding through **Blue Team Labs** defensive scenarios, and building detection use cases mapped to **MITRE ATT&CK** techniques. This blog is my open notebook: every article is something I researched, broke down, and documented because I believe the best analysts write what they learn.
+
+I am actively seeking **Security Analyst and SOC Analyst opportunities** where I can contribute to a detection engineering team, triage real-world alerts, and help build security operations that are proactive, not just reactive.
 
 ---
 
