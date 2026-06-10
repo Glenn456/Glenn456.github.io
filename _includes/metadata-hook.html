@@ -1,0 +1,265 @@
+<style>
+#tags-widget-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--btn-active-bg, #1b1b1e);
+  border: 1.5px solid var(--btn-border-color, #3a3a3f);
+  color: var(--text-color, #c8c8c8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  transition: all 0.25s ease;
+}
+#tags-widget-btn:hover {
+  border-color: var(--link-color, #7eb2ec);
+  color: var(--link-color, #7eb2ec);
+  transform: scale(1.08);
+}
+#tags-widget-btn .tw-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--link-color, #7eb2ec);
+  color: #fff;
+  font-size: 9px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+#tags-widget-panel {
+  position: fixed;
+  bottom: 84px;
+  right: 28px;
+  z-index: 9998;
+  width: 280px;
+  background: var(--card-bg, #1b1b1e);
+  border: 1px solid var(--btn-border-color, #3a3a3f);
+  border-radius: 14px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  overflow: hidden;
+  transform: scale(0.85) translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  transform-origin: bottom right;
+}
+#tags-widget-panel.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+.tw-header {
+  padding: 14px 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tw-title {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.4;
+  font-weight: 600;
+}
+.tw-tabs {
+  display: flex;
+  gap: 0;
+  padding: 10px 16px 0;
+  border-bottom: 1px solid var(--btn-border-color, #3a3a3f);
+}
+.tw-tab {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  cursor: pointer;
+  opacity: 0.4;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  margin-bottom: -1px;
+  text-transform: uppercase;
+}
+.tw-tab.active {
+  opacity: 1;
+  border-bottom-color: var(--link-color, #7eb2ec);
+  color: var(--link-color, #7eb2ec);
+}
+.tw-body {
+  padding: 12px 16px 16px;
+  max-height: 320px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--btn-border-color, #3a3a3f) transparent;
+}
+.tw-pane { display: none; }
+.tw-pane.active { display: block; }
+.tw-tag-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--btn-border-color, #3a3a3f);
+}
+.tw-tag-row:last-child { border-bottom: none; }
+.tw-tag-link {
+  font-size: 12.5px;
+  color: var(--text-color, #c8c8c8);
+  text-decoration: none;
+  flex: 1;
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tw-tag-link:hover { color: var(--link-color, #7eb2ec); }
+.tw-tag-link::before {
+  content: '#';
+  opacity: 0.3;
+  font-size: 11px;
+}
+.tw-count {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: var(--btn-active-bg, #2a2a2f);
+  opacity: 0.65;
+  min-width: 22px;
+  text-align: center;
+}
+.tw-fire { font-size: 11px; margin-left: 2px; }
+.tw-recent-post {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--btn-border-color, #3a3a3f);
+}
+.tw-recent-post:last-child { border-bottom: none; }
+.tw-post-title {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-color, #c8c8c8);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 5px;
+  line-height: 1.4;
+  transition: color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tw-post-title:hover { color: var(--link-color, #7eb2ec); }
+.tw-post-date { font-size: 9.5px; opacity: 0.4; margin-bottom: 5px; }
+.tw-post-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.tw-post-tag {
+  font-size: 10px;
+  padding: 1px 7px;
+  border-radius: 10px;
+  background: var(--btn-active-bg, #2a2a2f);
+  color: var(--text-color, #c8c8c8);
+  text-decoration: none;
+  opacity: 0.65;
+  transition: opacity 0.15s;
+}
+.tw-post-tag:hover { opacity: 1; color: var(--link-color, #7eb2ec); }
+@media (max-width: 576px) {
+  #tags-widget-panel { width: calc(100vw - 40px); right: 20px; }
+  #tags-widget-btn { bottom: 20px; right: 20px; }
+}
+</style>
+
+<button id="tags-widget-btn" title="Tags Explorer" onclick="toggleTagsWidget()">
+  <span>🏷</span>
+  <span class="tw-badge" id="tw-total"></span>
+</button>
+
+<div id="tags-widget-panel">
+  <div class="tw-header">
+    <span class="tw-title">Tag Explorer</span>
+  </div>
+  <div class="tw-tabs">
+    <div class="tw-tab active" onclick="switchTab('trending')">🔥 Trending</div>
+    <div class="tw-tab" onclick="switchTab('recent')">🕒 Recent</div>
+  </div>
+  <div class="tw-body">
+    <div class="tw-pane active" id="tw-trending"></div>
+    <div class="tw-pane" id="tw-recent"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var tagData = [
+    {% for tag in site.tags %}
+    { name: {{ tag[0] | jsonify }}, count: {{ tag[1].size }}, url: "/tags/{{ tag[0] | slugify | replace: ' ', '-' }}/" }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  var recentData = [
+    {% for post in site.posts limit:7 %}
+    {
+      title: {{ post.title | truncate: 45 | jsonify }},
+      url: {{ post.url | jsonify }},
+      date: {{ post.date | date: "%b %d, %Y" | jsonify }},
+      tags: [{% for tag in post.tags %}{ name: {{ tag | jsonify }}, url: "/tags/{{ tag | slugify | replace: ' ', '-' }}/" }{% unless forloop.last %},{% endunless %}{% endfor %}]
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  var totalTags = tagData.length;
+  document.getElementById('tw-total').textContent = totalTags;
+
+  // Sort tags by count descending
+  var sorted = tagData.slice().sort(function(a,b){ return b.count - a.count; });
+
+  // Build trending pane
+  var tHtml = '';
+  sorted.forEach(function(t, i) {
+    var fire = i < 3 ? '<span class="tw-fire">' + ['🔥','⚡','💡'][i] + '</span>' : '';
+    tHtml += '<div class="tw-tag-row"><a class="tw-tag-link" href="' + t.url + '">' + t.name + fire + '</a><span class="tw-count">' + t.count + '</span></div>';
+  });
+  document.getElementById('tw-trending').innerHTML = tHtml || '<p style="opacity:0.4;font-size:12px;">No tags found</p>';
+
+  // Build recent pane
+  var rHtml = '';
+  recentData.forEach(function(p) {
+    var tagLinks = p.tags.slice(0,4).map(function(t){
+      return '<a class="tw-post-tag" href="' + t.url + '">' + t.name + '</a>';
+    }).join('');
+    rHtml += '<div class="tw-recent-post"><a class="tw-post-title" href="' + p.url + '">' + p.title + '</a><div class="tw-post-date">' + p.date + '</div><div class="tw-post-tags">' + tagLinks + '</div></div>';
+  });
+  document.getElementById('tw-recent').innerHTML = rHtml || '<p style="opacity:0.4;font-size:12px;">No posts found</p>';
+
+  window.toggleTagsWidget = function() {
+    document.getElementById('tags-widget-panel').classList.toggle('open');
+  };
+
+  window.switchTab = function(tab) {
+    document.querySelectorAll('.tw-tab').forEach(function(el, i) {
+      el.classList.toggle('active', (tab==='trending' && i===0) || (tab==='recent' && i===1));
+    });
+    document.querySelectorAll('.tw-pane').forEach(function(el, i) {
+      el.classList.toggle('active', (tab==='trending' && i===0) || (tab==='recent' && i===1));
+    });
+  };
+
+  // Close when clicking outside
+  document.addEventListener('click', function(e) {
+    var panel = document.getElementById('tags-widget-panel');
+    var btn = document.getElementById('tags-widget-btn');
+    if (panel.classList.contains('open') && !panel.contains(e.target) && !btn.contains(e.target)) {
+      panel.classList.remove('open');
+    }
+  });
+})();
+</script>
