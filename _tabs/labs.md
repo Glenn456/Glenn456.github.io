@@ -90,7 +90,7 @@ permalink: /labs/
 
 <div class="labs-header">
   <strong>Hands-on lab writeups from Hack The Box, Blue Team Labs Online, and OverTheWire.</strong>
-  <p style="margin-top:6px;">Each writeup documents methodology, commands, findings, and lessons learned. Theory without practice means nothing — this is the practice.</p>
+  <p style="margin-top:6px;">Each writeup documents methodology, commands, findings, and lessons learned. Theory without practice means nothing - this is the practice.</p>
 </div>
 
 <div class="stats-row">
@@ -117,12 +117,12 @@ permalink: /labs/
 </a>
 
 <div class="platform-section">
-  <div class="platform-title">// Hack The Box — Sherlocks (DFIR)</div>
+  <div class="platform-title">// Hack The Box - Sherlocks (DFIR)</div>
 
   <a class="lab-card" href="/posts/htb-sherlock-brutus-dfir-writeup/">
     <span class="lab-badge badge-veryeasy">VERY EASY</span>
     <div class="lab-info">
-      <div class="lab-title">Brutus — Linux Server Compromise Investigation</div>
+      <div class="lab-title">Brutus - Linux Server Compromise Investigation</div>
       <div class="lab-meta">DFIR &nbsp;·&nbsp; auth.log + wtmp &nbsp;·&nbsp; Brute Force → Persistence</div>
       <div class="lab-tags">
         <span class="lab-tag">auth.log</span>
@@ -136,12 +136,12 @@ permalink: /labs/
 </div>
 
 <div class="platform-section">
-  <div class="platform-title">// Hack The Box — Starting Point</div>
+  <div class="platform-title">// Hack The Box - Starting Point</div>
 
   <a class="lab-card" href="/posts/htb-redeemer-redis-writeup/">
     <span class="lab-badge badge-veryeasy">VERY EASY</span>
     <div class="lab-info">
-      <div class="lab-title">Redeemer — Unauthenticated Redis Instance</div>
+      <div class="lab-title">Redeemer - Unauthenticated Redis Instance</div>
       <div class="lab-meta">Starting Point &nbsp;·&nbsp; Misconfiguration &nbsp;·&nbsp; Redis Port 6379</div>
       <div class="lab-tags">
         <span class="lab-tag">redis</span>
@@ -155,12 +155,12 @@ permalink: /labs/
 </div>
 
 <div class="platform-section">
-  <div class="platform-title">// OverTheWire — Bandit</div>
+  <div class="platform-title">// OverTheWire - Bandit</div>
 
   <div class="lab-card" style="cursor:default;">
     <span class="lab-badge badge-easy">IN PROGRESS</span>
     <div class="lab-info">
-      <div class="lab-title">Bandit — Linux Command Line & Privilege Escalation</div>
+      <div class="lab-title">Bandit - Linux Command Line & Privilege Escalation</div>
       <div class="lab-meta">OverTheWire &nbsp;·&nbsp; Currently at Level 17-18</div>
       <div class="lab-tags">
         <span class="lab-tag">linux</span>
@@ -179,7 +179,7 @@ permalink: /labs/
   <div class="lab-card" style="cursor:default;">
     <span class="lab-badge badge-easy">IN PROGRESS</span>
     <div class="lab-info">
-      <div class="lab-title">Blue Team Labs — Defensive Security Scenarios</div>
+      <div class="lab-title">Blue Team Labs - Defensive Security Scenarios</div>
       <div class="lab-meta">Blue Team Labs Online &nbsp;·&nbsp; Just started</div>
       <div class="lab-tags">
         <span class="lab-tag">blue team</span>
