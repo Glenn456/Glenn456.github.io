@@ -95,11 +95,11 @@ permalink: /labs/
 
 <div class="stats-row">
   <div class="stat-box">
-    <div class="stat-num">3</div>
+    <div class="stat-num">4</div>
     <div class="stat-lbl">Completed</div>
   </div>
   <div class="stat-box">
-    <div class="stat-num">2</div>
+    <div class="stat-num">3</div>
     <div class="stat-lbl">HTB Machines</div>
   </div>
   <div class="stat-box">
@@ -149,6 +149,20 @@ permalink: /labs/
         <span class="lab-tag">enumeration</span>
         <span class="lab-tag">nmap</span>
         <span class="lab-tag">unauthenticated access</span>
+      </div>
+    </div>
+  </a>
+  <a class="lab-card" href="/posts/htb-cap-writeup/">
+    <span class="lab-badge badge-easy">EASY</span>
+    <div class="lab-info">
+      <div class="lab-title">Cap - IDOR to Root via Linux Capabilities</div>
+      <div class="lab-meta">Starting Point &nbsp;·&nbsp; IDOR + FTP Creds + cap_setuid Privilege Escalation</div>
+      <div class="lab-tags">
+        <span class="lab-tag">idor</span>
+        <span class="lab-tag">pcap analysis</span>
+        <span class="lab-tag">ftp</span>
+        <span class="lab-tag">linux capabilities</span>
+        <span class="lab-tag">privilege escalation</span>
       </div>
     </div>
   </a>
