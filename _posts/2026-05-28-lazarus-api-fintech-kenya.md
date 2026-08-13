@@ -5,8 +5,8 @@ categories: [Cybersecurity, Kenya]
 tags: [kenya, lazarus, north korea, fintech, api, supply chain, threat intelligence, aml, banking, soc, east africa]
 description: North Korea's Lazarus Group has been running coordinated campaigns against cryptocurrency and fintech organisations in Kenya. Combined with organised criminal exploitation of the API layer linking banks to mobile money, Kenya's fintech stack faces threats from both state and non-state actors simultaneously.
 image:
-  path: https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1200&q=80
-  alt: State-sponsored cyber attack and advanced persistent threat
+  path: https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&h=500&fit=crop&q=80
+  alt: Cascading code representing advanced persistent threat activity
 ---
 
 ## Two Threat Actors, One Attack Surface

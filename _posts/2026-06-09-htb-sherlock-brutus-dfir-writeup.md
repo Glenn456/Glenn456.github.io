@@ -5,8 +5,8 @@ categories: [Labs, DFIR]
 tags: [hackthebox, dfir, forensics, auth.log, wtmp, brute force, linux, soc, blue team, mitre, persistence]
 description: A full walkthrough of the Hack The Box Brutus Sherlock challenge. Two log files, one compromised server, and a complete attacker timeline reconstructed from scratch using auth.log and wtmp.
 image:
-  path: https://images.unsplash.com/photo-1629654291663-b91ad427698f?w=1200&q=80
-  alt: Linux terminal log analysis and digital forensics
+  path: https://images.unsplash.com/photo-1629654291663-b91ad427698f?w=1200&h=500&fit=crop&q=80
+  alt: Linux authentication logs under forensic review
 ---
 
 ## Overview

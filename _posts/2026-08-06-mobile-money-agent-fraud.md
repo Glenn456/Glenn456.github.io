@@ -5,8 +5,8 @@ categories: [Cybersecurity, Kenya]
 tags: [mobile money, mpesa, agents, kenya, fraud, aml, ctf, detection, financial crime, soc]
 description: Kenya's mobile money system depends on hundreds of thousands of agents handling cash-in and cash-out. They are the point where digital value becomes physical cash, which makes them the point where fraud proceeds exit the system.
 image:
-  path: https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80
-  alt: Mobile money agent and cash transaction
+  path: https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=1200&h=500&fit=crop&q=80
+  alt: Cash handling at a mobile money agent
 ---
 
 ## Where Digital Money Becomes Cash

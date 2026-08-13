@@ -5,8 +5,8 @@ categories: [Cybersecurity, Kenya]
 tags: [ransomware, kenya, critical infrastructure, incident response, backup, detection, blue team, soc]
 description: Kenya Power, Kenya Railways, the NTSA, and KRA have all experienced attacks on their digital systems. Malware incidents reached 103 million in nine months. Public institutions hold population-scale data with security budgets built for a different era.
 image:
-  path: https://images.unsplash.com/photo-1614064548016-0b5c13ca2c85?w=1200&q=80
-  alt: Ransomware attack on critical infrastructure
+  path: https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=500&fit=crop&q=80
+  alt: National infrastructure network
 ---
 
 ## The Target Set Has Shifted

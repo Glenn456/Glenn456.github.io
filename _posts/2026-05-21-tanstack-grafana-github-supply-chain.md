@@ -5,8 +5,8 @@ categories: [Cybersecurity, Incident Response]
 tags: [supply chain, npm, github, grafana, threat intelligence, blue team, soc, incident response]
 description: The Mini Shai-Hulud campaign turned a trusted open-source package into a weapon that hit Grafana Labs, GitHub, OpenAI and Mistral AI in a single coordinated wave. Here is exactly what happened and what defenders need to take away.
 image:
-  path: https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80
-  alt: Server infrastructure and code
+  path: https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=1200&h=500&fit=crop&q=80
+  alt: Developer workstation and build pipeline
 ---
 
 ## What Just Happened

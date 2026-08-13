@@ -6,8 +6,8 @@ tags: [cyber kill chain, threat detection, soc, incident response, mitre, blue t
 author: Ongalo Glenn
 description: Breaking down the Cyber Kill Chain framework and how SOC analysts use it to detect, disrupt, and respond to cyberattacks at every stage.
 image:
-  path: https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80
-  alt: Cyber kill chain attack stages
+  path: https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=500&fit=crop&q=80
+  alt: Red-lit code representing attack stages
 ---
 
 ## Introduction

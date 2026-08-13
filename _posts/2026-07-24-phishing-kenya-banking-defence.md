@@ -5,8 +5,8 @@ categories: [Cybersecurity, Kenya]
 tags: [phishing, smishing, kenya, banking, dmarc, email security, blue team, soc, detection engineering]
 description: Bank-related phishing accounts for 53.75% of all phishing attacks in Africa, the highest of any region globally. Kenyan banks lost KSh 1.59 billion to fraud in 2024. Here is the anatomy of the attack and the concrete controls a security engineer can deploy against it.
 image:
-  path: https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1200&q=80
-  alt: Phishing email attack and credential theft
+  path: https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=500&fit=crop&q=80
+  alt: Banking notification on a mobile device
 ---
 
 ## Africa Leads the World in Bank Phishing

@@ -5,8 +5,8 @@ categories: [Cybersecurity, Kenya]
 tags: [cloud security, kenya, aws, azure, misconfiguration, iam, data residency, detection, soc]
 description: Cloud service providers are among the primary targets identified by Kenyan regulators. The dominant cause of cloud breaches is not provider vulnerability. It is customer misconfiguration, and the shared responsibility model is widely misunderstood.
 image:
-  path: https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80
-  alt: Cloud infrastructure and data centre security
+  path: https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=500&fit=crop&q=80
+  alt: Cloud infrastructure and distributed systems
 ---
 
 ## The Shared Responsibility Gap

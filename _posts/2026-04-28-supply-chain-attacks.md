@@ -5,8 +5,8 @@ categories: [Cybersecurity, Threat Intelligence]
 tags: [supply chain, third party risk, threat intelligence, blue team, soc, malware]
 description: Supply chain attacks compromise the software or services you depend on, turning your trusted tools into attack vectors. Here is how they work and what defenders can do.
 image:
-  path: https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&q=80
-  alt: Software code and supply chain vulnerability
+  path: https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=500&fit=crop&q=80
+  alt: Source code and open source dependencies
 ---
 
 ## Introduction

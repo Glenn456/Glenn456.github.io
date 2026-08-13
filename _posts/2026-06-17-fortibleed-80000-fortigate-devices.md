@@ -5,8 +5,8 @@ categories: [Cybersecurity, Threat Intelligence]
 tags: [fortinet, fortigate, vpn, russia, campaign, firewall, threat intelligence, blue team, soc, cve]
 description: A large-scale campaign codenamed FortiBleed has been systematically compromising Fortinet FortiGate firewalls and SSL VPN gateways since at least February 2026. Over 80,000 devices have been identified with working credentials tested by suspected Russian-speaking threat actors.
 image:
-  path: https://images.unsplash.com/photo-1614064548016-0b5c13ca2c85?w=1200&q=80
-  alt: Firewall security and network defence concept
+  path: https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=500&fit=crop&q=80
+  alt: Enterprise firewall appliances in a rack
 ---
 
 ## What Is FortiBleed

@@ -5,8 +5,8 @@ categories: [Cybersecurity, Kenya]
 tags: [kenya, sim swap, safaricom, airtel, mpesa, telco, social engineering, mobile fraud, identity, soc]
 description: SIM swap fraud investigations at Safaricom surged 327% in 2025. A single scheme involving 123,000 fraudulently registered SIM cards siphoned KSh 500 million through Fuliza. In Kenya, your phone number is your financial identity and it is under sustained attack.
 image:
-  path: https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80
-  alt: Mobile phone SIM card and telecommunications security
+  path: https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=500&fit=crop&q=80
+  alt: Mobile phone and SIM based identity
 ---
 
 ## Your Phone Number Is Your Identity

@@ -5,8 +5,8 @@ categories: [Cybersecurity, Threat Intelligence]
 tags: [threat hunting, soc, blue team, proactive defence, mitre, detection]
 description: Waiting for alerts means you only find what your tools are already tuned to detect. Threat hunting is the practice of actively searching your environment for attackers who have evaded those tools. Here is how to start.
 image:
-  path: https://images.unsplash.com/photo-1551808525-51a94da548ce?w=1200&q=80
-  alt: Cybersecurity analyst threat hunting
+  path: https://images.unsplash.com/photo-1551808525-51a94da548ce?w=1200&h=500&fit=crop&q=80
+  alt: Analyst investigating security telemetry
 ---
 
 ## Introduction

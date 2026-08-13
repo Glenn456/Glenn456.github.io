@@ -5,8 +5,8 @@ categories: [Cybersecurity, Incident Response]
 tags: [ransomware, incident response, blue team, soc, threat detection, extortion]
 description: Ransomware has evolved far beyond encrypting files. Modern ransomware groups run triple extortion campaigns and target operational continuity. Here is what SOC analysts need to know.
 image:
-  path: https://images.unsplash.com/photo-1614064548016-0b5c13ca2c85?w=1200&q=80
-  alt: Ransomware lock and cybersecurity threat
+  path: https://images.unsplash.com/photo-1614064548016-0b5c13ca2c85?w=1200&h=500&fit=crop&q=80
+  alt: Locked system representing ransomware encryption
 ---
 
 ## Introduction

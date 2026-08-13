@@ -5,8 +5,8 @@ categories: [Cybersecurity, Kenya]
 tags: [third party risk, supply chain, kenya, banking, vendor management, access control, soc, blue team]
 description: A reported breach involving compromised contractors cost a Kenyan bank over KSh 517 million. Third-party and supply chain breaches have quadrupled in five years globally. Most organisations cannot enumerate who has access to their systems.
 image:
-  path: https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&q=80
-  alt: Vendor access and supply chain security
+  path: https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&h=500&fit=crop&q=80
+  alt: Vendor partnership and contracted access
 ---
 
 ## The Access You Forgot You Granted

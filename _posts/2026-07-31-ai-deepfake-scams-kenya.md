@@ -5,8 +5,8 @@ categories: [Cybersecurity, Kenya]
 tags: [ai, deepfake, voice cloning, kenya, social engineering, bec, fraud, detection, soc]
 description: The Communications Authority of Kenya named AI-driven attacks as a primary factor in the country's threat surge. Voice cloning, deepfake video, and AI-generated phishing have removed every detection signal Kenyan users were trained to look for.
 image:
-  path: https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80
-  alt: Artificial intelligence and synthetic media
+  path: https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=500&fit=crop&q=80
+  alt: Synthetic media and AI generated content
 ---
 
 ## The Regulator Named It

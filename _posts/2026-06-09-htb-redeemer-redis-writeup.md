@@ -5,8 +5,8 @@ categories: [Labs, HTB]
 tags: [hackthebox, redis, misconfiguration, enumeration, starting point, reconnaissance, blue team, soc]
 description: A walkthrough of the Hack The Box Redeemer machine. No exploits, no code. Just a misconfigured Redis instance exposed to the network with no authentication and four keys waiting to be read.
 image:
-  path: https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=80
-  alt: Network infrastructure and server misconfiguration
+  path: https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&h=500&fit=crop&q=80
+  alt: Exposed database service on a server rack
 ---
 
 ## Overview

@@ -5,8 +5,8 @@ categories: [Cybersecurity, Kenya]
 tags: [data protection, odpc, compliance, kenya, gdpr, breach notification, governance, soc]
 description: The Data Protection Act 2019 is usually treated as a legal document. For a security engineer it is a technical requirements specification with enforcement attached. Here is what it actually demands of your architecture.
 image:
-  path: https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80
-  alt: Data protection compliance and privacy regulation
+  path: https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=500&fit=crop&q=80
+  alt: Regulatory documentation and compliance review
 ---
 
 ## Compliance as Architecture

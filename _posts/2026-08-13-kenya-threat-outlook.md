@@ -5,8 +5,8 @@ categories: [Cybersecurity, Kenya]
 tags: [kenya, threat intelligence, forecast, strategy, ke-cirt, resilience, soc, blue team, risk]
 description: Pulling together the threat data, regulatory direction, and attack patterns of the past eighteen months into a defensible view of what Kenyan organisations should be preparing for and where security investment should concentrate.
 image:
-  path: https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80
-  alt: Cybersecurity strategy and threat forecasting
+  path: https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=500&fit=crop&q=80
+  alt: Strategic security planning and risk review
 ---
 
 ## Where the Numbers Have Landed

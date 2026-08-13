@@ -5,8 +5,8 @@ categories: [Cybersecurity, Kenya]
 tags: [cryptocurrency, vasp, kenya, aml, ctf, wallet security, lazarus, compliance, blockchain, soc]
 description: The Virtual Asset Service Providers Act came into force in November 2025, creating a licensed and therefore identifiable set of crypto businesses in Kenya. Regulation brings legitimacy. It also brings a defined target list.
 image:
-  path: https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=1200&q=80
-  alt: Cryptocurrency security and digital asset custody
+  path: https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=1200&h=500&fit=crop&q=80
+  alt: Digital asset custody and wallet security
 ---
 
 ## Regulation Creates a Target List

@@ -5,8 +5,8 @@ categories: [Cybersecurity, Threat Intelligence]
 tags: [idor, owasp, web security, access control, blue team, soc, api security, broken access control]
 description: Insecure Direct Object Reference is consistently one of the most exploited web vulnerabilities. It requires no special tools, no exploit code, and no technical sophistication. Just change a number in a URL. Here is how it works and how to find and fix it.
 image:
-  path: https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80
-  alt: Web application security and access control
+  path: https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=500&fit=crop&q=80
+  alt: Web application code and access control logic
 ---
 
 ## What IDOR Is
