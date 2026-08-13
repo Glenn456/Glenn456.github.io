@@ -5,7 +5,7 @@ categories: [Cybersecurity, Kenya]
 tags: [sacco, kenya, financial inclusion, sasra, cooperative, security architecture, detection, blue team]
 description: Kenyan SACCOs hold hundreds of billions of shillings in member deposits and serve millions of people, often running on shared core banking systems with security programmes built for a pre-digital era.
 image:
-  path: https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=500&fit=crop&q=80
+  path: https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=500&fit=crop&q=80
   alt: Cooperative savings records and member accounts
 ---
 

@@ -6,7 +6,7 @@ tags: [phishing, ai, social engineering, blue team, soc, threat detection]
 description: Attackers are now using large language models to generate hyper-personalised phishing emails at scale. Here is what SOC analysts need to know and watch for.
 image:
   path: https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=500&fit=crop&q=80
-  alt: Suspicious message arriving on a mobile phone
+  alt: Suspicious message arriving on a phone
 ---
 
 ## Introduction

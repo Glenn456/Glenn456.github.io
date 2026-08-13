@@ -6,7 +6,7 @@ tags: [skills, it audit, governance, risk, compliance, professional development,
 description: A practical breakdown of the specific capabilities I developed over seven weeks of IT audit work, and how each one transfers to security operations and detection engineering.
 image:
   path: https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&h=500&fit=crop&q=80
-  alt: Professional development and skills learning
+  alt: Professional skills development and study
 ---
 
 ## Why Write This Down

@@ -6,7 +6,7 @@ tags: [vishing, social engineering, shinyhunters, data breach, salesforce, ident
 description: ShinyHunters breached Charter Communications using nothing but a phone call. No malware, no zero-days. Just one employee, one vishing call, and one compromised Microsoft Entra account that unlocked 13 million customer records.
 image:
   path: https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=500&fit=crop&q=80
-  alt: Call centre handset used in voice phishing
+  alt: Telephone handset used in voice phishing
 ---
 
 ## No Malware Required

@@ -6,7 +6,7 @@ tags: [kenya, mobile money, mpesa, fintech, threat intelligence, aml, banking, s
 description: Between April and June 2025, Kenya recorded over 4.5 billion cyber threat events and lost an estimated KES 29.9 billion to cybercrime. Mobile money accounts for 53% of GDP. This is what happens when the attack surface is the entire economy.
 image:
   path: https://images.unsplash.com/photo-1611606063065-ee7946f0787a?w=1200&h=500&fit=crop&q=80
-  alt: Mobile money transaction in progress
+  alt: Mobile money transaction on a handset
 ---
 
 ## When the Attack Surface Is the Economy

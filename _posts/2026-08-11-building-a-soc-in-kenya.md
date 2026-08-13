@@ -6,7 +6,7 @@ tags: [soc, detection engineering, kenya, siem, wazuh, mitre, blue team, threat 
 description: 74% of East African organisations rank cyber risk as a top concern but only 29% run crisis simulations. The gap is not awareness. It is operational capability. Here is how to build detection capability without a tier-one budget.
 image:
   path: https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=500&fit=crop&q=80
-  alt: Security operations dashboards and monitoring
+  alt: Security operations monitoring dashboards
 ---
 
 ## The Execution Gap

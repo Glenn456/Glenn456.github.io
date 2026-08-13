@@ -7,7 +7,7 @@ author: Ongalo Glenn
 description: A deep dive into why plaintext password storage is catastrophic, how hashing works, why salting matters, and how to implement it correctly in Python.
 image:
   path: https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=500&fit=crop&q=80
-  alt: Circuit board representing cryptographic hardware
+  alt: Circuit board representing cryptographic operations
 ---
 
 ## Introduction

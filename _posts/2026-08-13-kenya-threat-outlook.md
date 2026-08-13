@@ -6,7 +6,7 @@ tags: [kenya, threat intelligence, forecast, strategy, ke-cirt, resilience, soc,
 description: Pulling together the threat data, regulatory direction, and attack patterns of the past eighteen months into a defensible view of what Kenyan organisations should be preparing for and where security investment should concentrate.
 image:
   path: https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=500&fit=crop&q=80
-  alt: Strategic security planning and risk review
+  alt: Strategic risk planning and forward assessment
 ---
 
 ## Where the Numbers Have Landed

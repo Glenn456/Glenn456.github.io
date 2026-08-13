@@ -6,7 +6,7 @@ tags: [bec, email security, kenya, fraud, dmarc, detection engineering, soc, blu
 description: BEC does not involve malware, exploits, or technical intrusion. It involves an email, a wire transfer, and a process that permitted both. It is one of the highest-loss attack categories affecting Kenyan businesses and one of the most preventable.
 image:
   path: https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&h=500&fit=crop&q=80
-  alt: Business email and wire transfer instruction
+  alt: Business email containing payment instructions
 ---
 
 ## No Malware Required

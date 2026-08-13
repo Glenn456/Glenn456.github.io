@@ -6,7 +6,7 @@ tags: [phishing, mfa, oauth, identity, microsoft365, blue team, soc, threat dete
 description: EvilTokens is a Phishing-as-a-Service platform that bypasses MFA without stealing a single password, by turning Microsoft's own authentication infrastructure against users. Over 340 organisations were compromised in five weeks.
 image:
   path: https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=1200&h=500&fit=crop&q=80
-  alt: Multi-factor authentication prompt on a device
+  alt: Authentication prompt on a mobile device
 ---
 
 ## The Attack That Does Not Need Your Password

@@ -7,7 +7,7 @@ author: Ongalo Glenn
 description: Breaking down the Cyber Kill Chain framework and how SOC analysts use it to detect, disrupt, and respond to cyberattacks at every stage.
 image:
   path: https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=500&fit=crop&q=80
-  alt: Red-lit code representing attack stages
+  alt: Red lit code representing staged intrusion
 ---
 
 ## Introduction

@@ -5,8 +5,8 @@ categories: [Cybersecurity, Professional]
 tags: [it audit, governance, risk, compliance, controls testing, cyber risk, assurance, kenya]
 description: I spent the past seven weeks working on an IT audit engagement for a cyber risk management company. Here is what the work actually involved and what it changed about how I think about security.
 image:
-  path: https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=500&fit=crop&q=80
-  alt: Audit documentation and controls review
+  path: https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&h=500&fit=crop&q=80
+  alt: Audit fieldwork and controls testing
 ---
 
 ## The Engagement

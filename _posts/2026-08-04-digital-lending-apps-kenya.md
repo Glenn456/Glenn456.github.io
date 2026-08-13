@@ -6,7 +6,7 @@ tags: [kenya, fintech, digital lending, api security, data protection, cbk, odpc
 description: The CBK licensed 110 new digital credit providers in 2025, bringing the total to 195. Most are young organisations building on shared infrastructure with security programmes that have not scaled with their user base.
 image:
   path: https://images.unsplash.com/photo-1522125670776-3c7abb882bc2?w=1200&h=500&fit=crop&q=80
-  alt: Mobile lending application on a phone
+  alt: Mobile lending application in use
 ---
 
 ## Growth Outpacing Governance

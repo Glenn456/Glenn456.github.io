@@ -6,7 +6,7 @@ tags: [hackthebox, idor, linux, capabilities, ftp, privilege escalation, pcap, w
 description: Cap is an easy HackTheBox Linux machine that chains an IDOR vulnerability, plaintext FTP credentials in a PCAP file, and a Linux capability misconfiguration on Python 3.8 to achieve full root access. A clean example of how misconfigurations compound.
 image:
   path: https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=1200&h=500&fit=crop&q=80
-  alt: Packet capture analysis on screen
+  alt: Packet capture analysis in progress
 ---
 
 ## Overview

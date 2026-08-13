@@ -5,8 +5,8 @@ categories: [Cybersecurity, Frameworks]
 tags: [zero trust, identity, network security, blue team, soc, architecture]
 description: Perimeter-based security assumes everything inside your network is safe. That assumption has been broken repeatedly. Zero Trust is the architectural response. Here is what it means in practice.
 image:
-  path: https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=500&fit=crop&q=80
-  alt: Segmented server infrastructure
+  path: https://images.unsplash.com/photo-1585079542156-2755d9c8a094?w=1200&h=500&fit=crop&q=80
+  alt: Padlock representing verified access control
 ---
 
 ## Introduction

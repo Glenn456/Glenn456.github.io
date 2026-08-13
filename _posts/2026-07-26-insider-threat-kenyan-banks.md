@@ -6,7 +6,7 @@ tags: [insider threat, kenya, banking, fraud, aml, detection engineering, ueba, 
 description: The Central Bank of Kenya reports rising cyber fraud. Bank staff, investigators, and former compliance officers say most losses are inside jobs. When institutions label insider theft as a cyberattack, they build the wrong defences.
 image:
   path: https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=500&fit=crop&q=80
-  alt: Empty office desk representing insider access
+  alt: Empty office workstation representing insider access
 ---
 
 ## A Reporting Problem, Not Just a Security Problem
