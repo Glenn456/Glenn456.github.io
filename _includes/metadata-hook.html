@@ -267,7 +267,8 @@
 #panel-wrapper .access > *{position:relative;z-index:1}
 
 /* headings */
-#panel-wrapper .panel-heading{
+#panel-wrapper .panel-heading,
+html #panel-wrapper h2.panel-heading{
   font-family:var(--siem-m) !important;
   font-size:9.5px !important;
   letter-spacing:.2em;text-transform:uppercase;
@@ -320,7 +321,8 @@
 }
 #access-lastmod ul li:hover{background:rgba(124,92,255,.06)}
 #access-lastmod ul li:hover::after{transform:scaleY(.7)}
-#access-lastmod ul li a{
+#access-lastmod ul li a,
+html #panel-wrapper #access-lastmod ul li a{
   font-family:var(--siem-m) !important;
   font-size:10.5px !important;line-height:1.5 !important;
   color:var(--siem-steel) !important;
@@ -332,7 +334,8 @@
 
 /* trending tags -> chips */
 #access-tags .d-flex{margin-top:11px !important;gap:5px}
-#access-tags .post-tag{
+#access-tags .post-tag,
+html #panel-wrapper #access-tags a.post-tag{
   font-family:var(--siem-m) !important;
   font-size:9.5px !important;letter-spacing:.04em;
   padding:4px 9px !important;
@@ -379,6 +382,101 @@
   font-weight:500 !important;
 }
 #toc-wrapper .is-active-link::before{display:none !important}
+
+/* ═══════════ LIVE STREAM + CONTACT ═══════════ */
+.siem-stream-wrap{
+  position:relative;margin-top:20px;
+  border-top:1px solid var(--siem-line);padding-top:12px;
+}
+.siem-sh{
+  font-family:var(--siem-m);font-size:9.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--siem-steel);
+  display:flex;align-items:center;gap:7px;padding-bottom:9px;
+  border-bottom:1px solid var(--siem-line);
+}
+.siem-sh::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--siem-rose);flex-shrink:0;
+  animation:siemBeat 1.7s ease-in-out infinite;
+}
+.siem-sh .siem-eps{margin-left:auto;color:var(--siem-mint);letter-spacing:0}
+
+.siem-stream{
+  position:relative;height:186px;overflow:hidden;margin-top:6px;
+  mask-image:linear-gradient(180deg,transparent,#000 12%,#000 84%,transparent);
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 84%,transparent);
+}
+.siem-track{display:flex;flex-direction:column;will-change:transform}
+.siem-stream:hover .siem-track{animation-play-state:paused}
+
+.siem-ev{
+  display:block;text-decoration:none;padding:7px 0 7px 20px;
+  position:relative;border-bottom:1px solid rgba(255,255,255,.035);
+  transition:background .15s;
+}
+.siem-ev:hover{background:rgba(124,92,255,.07)}
+.siem-ev::before{
+  content:'';position:absolute;left:6px;top:12px;
+  width:5px;height:5px;border-radius:50%;
+}
+.siem-ev.s1::before{background:var(--siem-rose);box-shadow:0 0 6px rgba(255,77,109,.8)}
+.siem-ev.s2::before{background:var(--siem-amber);box-shadow:0 0 6px rgba(255,176,32,.7)}
+.siem-ev.s3::before{background:var(--siem-mint);box-shadow:0 0 6px rgba(0,240,181,.6)}
+.siem-ev-m{
+  display:flex;gap:7px;align-items:center;
+  font-family:var(--siem-m);font-size:8px;letter-spacing:.1em;
+  color:var(--siem-steel);opacity:.7;margin-bottom:3px;text-transform:uppercase;
+}
+.siem-ev-t{
+  font-family:var(--siem-m);font-size:10px;line-height:1.5;
+  color:var(--siem-steel);transition:color .15s;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.siem-ev:hover .siem-ev-t{color:var(--siem-violet)}
+
+@keyframes siemRoll{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+
+/* contact */
+.siem-contact{
+  margin-top:20px;border-top:1px solid var(--siem-line);padding-top:12px;
+}
+.siem-ch{
+  font-family:var(--siem-m);font-size:9.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--siem-steel);
+  display:flex;align-items:center;gap:7px;padding-bottom:10px;
+}
+.siem-ch::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--siem-mint);flex-shrink:0;
+  animation:siemBeat 2.6s ease-in-out infinite;
+}
+.siem-cr{
+  display:flex;align-items:center;gap:9px;
+  padding:7px 0;text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.035);
+  transition:all .16s;
+}
+.siem-cr:last-of-type{border-bottom:none}
+.siem-cr:hover{padding-left:4px}
+.siem-ck{
+  font-family:var(--siem-m);font-size:8px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--siem-steel);opacity:.6;
+  min-width:38px;flex-shrink:0;
+}
+.siem-cv{
+  font-family:var(--siem-m);font-size:10px;color:var(--siem-steel);
+  word-break:break-all;transition:color .16s;
+}
+.siem-cr:hover .siem-cv{color:var(--siem-violet)}
+.siem-open{
+  display:block;margin-top:11px;padding:8px;text-align:center;
+  border:1px solid rgba(0,240,181,.3);border-radius:6px;
+  background:rgba(0,240,181,.07);
+  font-family:var(--siem-m);font-size:9px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--siem-mint);
+  text-decoration:none;transition:all .18s;
+}
+.siem-open:hover{background:rgba(0,240,181,.16);border-color:var(--siem-mint)}
 </style>
 
 <script>
@@ -562,6 +660,78 @@ document.addEventListener('DOMContentLoaded', function(){
     meta.innerHTML = '<span>top by volume</span><b>' + n + ' active</b>';
     var th = tagsSec.querySelector('.panel-heading');
     if(th) th.parentNode.insertBefore(meta, th.nextSibling);
+  }
+
+
+  /* ══════ LIVE STREAM + CONTACT ══════ */
+  var accessBox = document.querySelector('#panel-wrapper .access');
+  if(accessBox && postData.length){
+
+    /* ---- stream ---- */
+    var wrap = document.createElement('div');
+    wrap.className = 'siem-stream-wrap';
+    wrap.innerHTML = '<div class="siem-sh">live stream<span class="siem-eps" id="siem-sps">0/min</span></div>' +
+                     '<div class="siem-stream"><div class="siem-track" id="siem-track"></div></div>';
+    accessBox.appendChild(wrap);
+
+    function ago(ds){
+      var d = new Date(ds + 'T09:00:00Z');
+      var mins = Math.round((Date.now() - d.getTime()) / 60000);
+      if(mins < 60) return mins + 'm ago';
+      var h = Math.round(mins/60);
+      if(h < 24) return h + 'h ago';
+      var dd = Math.round(h/24);
+      if(dd < 30) return dd + 'd ago';
+      return Math.round(dd/30) + 'mo ago';
+    }
+
+    var sevs = ['s1','s2','s3'];
+    function rowHtml(p, i){
+      var sev = sevs[i % 3];
+      var lbl = sev === 's1' ? 'HIGH' : (sev === 's2' ? 'MED' : 'INFO');
+      return '<a class="siem-ev ' + sev + '" href="' + p.u + '">' +
+               '<div class="siem-ev-m"><span>' + lbl + '</span><span>' + ago(p.d) + '</span></div>' +
+               '<div class="siem-ev-t">' + p.t + '</div>' +
+             '</a>';
+    }
+
+    var track = document.getElementById('siem-track');
+    var rows = postData.map(rowHtml).join('');
+    track.innerHTML = rows + rows;
+
+    if(!slow){
+      var dur = Math.max(26, postData.length * 5.2);
+      track.style.animation = 'siemRoll ' + dur + 's linear infinite';
+    }
+
+    var sps = document.getElementById('siem-sps');
+    function bumpSps(){
+      if(sps) sps.textContent = (38 + Math.round(Math.random()*54)) + '/min';
+    }
+    bumpSps();
+    if(!slow) setInterval(bumpSps, 2600);
+
+    /* ---- contact ---- */
+    var CONTACT = {
+      email: 'ongaloglenn45@gmail.com',
+      phone: '',                       /* set to publish */
+      loc:   'Nairobi, Kenya'
+    };
+
+    var cRows =
+      '<a class="siem-cr" href="mailto:' + CONTACT.email + '">' +
+        '<span class="siem-ck">mail</span><span class="siem-cv">' + CONTACT.email + '</span></a>';
+    if(CONTACT.phone){
+      cRows += '<a class="siem-cr" href="tel:' + CONTACT.phone.replace(/\s+/g,'') + '">' +
+                 '<span class="siem-ck">tel</span><span class="siem-cv">' + CONTACT.phone + '</span></a>';
+    }
+    cRows += '<div class="siem-cr"><span class="siem-ck">loc</span><span class="siem-cv">' + CONTACT.loc + '</span></div>';
+
+    var cbox = document.createElement('div');
+    cbox.className = 'siem-contact';
+    cbox.innerHTML = '<div class="siem-ch">contact</div>' + cRows +
+                     '<a class="siem-open" href="/about/">status: open to work</a>';
+    accessBox.appendChild(cbox);
   }
 
 });
