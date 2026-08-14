@@ -90,6 +90,7 @@ permalink: /about/
   <p class="sg-body">Nairobi based, open to remote. I answer every message, including the ones that turn into a no.</p>
   <div class="sg-btns">
     <a class="sg-b sg-b1" href="mailto:ongaloglenn45@gmail.com">ongaloglenn45@gmail.com</a>
+    <a class="sg-b sg-b2" href="tel:+254745530525">+254 745 530 525</a>
     <a class="sg-b" href="/labs/">Lab writeups</a>
     <a class="sg-b" href="/archives/">All writing</a>
   </div>
@@ -291,6 +292,8 @@ permalink: /about/
 }
 .sg-b:hover{border-color:var(--violet);color:var(--ice)!important}
 .sg-b1{background:var(--violet);border-color:var(--violet);color:#fff!important;font-weight:600}
+.sg-b2{border-color:rgba(0,240,181,.45);color:var(--mint)!important}
+.sg-b2:hover{background:rgba(0,240,181,.12);border-color:var(--mint);color:var(--mint)!important}
 .sg-b1:hover{background:#8E72FF;border-color:#8E72FF;color:#fff!important}
 
 /* ── reveal ── */
