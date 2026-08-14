@@ -6,443 +6,557 @@ order: 6
 permalink: /about/
 ---
 
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<div class="jk">
+<div class="sg">
 
-<!-- ═══════════ ABOUT ═══════════ -->
-<section class="jk-about">
-  <span class="jk-orb jk-orb-tl"></span>
-  <span class="jk-orb jk-orb-bl"></span>
-  <span class="jk-orb jk-orb-tr"></span>
-  <span class="jk-orb jk-orb-br"></span>
+<!-- ═════════ HERO ═════════ -->
+<section class="sg-hero">
+  <canvas id="sg-noise"></canvas>
+  <div class="sg-scan" id="sg-scan"></div>
+  <div class="sg-vig"></div>
 
-  <div class="jk-about-inner">
-    <h1 class="jk-h jk-fade" data-d="0">About me</h1>
+  <div class="sg-hero-in">
+    <p class="sg-kicker">
+      <span class="sg-blip"></span>Nairobi &nbsp;/&nbsp; <span id="sg-clock">--:--:--</span> EAT
+    </p>
 
-    <div class="jk-magnet jk-fade" data-d="0.15" id="jk-mag">
-      <img src="/assets/img/Ongalo.jpg" alt="Ongalo Glenn" class="jk-portrait">
+    <h1 class="sg-name" data-txt="ONGALO GLENN">ONGALO GLENN</h1>
+    <p class="sg-role" data-txt="SECURITY ANALYST">SECURITY ANALYST</p>
+
+    <p class="sg-tag">
+      I find the signal in the noise. Move your cursor across this page to see what I mean.
+    </p>
+
+    <div class="sg-readout">
+      <div><b data-n="42">0</b><span>articles</span></div>
+      <div><b data-n="3">0</b><span>boxes rooted</span></div>
+      <div><b data-n="18">0</b><span>bandit level</span></div>
+      <div><b data-n="7">0</b><span>weeks on audit</span></div>
     </div>
 
-    <p class="jk-lede jk-fade" data-d="0.3" id="jk-reveal">I am Ongalo Glenn, a security analyst in Nairobi. I work on threat detection, incident response, and financial crime compliance for operators in one of the most attacked sectors in East Africa. I graduated top of my class from Cyber Shujaa. I write up every lab and every incident I work through, because the ones who write are the ones who remember.</p>
-
-    <a class="jk-cta jk-fade" data-d="0.45" href="mailto:ongaloglenn45@gmail.com">Contact me</a>
+    <div class="sg-cue"><span></span>scroll</div>
   </div>
 </section>
 
-<!-- ═══════════ WHAT I DO ═══════════ -->
-<section class="jk-serv">
-  <h2 class="jk-h2 jk-fade" data-d="0">What I do</h2>
-  <div class="jk-serv-list">
+<!-- ═════════ LIVE ALERT ═════════ -->
+<section class="sg-sec">
+  <p class="sg-eye">// live detection</p>
+  <h2 class="sg-h2">An alert just fired</h2>
+  <p class="sg-lead">You landed on this page. Here is what that looks like from the other side of a console. Everything below was read from your browser, in your browser. None of it was sent anywhere, and I have no idea who you are.</p>
 
-    <div class="jk-serv-item jk-fade" data-d="0">
-      <span class="jk-num">01</span>
-      <div class="jk-serv-txt">
-        <h3>Threat detection</h3>
-        <p>Building and tuning detection logic mapped to MITRE ATT&amp;CK, so that the alerts that fire are the ones worth reading. Log analysis across Windows, Linux, DNS, and identity telemetry.</p>
-      </div>
+  <div class="sg-alert" id="sg-alert">
+    <div class="sg-alert-bar">
+      <span class="sg-sev">LOW</span>
+      <span class="sg-rule">RULE-0042 · Unfamiliar visitor observed</span>
+      <span class="sg-ts" id="sg-alert-ts">--:--:--</span>
     </div>
-
-    <div class="jk-serv-item jk-fade" data-d="0.1">
-      <span class="jk-num">02</span>
-      <div class="jk-serv-txt">
-        <h3>Incident response</h3>
-        <p>Investigation, containment, and post-incident reporting for fiduciary data leaks. Reconstructing attacker timelines from raw log evidence and turning them into findings people can act on.</p>
-      </div>
+    <div class="sg-fields" id="sg-fields"></div>
+    <div class="sg-verdict">
+      <span class="sg-vk">verdict</span>
+      <span class="sg-vv" id="sg-verdict">analysing...</span>
     </div>
-
-    <div class="jk-serv-item jk-fade" data-d="0.2">
-      <span class="jk-num">03</span>
-      <div class="jk-serv-txt">
-        <h3>AML &amp; CTF compliance</h3>
-        <p>Identifying suspicious financial patterns and holding regulatory controls up against real adversarial pressure in the betting and gaming sector.</p>
-      </div>
-    </div>
-
-    <div class="jk-serv-item jk-fade" data-d="0.3">
-      <span class="jk-num">04</span>
-      <div class="jk-serv-txt">
-        <h3>Cyber risk consulting</h3>
-        <p>Cyber insurance risk assessment, third-party and vendor risk review, and control gap analysis for organisations that carry more exposure than their security budget suggests.</p>
-      </div>
-    </div>
-
-    <div class="jk-serv-item jk-fade" data-d="0.4">
-      <span class="jk-num">05</span>
-      <div class="jk-serv-txt">
-        <h3>IT audit &amp; assurance</h3>
-        <p>Testing whether controls actually operate, with evidence, across a review period. Access management, change management, backup and recovery, and third-party governance.</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- ═══════════ EXPERIENCE ═══════════ -->
-<section class="jk-proj">
-  <h2 class="jk-h jk-fade" data-d="0">Experience</h2>
+<!-- ═════════ WHO ═════════ -->
+<section class="sg-sec">
+  <p class="sg-eye">// summary</p>
+  <h2 class="sg-h2">Who is behind the console</h2>
+  <p class="sg-body">I run IT infrastructure and cyber risk consulting at <b>Digi Africa</b>, working with betting and gaming operators on cyber insurance risk, <b>AML and CTF compliance</b>, and incident response for fiduciary data leaks. I graduated top of my class from <b>Cyber Shujaa</b>, and I recently spent seven weeks on an IT audit engagement testing whether client control environments actually hold up under evidence.</p>
+  <p class="sg-body">The thing I am actually good at is the part before the tooling: working out what a pile of logs is telling you, and what question to ask next. Everything on this site is the working record of that. Every lab, every incident, every breakdown of an attack that was in the news last week.</p>
+  <p class="sg-body">I am looking for a <b>SOC analyst</b> role on a team that treats detection as engineering rather than shopping.</p>
+</section>
 
-  <div class="jk-stack" id="jk-stack">
+<!-- ═════════ LOG ═════════ -->
+<section class="sg-sec">
+  <p class="sg-eye">// event log</p>
+  <h2 class="sg-h2">Track record</h2>
+  <p class="sg-hint">Tap any line to expand it.</p>
+  <div class="sg-log" id="sg-log"></div>
+</section>
 
-    <div class="jk-stage">
-      <article class="jk-card" data-i="0">
-        <header class="jk-card-top">
-          <span class="jk-num jk-num-d">01</span>
-          <div class="jk-card-meta">
-            <span class="jk-cat">Current role</span>
-            <h3>Head of IT Infrastructure &amp; Innovation</h3>
-            <span class="jk-org">Digi Africa, subsidiary of MGA Group &nbsp;·&nbsp; March 2026 to present</span>
-          </div>
-          <a class="jk-ghost" href="/labs/">See the labs</a>
-        </header>
-        <div class="jk-card-body">
-          <ul>
-            <li>Lead infrastructure strategy and day to day security operations</li>
-            <li>Cyber insurance risk consulting for betting and gaming operators</li>
-            <li>AML and CTF compliance, including suspicious pattern identification</li>
-            <li>Incident response for fiduciary data leaks, end to end</li>
-          </ul>
-        </div>
-      </article>
-    </div>
+<!-- ═════════ CAPABILITY ═════════ -->
+<section class="sg-sec">
+  <p class="sg-eye">// capability</p>
+  <h2 class="sg-h2">What I actually operate</h2>
+  <p class="sg-hint">Weighted by hours spent, not courses watched.</p>
+  <div class="sg-grid" id="sg-grid"></div>
+</section>
 
-    <div class="jk-stage">
-      <article class="jk-card" data-i="1">
-        <header class="jk-card-top">
-          <span class="jk-num jk-num-d">02</span>
-          <div class="jk-card-meta">
-            <span class="jk-cat">Engagement</span>
-            <h3>IT audit fieldwork, seven weeks</h3>
-            <span class="jk-org">Cyber risk management firm &nbsp;·&nbsp; 2026</span>
-          </div>
-          <a class="jk-ghost" href="/posts/it-audit-engagement-reflection/">Read the writeup</a>
-        </header>
-        <div class="jk-card-body">
-          <ul>
-            <li>Design and operating effectiveness testing across the control environment</li>
-            <li>Evidence-based sampling across a review period, not point in time checks</li>
-            <li>Findings written with risk ratings and agreed management responses</li>
-            <li>Two articles on this site cover the engagement and what it taught me</li>
-          </ul>
-        </div>
-      </article>
-    </div>
-
-    <div class="jk-stage">
-      <article class="jk-card" data-i="2">
-        <header class="jk-card-top">
-          <span class="jk-num jk-num-d">03</span>
-          <div class="jk-card-meta">
-            <span class="jk-cat">Foundation</span>
-            <h3>Research Analyst</h3>
-            <span class="jk-org">MGA Group &nbsp;·&nbsp; November 2024 to February 2026</span>
-          </div>
-          <a class="jk-ghost" href="/archives/">All writing</a>
-        </header>
-        <div class="jk-card-body">
-          <ul>
-            <li>Investigated complex datasets for patterns, anomalies, and risk indicators</li>
-            <li>Built statistical models in Python and R for risk scoring</li>
-            <li>Produced structured risk and compliance reporting for senior stakeholders</li>
-            <li>Cyber Shujaa Security Analyst track, graduated top of class</li>
-          </ul>
-        </div>
-      </article>
-    </div>
-
-  </div>
-
-  <div class="jk-foot jk-fade" data-d="0">
-    <p>Open to SOC analyst and security analyst roles. Nairobi based, open to remote.</p>
-    <a class="jk-cta" href="mailto:ongaloglenn45@gmail.com">Contact me</a>
+<!-- ═════════ CTA ═════════ -->
+<section class="sg-cta">
+  <h2 class="sg-h2">Let us talk</h2>
+  <p class="sg-body">Nairobi based, open to remote. I answer every message, including the ones that turn into a no.</p>
+  <div class="sg-btns">
+    <a class="sg-b sg-b1" href="mailto:ongaloglenn45@gmail.com">ongaloglenn45@gmail.com</a>
+    <a class="sg-b" href="/labs/">Lab writeups</a>
+    <a class="sg-b" href="/archives/">All writing</a>
   </div>
 </section>
 
 </div>
 
 <style>
-.jk{
-  --bg:#0C0C0C; --ice:#D7E2EA;
-  --grad:linear-gradient(180deg,#646973 0%,#BBCCD7 100%);
-  --pill:linear-gradient(123deg,#18011F 7%,#B600A8 37%,#7621B0 72%,#BE4C00 100%);
-  font-family:'Kanit',system-ui,sans-serif;
+.sg{
+  --base:#06080D; --surf:#0C1119; --line:rgba(255,255,255,.09);
+  --violet:#7C5CFF; --mint:#00F0B5; --rose:#FF4D6D;
+  --steel:#8A97AB; --ice:#DCE4F0;
+  --d:'Chakra Petch',system-ui,sans-serif;
+  --m:'IBM Plex Mono',ui-monospace,monospace;
+  font-family:var(--d);
   margin:-1.5rem -1rem 0;
+  background:var(--base);
+  color:var(--ice);
   overflow-x:clip;
 }
-.jk *{box-sizing:border-box;margin:0;padding:0}
+.sg *{box-sizing:border-box;margin:0;padding:0}
 
-/* ── gradient heading ── */
-.jk-h{
-  background:var(--grad);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
-  font-weight:900;text-transform:uppercase;
-  line-height:.92;letter-spacing:-.02em;text-align:center;
-  font-size:clamp(3rem,12vw,150px);
+/* ── HERO ── */
+.sg-hero{
+  position:relative;min-height:min(88vh,760px);
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(50px,9vw,90px) 22px;overflow:hidden;
+  border-bottom:1px solid var(--line);
 }
+#sg-noise{position:absolute;inset:0;width:100%;height:100%;display:block}
+.sg-scan{
+  position:absolute;width:340px;height:340px;border-radius:50%;
+  pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(circle,rgba(124,92,255,.22) 0%,rgba(124,92,255,.07) 42%,transparent 68%);
+  mix-blend-mode:screen;
+}
+.sg-vig{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 74% 62% at 50% 46%,transparent 0%,rgba(6,8,13,.82) 72%,var(--base) 100%);
+}
+.sg-hero-in{position:relative;z-index:3;text-align:center;max-width:820px}
 
-/* ══ ABOUT ══ */
-.jk-about{
-  position:relative;background:var(--bg);
-  padding:clamp(60px,10vw,110px) 20px clamp(70px,11vw,120px);
-  overflow:hidden;
+.sg-kicker{
+  font-family:var(--m);font-size:11px;letter-spacing:.24em;
+  color:var(--steel);text-transform:uppercase;margin-bottom:22px!important;
+  display:flex;align-items:center;justify-content:center;gap:9px;
 }
-.jk-about-inner{
-  position:relative;z-index:2;
-  display:flex;flex-direction:column;align-items:center;
-  gap:clamp(28px,4vw,44px);
+.sg-blip{
+  width:7px;height:7px;border-radius:50%;background:var(--mint);
+  animation:sgBlip 2.2s ease-in-out infinite;
 }
+@keyframes sgBlip{0%,100%{box-shadow:0 0 0 0 rgba(0,240,181,.55)}50%{box-shadow:0 0 0 8px rgba(0,240,181,0)}}
 
-/* decorative forms */
-.jk-orb{position:absolute;display:block;border-radius:50%;filter:blur(1px);opacity:.85;z-index:1}
-.jk-orb-tl{
-  top:4%;left:2%;width:clamp(90px,15vw,190px);aspect-ratio:1;
-  background:radial-gradient(circle at 32% 28%,#C9D6E2,#5A6270 46%,#1B1D24 90%);
-  box-shadow:inset -14px -14px 34px rgba(0,0,0,.6),0 20px 60px rgba(120,33,177,.18);
-  animation:jkFloat 9s ease-in-out infinite;
+.sg-name{
+  font-weight:700;letter-spacing:.01em;line-height:.95;
+  font-size:clamp(2.4rem,9vw,6rem);
+  color:#fff;margin-bottom:10px!important;
 }
-.jk-orb-tr{
-  top:5%;right:2%;width:clamp(80px,13vw,170px);aspect-ratio:1;border-radius:28%;
-  background:conic-gradient(from 200deg,#B600A8,#7621B0 38%,#18011F 66%,#BE4C00 100%);
-  box-shadow:inset -10px -12px 30px rgba(0,0,0,.55),0 20px 60px rgba(182,0,168,.22);
-  animation:jkFloat 11s ease-in-out infinite reverse;
+.sg-role{
+  font-family:var(--m);font-weight:500;
+  font-size:clamp(.72rem,2.1vw,1.15rem);
+  letter-spacing:.42em;color:var(--violet);
+  margin-bottom:26px!important;
 }
-.jk-orb-bl{
-  bottom:8%;left:5%;width:clamp(70px,11vw,150px);aspect-ratio:1;border-radius:34% 66% 58% 42%/48% 36% 64% 52%;
-  background:linear-gradient(140deg,#7621B0,#18011F 70%);
-  box-shadow:inset -8px -10px 26px rgba(0,0,0,.5),0 18px 50px rgba(118,33,176,.2);
-  animation:jkFloat 10s ease-in-out infinite .8s;
-}
-.jk-orb-br{
-  bottom:7%;right:5%;width:clamp(85px,13vw,175px);aspect-ratio:1;border-radius:50% 50% 42% 58%/56% 44% 56% 44%;
-  background:radial-gradient(circle at 68% 30%,#BE4C00,#7621B0 52%,#120A18 92%);
-  box-shadow:inset -12px -12px 30px rgba(0,0,0,.55),0 18px 55px rgba(190,76,0,.18);
-  animation:jkFloat 12s ease-in-out infinite 1.4s;
-}
-@keyframes jkFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-18px) rotate(6deg)}}
-
-.jk-magnet{will-change:transform;transition:transform .6s ease-in-out}
-.jk-portrait{
-  width:clamp(150px,26vw,240px);aspect-ratio:1;object-fit:cover;
-  border-radius:50%;display:block;
-  border:2px solid rgba(215,226,234,.22);
-  box-shadow:0 30px 80px -30px rgba(182,0,168,.45);
+.sg-tag{
+  color:var(--steel);line-height:1.68;max-width:470px;margin:0 auto 34px!important;
+  font-size:clamp(.9rem,1.7vw,1.06rem);
 }
 
-.jk-lede{
-  color:var(--ice);font-weight:500;text-align:center;
-  line-height:1.62;max-width:600px;
-  font-size:clamp(1rem,2vw,1.32rem);
+.sg-readout{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:12px;
+  overflow:hidden;max-width:560px;margin:0 auto;
 }
-.jk-lede span{opacity:.2;transition:opacity .18s linear}
-
-.jk-cta{
-  display:inline-block;border-radius:999px;text-decoration:none;
-  background:var(--pill);color:#fff!important;
-  font-weight:500;text-transform:uppercase;letter-spacing:.16em;
-  padding:clamp(12px,1.6vw,16px) clamp(30px,4vw,48px);
-  font-size:clamp(.72rem,1.1vw,1rem);
-  box-shadow:0 4px 4px rgba(181,1,167,.25),4px 4px 12px #7721B1 inset;
-  outline:2px solid #fff;outline-offset:-3px;
-  transition:transform .22s ease,filter .22s ease;
+.sg-readout div{background:rgba(12,17,25,.78);padding:15px 8px;backdrop-filter:blur(6px)}
+.sg-readout b{
+  display:block;font-family:var(--m);font-weight:600;
+  font-size:clamp(1.2rem,3.4vw,1.7rem);color:var(--mint);line-height:1;
 }
-.jk-cta:hover{transform:translateY(-2px);filter:brightness(1.12)}
-
-/* ══ SERVICES ══ */
-.jk-serv{
-  background:#fff;border-radius:clamp(40px,6vw,60px) clamp(40px,6vw,60px) 0 0;
-  padding:clamp(60px,9vw,110px) 20px clamp(70px,10vw,120px);
-  position:relative;z-index:2;
-}
-.jk-h2{
-  color:#0C0C0C;font-weight:900;text-transform:uppercase;text-align:center;
-  line-height:.92;letter-spacing:-.02em;
-  font-size:clamp(3rem,12vw,150px);
-  margin-bottom:clamp(46px,6vw,90px)!important;
-}
-.jk-serv-list{max-width:1000px;margin:0 auto}
-.jk-serv-item{
-  display:flex;align-items:flex-start;gap:clamp(18px,3vw,44px);
-  padding:clamp(26px,3.5vw,46px) 0;
-  border-top:1px solid rgba(12,12,12,.15);
-}
-.jk-serv-item:last-child{border-bottom:1px solid rgba(12,12,12,.15)}
-.jk-num{
-  font-weight:900;color:#0C0C0C;line-height:.82;
-  font-size:clamp(2.4rem,8vw,110px);flex-shrink:0;
-}
-.jk-serv-txt h3{
-  font-weight:500;text-transform:uppercase;color:#0C0C0C;
-  font-size:clamp(1rem,2.2vw,1.95rem);line-height:1.15;margin-bottom:10px!important;
-}
-.jk-serv-txt p{
-  font-weight:300;line-height:1.62;color:#0C0C0C;opacity:.6;max-width:640px;
-  font-size:clamp(.85rem,1.5vw,1.18rem);
+.sg-readout span{
+  display:block;font-family:var(--m);font-size:9px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--steel);margin-top:7px;
 }
 
-/* ══ PROJECTS / EXPERIENCE ══ */
-.jk-proj{
-  background:var(--bg);
-  border-radius:clamp(40px,6vw,60px) clamp(40px,6vw,60px) 0 0;
-  margin-top:clamp(-56px,-6vw,-40px);
-  padding:clamp(60px,9vw,110px) 20px clamp(50px,7vw,90px);
-  position:relative;z-index:3;
+.sg-cue{
+  margin-top:38px;font-family:var(--m);font-size:9.5px;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--steel);opacity:.55;
 }
-.jk-stack{max-width:1000px;margin:clamp(40px,6vw,80px) auto 0}
-.jk-stage{height:78vh;min-height:430px}
-.jk-card{
-  position:sticky;top:96px;
-  border:2px solid var(--ice);border-radius:clamp(28px,4vw,48px);
-  background:var(--bg);padding:clamp(18px,2.6vw,32px);
-  transform-origin:top center;
-  transition:transform .12s linear;
+.sg-cue span{
+  display:block;width:1px;height:26px;margin:0 auto 9px;
+  background:linear-gradient(var(--violet),transparent);
+  animation:sgDrop 2s ease-in-out infinite;
 }
-.jk-card-top{display:flex;align-items:flex-start;gap:clamp(14px,2.4vw,30px);flex-wrap:wrap}
-.jk-num-d{
-  color:var(--ice);opacity:.9;
-  font-size:clamp(2.2rem,6.5vw,88px);
-}
-.jk-card-meta{flex:1;min-width:200px}
-.jk-cat{
-  display:block;color:var(--ice);opacity:.5;
-  font-size:clamp(.62rem,1vw,.78rem);
-  text-transform:uppercase;letter-spacing:.2em;margin-bottom:7px;
-}
-.jk-card-meta h3{
-  color:var(--ice);font-weight:600;text-transform:uppercase;line-height:1.12;
-  font-size:clamp(1rem,2.4vw,1.85rem);margin-bottom:7px!important;
-}
-.jk-org{
-  display:block;color:var(--ice);opacity:.45;font-weight:300;
-  font-size:clamp(.72rem,1.2vw,.92rem);
-}
-.jk-ghost{
-  border:2px solid var(--ice);border-radius:999px;
-  color:var(--ice)!important;text-decoration:none;
-  font-weight:500;text-transform:uppercase;letter-spacing:.16em;
-  padding:10px 24px;font-size:clamp(.66rem,1vw,.82rem);
-  white-space:nowrap;transition:background .2s;
-}
-.jk-ghost:hover{background:rgba(215,226,234,.1)}
-.jk-card-body{margin-top:clamp(20px,3vw,34px);border-top:1px solid rgba(215,226,234,.16);padding-top:clamp(18px,2.4vw,28px)}
-.jk-card-body ul{list-style:none}
-.jk-card-body li{
-  color:var(--ice);opacity:.72;font-weight:300;line-height:1.6;
-  font-size:clamp(.84rem,1.4vw,1.06rem);
-  padding:8px 0 8px 22px;position:relative;
-}
-.jk-card-body li::before{
-  content:'';position:absolute;left:0;top:17px;
-  width:8px;height:2px;background:var(--ice);opacity:.55;
-}
+@keyframes sgDrop{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
 
-.jk-foot{
-  display:flex;flex-direction:column;align-items:center;gap:22px;
-  margin-top:clamp(50px,7vw,90px);text-align:center;
+/* ── SECTIONS ── */
+.sg-sec{padding:clamp(52px,8vw,92px) 22px;max-width:900px;margin:0 auto;border-bottom:1px solid var(--line)}
+.sg-eye{
+  font-family:var(--m);font-size:10.5px;letter-spacing:.24em;
+  color:var(--violet);text-transform:uppercase;margin-bottom:14px!important;
 }
-.jk-foot p{
-  color:var(--ice);opacity:.6;font-weight:300;
-  font-size:clamp(.86rem,1.5vw,1.1rem);max-width:440px;
+.sg-h2{
+  font-weight:600;font-size:clamp(1.5rem,4.4vw,2.5rem);
+  line-height:1.14;color:#fff;margin-bottom:18px!important;letter-spacing:-.01em;
 }
+.sg-lead{color:var(--steel);line-height:1.72;font-size:clamp(.9rem,1.7vw,1.02rem);margin-bottom:26px!important;max-width:640px}
+.sg-body{color:var(--steel);line-height:1.78;font-size:clamp(.9rem,1.7vw,1.02rem);margin-bottom:16px!important;max-width:680px}
+.sg-body b{color:var(--ice);font-weight:600}
+.sg-hint{font-family:var(--m);font-size:11px;color:var(--steel);opacity:.55;margin-bottom:20px!important}
 
-/* ── motion ── */
-.jk-fade{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.25,.1,.25,1),transform .7s cubic-bezier(.25,.1,.25,1)}
-.jk-fade.in{opacity:1;transform:none}
-.jk-lede.in{opacity:1}
+/* ── ALERT ── */
+.sg-alert{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surf)}
+.sg-alert-bar{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:12px 16px;background:rgba(124,92,255,.09);
+  border-bottom:1px solid var(--line);
+}
+.sg-sev{
+  font-family:var(--m);font-size:9.5px;font-weight:600;letter-spacing:.16em;
+  padding:3px 9px;border-radius:4px;
+  background:rgba(0,240,181,.14);color:var(--mint);
+}
+.sg-rule{font-family:var(--m);font-size:11.5px;color:var(--ice);flex:1;min-width:180px}
+.sg-ts{font-family:var(--m);font-size:11px;color:var(--steel)}
+
+.sg-fields{padding:6px 0}
+.sg-f{
+  display:flex;gap:14px;padding:9px 16px;
+  font-family:var(--m);font-size:11.5px;line-height:1.5;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  opacity:0;transform:translateX(-8px);
+  transition:opacity .3s,transform .3s;
+}
+.sg-f.in{opacity:1;transform:none}
+.sg-f:last-child{border-bottom:none}
+.sg-fk{color:var(--steel);min-width:118px;flex-shrink:0}
+.sg-fv{color:var(--mint);word-break:break-word}
+
+.sg-verdict{
+  display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;
+  padding:15px 16px;border-top:1px solid var(--line);
+  background:rgba(124,92,255,.06);
+}
+.sg-vk{font-family:var(--m);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--steel)}
+.sg-vv{font-family:var(--m);font-size:12.5px;color:var(--violet);flex:1;min-width:200px;line-height:1.55}
+
+/* ── LOG ── */
+.sg-log{border-top:1px solid var(--line)}
+.sg-row{border-bottom:1px solid var(--line);cursor:pointer;transition:background .2s}
+.sg-row:hover{background:rgba(124,92,255,.05)}
+.sg-rt{display:flex;align-items:center;gap:13px;padding:15px 4px}
+.sg-date{font-family:var(--m);font-size:10.5px;color:var(--steel);min-width:58px;flex-shrink:0}
+.sg-tag2{
+  font-family:var(--m);font-size:9px;font-weight:600;letter-spacing:.1em;
+  padding:3px 8px;border-radius:4px;flex-shrink:0;
+}
+.t-role{background:rgba(124,92,255,.16);color:#A48DFF}
+.t-lab{background:rgba(0,240,181,.14);color:var(--mint)}
+.t-cert{background:rgba(255,77,109,.14);color:#FF8098}
+.sg-what{flex:1;font-size:.92rem;font-weight:500;line-height:1.34;color:var(--ice)}
+.sg-where{display:block;font-family:var(--m);font-size:10.5px;color:var(--steel);margin-top:3px;font-weight:400}
+.sg-car{font-family:var(--m);font-size:12px;color:var(--steel);opacity:.5;transition:transform .25s}
+.sg-row.op .sg-car{transform:rotate(90deg);color:var(--violet);opacity:1}
+.sg-det{max-height:0;overflow:hidden;transition:max-height .34s ease}
+.sg-row.op .sg-det{max-height:520px}
+.sg-di{padding:0 4px 20px 71px;color:var(--steel);font-size:.87rem;line-height:1.72}
+.sg-di ul{list-style:none}
+.sg-di li{padding:4px 0 4px 18px;position:relative}
+.sg-di li::before{content:'';position:absolute;left:0;top:13px;width:7px;height:1px;background:var(--violet)}
+.sg-di code{font-family:var(--m);font-size:.9em;color:var(--mint);background:rgba(0,240,181,.08);padding:1px 5px;border-radius:3px}
+@media(max-width:560px){.sg-di{padding-left:4px}}
+
+/* ── GRID ── */
+.sg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(152px,1fr));gap:9px}
+.sg-cat{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--surf)}
+.sg-ch{
+  font-family:var(--m);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:11px;
+}
+.sg-sk{
+  font-size:.79rem;padding:6px 10px;border-radius:6px;margin-bottom:5px;
+  border-left:2px solid;transition:transform .18s,background .18s;
+}
+.sg-sk:last-child{margin-bottom:0}
+.sg-sk:hover{transform:translateX(4px)}
+.w3{background:rgba(124,92,255,.15);border-left-color:var(--violet);color:var(--ice)}
+.w2{background:rgba(124,92,255,.07);border-left-color:rgba(124,92,255,.45);color:var(--steel)}
+.w1{background:rgba(255,255,255,.03);border-left-color:rgba(255,255,255,.14);color:var(--steel)}
+
+/* ── CTA ── */
+.sg-cta{padding:clamp(56px,9vw,100px) 22px;max-width:900px;margin:0 auto;text-align:center}
+.sg-cta .sg-body{margin-left:auto;margin-right:auto}
+.sg-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+.sg-b{
+  font-family:var(--m);font-size:11.5px;letter-spacing:.05em;
+  padding:12px 22px;border-radius:8px;text-decoration:none;
+  border:1px solid var(--line);color:var(--steel)!important;
+  transition:all .2s;
+}
+.sg-b:hover{border-color:var(--violet);color:var(--ice)!important}
+.sg-b1{background:var(--violet);border-color:var(--violet);color:#fff!important;font-weight:600}
+.sg-b1:hover{background:#8E72FF;border-color:#8E72FF;color:#fff!important}
+
+/* ── reveal ── */
+.sg-up{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.sg-up.in{opacity:1;transform:none}
 
 @media(max-width:640px){
-  .jk-stage{height:auto;min-height:0;margin-bottom:22px}
-  .jk-card{position:relative;top:0!important;transform:none!important}
-  .jk-serv-item{flex-direction:column;gap:6px}
-  .jk-ghost{width:100%;text-align:center}
+  .sg-readout{grid-template-columns:repeat(2,1fr)}
+  .sg-scan{display:none}
 }
 @media(prefers-reduced-motion:reduce){
-  .jk-fade{opacity:1;transform:none;transition:none}
-  .jk-orb{animation:none}
-  .jk-magnet{transition:none}
-  .jk-lede span{opacity:1!important}
+  .sg-up{opacity:1;transform:none;transition:none}
+  .sg-blip,.sg-cue span{animation:none}
+  .sg-f{opacity:1;transform:none}
 }
 </style>
 
 <script>
 (function(){
-  var root=document.querySelector('.jk'); if(!root) return;
-  var slow=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var root=document.querySelector('.sg'); if(!root) return;
+var slow=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── fade in on view ── */
+/* ══ CLOCK ══ */
+function clk(){
+  var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Africa/Nairobi'}));
+  var p=function(n){return String(n).padStart(2,'0')};
+  var s=p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
+  var a=document.getElementById('sg-clock'); if(a)a.textContent=s;
+}
+clk(); setInterval(clk,1000);
+
+/* ══ HEX NOISE CANVAS ══ */
+var cv=document.getElementById('sg-noise');
+if(cv){
+  var cx=cv.getContext('2d'), W,H, cols,rows, CW=13, CH=17, grid=[], raf, vis=true;
+  var GLY='0123456789ABCDEF';
+  function size(){
+    var r=cv.parentElement.getBoundingClientRect();
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    W=r.width; H=r.height;
+    cv.width=W*dpr; cv.height=H*dpr;
+    cx.setTransform(dpr,0,0,dpr,0,0);
+    cols=Math.ceil(W/CW); rows=Math.ceil(H/CH);
+    grid=[];
+    for(var y=0;y<rows;y++){
+      var line=[];
+      for(var x=0;x<cols;x++) line.push({c:GLY[(Math.random()*16)|0],a:.05+Math.random()*.13,t:Math.random()*260|0});
+      grid.push(line);
+    }
+  }
+  var mx=-9999,my=-9999;
+  function draw(){
+    if(!vis){raf=requestAnimationFrame(draw);return}
+    cx.clearRect(0,0,W,H);
+    cx.font='12px "IBM Plex Mono",monospace';
+    cx.textBaseline='top';
+    for(var y=0;y<rows;y++){
+      for(var x=0;x<cols;x++){
+        var g=grid[y][x];
+        if(--g.t<0){g.c=GLY[(Math.random()*16)|0];g.t=180+((Math.random()*260)|0)}
+        var px=x*CW, py=y*CH;
+        var dx=px-mx, dy=py-my;
+        var d2=dx*dx+dy*dy;
+        if(d2<28900){
+          var f=1-Math.sqrt(d2)/170;
+          cx.fillStyle='rgba(124,92,255,'+(g.a+f*.78)+')';
+        } else {
+          cx.fillStyle='rgba(138,151,171,'+g.a+')';
+        }
+        cx.fillText(g.c,px,py);
+      }
+    }
+    raf=requestAnimationFrame(draw);
+  }
+  size();
+  if(!slow) draw(); else { cx.font='12px monospace'; }
+  window.addEventListener('resize',size,{passive:true});
+
+  var sc=document.getElementById('sg-scan');
+  root.querySelector('.sg-hero').addEventListener('mousemove',function(e){
+    var r=cv.getBoundingClientRect();
+    mx=e.clientX-r.left; my=e.clientY-r.top;
+    if(sc){sc.style.opacity='1';sc.style.left=(mx-170)+'px';sc.style.top=(my-170)+'px'}
+  },{passive:true});
+  root.querySelector('.sg-hero').addEventListener('mouseleave',function(){
+    mx=-9999;my=-9999;
+    if(sc)sc.style.opacity='0';
+  },{passive:true});
+
   if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(!e.isIntersecting) return;
-        var d=parseFloat(e.target.dataset.d||0)*1000;
-        setTimeout(function(){e.target.classList.add('in')},d);
-        io.unobserve(e.target);
-      });
-    },{threshold:0,rootMargin:'0px 0px -50px 0px'});
-    root.querySelectorAll('.jk-fade').forEach(function(x){io.observe(x)});
-  } else {
-    root.querySelectorAll('.jk-fade').forEach(function(x){x.classList.add('in')});
+    new IntersectionObserver(function(es){vis=es[0].isIntersecting},{threshold:0}).observe(cv);
   }
+}
 
-  /* ── magnetic portrait ── */
-  var mag=document.getElementById('jk-mag');
-  if(mag && !slow){
-    var PAD=150, STR=3, active=false;
-    window.addEventListener('mousemove',function(e){
-      var r=mag.getBoundingClientRect();
-      var cx=r.left+r.width/2, cy=r.top+r.height/2;
-      var dx=e.clientX-cx, dy=e.clientY-cy;
-      var near=Math.abs(dx)<r.width/2+PAD && Math.abs(dy)<r.height/2+PAD;
-      if(near){
-        if(!active){mag.style.transition='transform .3s ease-out';active=true}
-        mag.style.transform='translate3d('+(dx/STR)+'px,'+(dy/STR)+'px,0)';
-      } else if(active){
-        mag.style.transition='transform .6s ease-in-out';
-        mag.style.transform='translate3d(0,0,0)';
-        active=false;
-      }
-    },{passive:true});
+/* ══ DECRYPT HEADINGS ══ */
+var CH='!<>-_\\/[]{}=+*^?#01ABCDEF';
+function decrypt(el){
+  var final=el.dataset.txt||el.textContent, n=final.length, f=0;
+  var q=[];
+  for(var i=0;i<n;i++){
+    q.push({c:final[i],s:Math.floor(Math.random()*18),e:Math.floor(Math.random()*18)+18});
   }
-
-  /* ── character reveal ── */
-  var lede=document.getElementById('jk-reveal');
-  if(lede && !slow){
-    var txt=lede.textContent;
-    lede.innerHTML=txt.split('').map(function(c){
-      return '<span>'+(c===' '?'&nbsp;':c)+'</span>';
-    }).join('');
-    var chars=lede.querySelectorAll('span');
-    function paint(){
-      var r=lede.getBoundingClientRect(), vh=window.innerHeight;
-      var p=(vh*0.85-r.top)/(vh*0.55+r.height);
-      p=Math.max(0,Math.min(1,p));
-      var lit=p*chars.length*1.15;
-      for(var i=0;i<chars.length;i++){
-        chars[i].style.opacity = i<lit ? 1 : (i<lit+9 ? 0.2+((lit+9-i)/9)*0.8 : 0.2);
-      }
+  (function step(){
+    var out='',done=0;
+    for(var i=0;i<n;i++){
+      var o=q[i];
+      if(f>=o.e){done++;out+=o.c}
+      else if(f>=o.s){out+= o.c===' '?' ':CH[(Math.random()*CH.length)|0]}
+      else out+= o.c===' '?' ':CH[(Math.random()*CH.length)|0];
     }
-    paint();
-    window.addEventListener('scroll',paint,{passive:true});
-    window.addEventListener('resize',paint,{passive:true});
-  }
+    el.textContent=out;
+    if(done<n){f++;requestAnimationFrame(step)}
+    else el.textContent=final;
+  })();
+}
 
-  /* ── sticky card stacking ── */
-  var cards=root.querySelectorAll('.jk-card');
-  if(cards.length && !slow && window.innerWidth>640){
-    var total=cards.length;
-    cards.forEach(function(c,i){ c.style.top=(96+i*26)+'px'; });
-    function stack(){
-      cards.forEach(function(c,i){
-        if(i===total-1){c.style.transform='scale(1)';return}
-        var stage=c.parentElement.getBoundingClientRect();
-        var prog=Math.max(0,Math.min(1,(96-stage.top)/(stage.height*0.9)));
-        var target=1-(total-1-i)*0.03;
-        c.style.transform='scale('+(1-(1-target)*prog)+')';
-      });
-    }
-    stack();
-    window.addEventListener('scroll',stack,{passive:true});
-    window.addEventListener('resize',stack,{passive:true});
+/* ══ VISITOR ALERT ══ */
+function buildAlert(){
+  var f=[];
+  var now=new Date();
+  var p=function(n){return String(n).padStart(2,'0')};
+  var ts=document.getElementById('sg-alert-ts');
+  if(ts) ts.textContent=p(now.getHours())+':'+p(now.getMinutes())+':'+p(now.getSeconds());
+
+  var tz='unknown';
+  try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'unknown'}catch(e){}
+
+  var ua=navigator.userAgent||'';
+  var br = /Edg\//.test(ua)?'Edge' : /OPR\//.test(ua)?'Opera' :
+           /Firefox\//.test(ua)?'Firefox' : /Chrome\//.test(ua)?'Chrome' :
+           /Safari\//.test(ua)?'Safari':'unidentified';
+  var os = /Android/.test(ua)?'Android' : /iPhone|iPad|iPod/.test(ua)?'iOS' :
+           /Mac OS X/.test(ua)?'macOS' : /Windows/.test(ua)?'Windows' :
+           /Linux/.test(ua)?'Linux':'unidentified';
+  var mob=/Mobi|Android|iPhone/.test(ua);
+  var dark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var ref=document.referrer;
+  var refHost='direct / bookmark';
+  if(ref){ try{refHost=new URL(ref).hostname}catch(e){refHost='external'} }
+
+  f.push(['session.start', p(now.getHours())+':'+p(now.getMinutes())+':'+p(now.getSeconds())+' local']);
+  f.push(['src.timezone', tz]);
+  f.push(['device.type', mob?'mobile handset':'desktop or laptop']);
+  f.push(['user.agent', br+' on '+os]);
+  f.push(['display.res', (window.screen?screen.width+' x '+screen.height:'n/a')+' @ '+(window.devicePixelRatio||1)+'x']);
+  f.push(['locale', (navigator.language||'n/a')+(navigator.languages&&navigator.languages.length>1?' (+'+(navigator.languages.length-1)+' more)':'')]);
+  f.push(['ui.theme', dark?'dark mode':'light mode']);
+  f.push(['referrer', refHost]);
+  f.push(['cpu.threads', (navigator.hardwareConcurrency||'not disclosed')+'']);
+  f.push(['data.exfiltrated', 'none — this never left your device']);
+
+  var host=document.getElementById('sg-fields');
+  if(!host) return;
+  host.innerHTML=f.map(function(x){
+    return '<div class="sg-f"><span class="sg-fk">'+x[0]+'</span><span class="sg-fv">'+x[1]+'</span></div>';
+  }).join('');
+
+  var rows=host.querySelectorAll('.sg-f');
+  rows.forEach(function(r,i){ setTimeout(function(){r.classList.add('in')}, slow?0:i*95); });
+
+  /* verdict */
+  var v;
+  var hour=now.getHours();
+  if(tz.indexOf('Nairobi')>-1) v='Same timezone as me. If you are hiring in Nairobi, we should talk.';
+  else if(hour>=23||hour<5) v='Reading a stranger\u0027s about page after midnight. Respect. Benign, whitelisting.';
+  else if(refHost.indexOf('linkedin')>-1) v='Arrived from LinkedIn. Almost certainly a recruiter. Escalating to inbox.';
+  else if(refHost.indexOf('github')>-1) v='Came in from GitHub. Probably an engineer. Try the labs page.';
+  else if(refHost.indexOf('google')>-1) v='Organic search. Something I wrote answered a question you had. Good.';
+  else if(mob) v='Mobile visitor, likely between other things. Everything here scales down fine.';
+  else v='Benign. Curious human, non-adversarial. No action required beyond saying hello.';
+
+  var vv=document.getElementById('sg-verdict');
+  if(vv){
+    if(slow){vv.textContent=v;return}
+    setTimeout(function(){
+      var i=0; vv.textContent='';
+      (function t(){ vv.textContent=v.slice(0,++i); if(i<v.length) setTimeout(t,17); })();
+    }, rows.length*95+250);
   }
+}
+
+/* ══ LOG ══ */
+var LOG=[
+  {d:'2026-08',k:'cert',t:'AUDIT',w:'IT audit engagement, seven weeks',o:'cyber risk management firm',
+   h:'<ul><li>Design and operating effectiveness testing across access management, change management, backup and recovery, and third-party governance</li><li>Evidence-based sampling across a review period rather than point-in-time checks</li><li>Findings written with defensible risk ratings and agreed management responses</li><li>The most useful thing it taught me: an unevidenced control is an untested control</li></ul>'},
+  {d:'2026-06',k:'lab',t:'LAB',w:'HTB Cap, rooted',o:'hack the box',
+   h:'IDOR on a dashboard exposed a PCAP holding plaintext FTP credentials. Password reuse gave SSH. A <code>cap_setuid</code> capability on Python 3.8 gave root. Four weak links, one chain.'},
+  {d:'2026-06',k:'lab',t:'DFIR',w:'HTB Sherlock: Brutus',o:'hack the box',
+   h:'Rebuilt a full Linux compromise timeline from <code>auth.log</code> and <code>wtmp</code>. Brute force through to a backdoor account and a persistence script pull. Mapped to <code>T1136.001</code>.'},
+  {d:'2026-06',k:'lab',t:'LAB',w:'HTB Redeemer, rooted',o:'hack the box',
+   h:'Unauthenticated Redis on 6379, invisible to the default nmap scan. The lesson that actually stuck: always run <code>-p-</code>.'},
+  {d:'2026-03',k:'role',t:'ROLE',w:'Head of IT Infrastructure and Innovation',o:'digi africa, subsidiary of mga group',
+   h:'<ul><li>Lead infrastructure strategy and day to day security operations</li><li>Cyber insurance risk consulting for betting and gaming operators</li><li>AML and CTF compliance, including suspicious pattern identification</li><li>Incident response for fiduciary data leaks, investigation through to reporting</li></ul>'},
+  {d:'2026-02',k:'cert',t:'CERT',w:'Cyber Shujaa, Security Analyst track',o:'graduated top of class',
+   h:'Network security, application security, cloud security, incident response, security architecture, IoT security, and digital forensics. Competitive national selection.'},
+  {d:'2024-11',k:'role',t:'ROLE',w:'Research Analyst',o:'mga group',
+   h:'<ul><li>Investigated complex datasets for patterns, anomalies, and risk indicators</li><li>Built statistical models in Python and R for risk scoring</li><li>Produced structured risk and compliance reporting for senior stakeholders</li></ul>'},
+  {d:'2023-12',k:'cert',t:'EDU',w:'BSc Business Information Technology',o:'jkuat',
+   h:'Systems analysis, databases, networking, and business process design. The analytics foundation everything else was built on.'}
+];
+var lg=document.getElementById('sg-log');
+if(lg){
+  lg.innerHTML=LOG.map(function(e){
+    return '<div class="sg-row"><div class="sg-rt">'+
+      '<span class="sg-date">'+e.d+'</span>'+
+      '<span class="sg-tag2 t-'+e.k+'">'+e.t+'</span>'+
+      '<span class="sg-what">'+e.w+'<span class="sg-where">'+e.o+'</span></span>'+
+      '<span class="sg-car">&#9656;</span></div>'+
+      '<div class="sg-det"><div class="sg-di">'+e.h+'</div></div></div>';
+  }).join('');
+  lg.addEventListener('click',function(ev){
+    var r=ev.target.closest('.sg-row'); if(r) r.classList.toggle('op');
+  });
+}
+
+/* ══ GRID ══ */
+var CAP=[
+ {h:'detect & respond',s:[['Log analysis',3],['Alert triage',3],['Incident response',3],['DFIR',2],['Threat hunting',2],['Splunk / Wazuh',2]]},
+ {h:'risk & compliance',s:[['AML / CTF',3],['Cyber insurance risk',3],['IT audit & controls',3],['Third-party risk',2],['Data Protection Act',2]]},
+ {h:'networks',s:[['TCP/IP & DNS',3],['Packet analysis',2],['Nmap & enumeration',2],['Wireshark',2]]},
+ {h:'systems',s:[['Linux',2],['Windows event logs',2],['Entra ID / IAM',2],['Cloud logging',2]]},
+ {h:'frameworks',s:[['MITRE ATT&CK',3],['Cyber Kill Chain',3],['Zero Trust',2],['NIST CSF',1]]},
+ {h:'code & data',s:[['Python',3],['SQL',2],['R',2],['Bash',2],['Power BI',3]]}
+];
+var gd=document.getElementById('sg-grid');
+if(gd){
+  gd.innerHTML=CAP.map(function(c){
+    return '<div class="sg-cat"><div class="sg-ch">'+c.h+'</div>'+
+      c.s.map(function(s){return '<div class="sg-sk w'+s[1]+'">'+s[0]+'</div>'}).join('')+'</div>';
+  }).join('');
+}
+
+/* ══ OBSERVERS ══ */
+var counted=false, alerted=false, decrypted=false;
+function countUp(el){
+  var to=+el.dataset.n,c=0,st=Math.max(1,Math.round(to/26));
+  if(slow){el.textContent=to;return}
+  var iv=setInterval(function(){c+=st;if(c>=to){c=to;clearInterval(iv)}el.textContent=c},34);
+}
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      if(e.target.classList.contains('sg-hero') && !counted){
+        counted=true;
+        root.querySelectorAll('.sg-readout b').forEach(countUp);
+      }
+      if(e.target.id==='sg-alert' && !alerted){ alerted=true; buildAlert(); }
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  },{threshold:.15});
+  var hero=root.querySelector('.sg-hero'); if(hero) io.observe(hero);
+  var al=document.getElementById('sg-alert'); if(al) io.observe(al);
+} else {
+  root.querySelectorAll('.sg-readout b').forEach(function(x){x.textContent=x.dataset.n});
+  buildAlert();
+}
+
+/* boot decrypt */
+if(!slow){
+  setTimeout(function(){
+    var n=root.querySelector('.sg-name'), r=root.querySelector('.sg-role');
+    if(n) decrypt(n);
+    if(r) setTimeout(function(){decrypt(r)},260);
+  },180);
+}
 })();
 </script>
