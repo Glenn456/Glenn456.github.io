@@ -763,20 +763,12 @@ body.cy-home #post-list .card:hover{
 @media(prefers-reduced-motion:reduce){.ib-st i{animation:none}}
 
 /* ═══════════ INTRO BAND: decode ═══════════ */
-.ib-main{position:relative;overflow:hidden}
-.ib-scan{
-  position:absolute;left:-30%;top:0;width:34%;height:100%;pointer-events:none;
-  background:linear-gradient(100deg,transparent,rgba(124,92,255,.09),transparent);
-  animation:ibSweep 6.5s ease-in-out infinite;
-}
-@keyframes ibSweep{0%{left:-40%}55%{left:120%}100%{left:120%}}
 .ib-name{font-variant-ligatures:none;min-height:1.05em}
 .ib-role{min-height:1.2em}
 .ib-lead{min-height:1.5em}
 .ib-quip{display:flex;gap:6px;align-items:baseline}
 .ib-slash{color:#7C5CFF;flex-shrink:0}
 .ib-kv b em{font-style:normal;color:#00F0B5}
-@media(prefers-reduced-motion:reduce){.ib-scan{animation:none;opacity:0}}
 </style>
 
 <script>
@@ -1180,7 +1172,6 @@ document.addEventListener('DOMContentLoaded', function(){
       band.className = 'ib';
       band.innerHTML =
         '<div class="ib-main">' +
-          '<span class="ib-scan"></span>' +
           '<h1 class="ib-name" id="ib-name">' + NAME + '</h1>' +
           '<p class="ib-role" id="ib-role">' + ROLE + '</p>' +
           '<p class="ib-lead"><span id="ib-l1">' + LEAD1 + '</span> <b id="ib-l2">' + LEAD2 + '</b></p>' +
