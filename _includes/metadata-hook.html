@@ -693,6 +693,74 @@ body.cy-home #post-list .card:hover{
 #archives li a.cy-dec{color:var(--siem-violet) !important;text-shadow:0 0 8px rgba(124,92,255,.45)}
 
 
+
+/* ═══════════ INTRO BAND ═══════════ */
+.ib{
+  font-family:'Chakra Petch',system-ui,sans-serif;
+  display:grid;grid-template-columns:1fr auto;gap:26px;align-items:start;
+  padding:0 0 22px;margin:0 0 26px;
+  border-bottom:1px solid rgba(255,255,255,.09);
+}
+.ib-name{
+  font-size:clamp(1.4rem,3.4vw,1.85rem);font-weight:700;color:#fff;
+  margin:0 0 4px!important;line-height:1.05;letter-spacing:-.01em;
+}
+.ib-role{
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:#7C5CFF;margin:0 0 14px!important;
+}
+.ib-lead{
+  font-size:clamp(.95rem,2vw,1.1rem);line-height:1.5;color:#DCE4F0;
+  margin:0 0 10px!important;max-width:560px;font-weight:500;
+}
+.ib-lead b{color:#00F0B5;font-weight:500}
+.ib-sub{
+  font-size:.86rem;line-height:1.65;color:#8A97AB;
+  margin:0 0 16px!important;max-width:540px;
+}
+.ib-quip{
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#5C687A;
+  margin:0 0 16px!important;min-height:1.3em;
+}
+.ib-quip span{color:#7C5CFF}
+.ib-btns{display:flex;gap:8px;flex-wrap:wrap}
+.ib-b{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.05em;
+  padding:9px 17px;border-radius:7px;text-decoration:none;
+  border:1px solid rgba(255,255,255,.1);color:#8A97AB!important;transition:all .18s;
+}
+.ib-b:hover{border-color:#7C5CFF;color:#DCE4F0!important}
+.ib-b1{background:#7C5CFF;border-color:#7C5CFF;color:#fff!important;font-weight:600}
+.ib-b1:hover{background:#8E72FF;border-color:#8E72FF;color:#fff!important}
+
+.ib-card{
+  border:1px solid rgba(255,255,255,.09);border-radius:10px;
+  background:rgba(11,17,25,.6);padding:13px 15px;min-width:196px;
+}
+.ib-st{
+  display:flex;align-items:center;gap:8px;padding-bottom:10px;margin-bottom:9px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#00F0B5;line-height:1.4;
+}
+.ib-st i{
+  width:6px;height:6px;border-radius:50%;background:#00F0B5;flex-shrink:0;
+  animation:ibBeat 2.4s ease-in-out infinite;
+}
+@keyframes ibBeat{0%,100%{box-shadow:0 0 0 0 rgba(0,240,181,.6)}50%{box-shadow:0 0 0 6px rgba(0,240,181,0)}}
+.ib-kv{
+  display:flex;gap:10px;padding:4px 0;
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;
+}
+.ib-kv span{color:#5C687A;min-width:44px;letter-spacing:.1em}
+.ib-kv b{color:#DCE4F0;font-weight:400}
+.ib-kv a{color:#7C5CFF!important;text-decoration:none}
+.ib-kv a:hover{color:#00F0B5!important}
+
+@media(max-width:760px){
+  .ib{grid-template-columns:1fr;gap:16px}
+  .ib-card{min-width:0}
+}
+@media(prefers-reduced-motion:reduce){.ib-st i{animation:none}}
 </style>
 
 <script>
@@ -1138,6 +1206,59 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   })();
 
+
+
+  /* ══════ HOME: intro band ══════ */
+  (function(){
+    var path = location.pathname.replace(/\/index\.html$/, '/');
+    if(path !== '/' && path !== '') return;
+
+    var list = document.getElementById('post-list') ||
+               document.querySelector('#main .row') ||
+               document.querySelector('#main');
+    if(!list) return;
+
+    var n = {{ site.posts.size }};
+
+    var band = document.createElement('section');
+    band.className = 'ib';
+    band.innerHTML =
+      '<div>' +
+        '<h1 class="ib-name">Ongalo Glenn</h1>' +
+        '<p class="ib-role">Security Analyst \u00b7 Nairobi \u00b7 UTC+3</p>' +
+        '<p class="ib-lead">Most breaches are quiet long before they are loud. <b>I work in the quiet part.</b></p>' +
+        '<p class="ib-sub">Logs, access reviews, transaction patterns, and the alerts nobody else opened. ' +
+          'Cyber risk, AML and CTF compliance, and incident response at Digi Africa. Cyber Shujaa, top of class. ' +
+          'Everything below this line is working notes.</p>' +
+        '<p class="ib-quip" id="ib-quip"></p>' +
+        '<div class="ib-btns">' +
+          '<a class="ib-b ib-b1" href="mailto:ongaloglenn45@gmail.com">Email me</a>' +
+          '<a class="ib-b" href="/labs/">Lab writeups</a>' +
+          '<a class="ib-b" href="/about/">About</a>' +
+        '</div>' +
+      '</div>' +
+      '<aside class="ib-card">' +
+        '<div class="ib-st"><i></i>open to SOC analyst roles</div>' +
+        '<div class="ib-kv"><span>based</span><b>Nairobi, KE</b></div>' +
+        '<div class="ib-kv"><span>reply</span><b>same day, usually</b></div>' +
+        '<div class="ib-kv"><span>proof</span><b>' + n + ' posts, below</b></div>' +
+        '<div class="ib-kv"><span>tel</span><b><a href="tel:+254745530525">+254 745 530 525</a></b></div>' +
+      '</aside>';
+    list.parentNode.insertBefore(band, list);
+
+    var QUIPS = [
+      'nobody was ever breached by an alert someone actually read',
+      'the exploit is rarely the hard part. noticing is.',
+      'i read auth.log for fun. this is not a cry for help.',
+      'grep, then think, then grep again',
+      'an unevidenced control is an untested control'
+    ];
+    var q = document.getElementById('ib-quip');
+    var qi = 0;
+    function put(){ q.innerHTML = '<span>//</span> ' + QUIPS[qi]; }
+    put();
+    if(!slow) setInterval(function(){ qi = (qi+1) % QUIPS.length; put(); }, 5200);
+  })();
 
 });
 </script>
