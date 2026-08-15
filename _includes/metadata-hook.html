@@ -761,6 +761,22 @@ body.cy-home #post-list .card:hover{
   .ib-card{min-width:0}
 }
 @media(prefers-reduced-motion:reduce){.ib-st i{animation:none}}
+
+/* ═══════════ INTRO BAND: decode ═══════════ */
+.ib-main{position:relative;overflow:hidden}
+.ib-scan{
+  position:absolute;left:-30%;top:0;width:34%;height:100%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(124,92,255,.09),transparent);
+  animation:ibSweep 6.5s ease-in-out infinite;
+}
+@keyframes ibSweep{0%{left:-40%}55%{left:120%}100%{left:120%}}
+.ib-name{font-variant-ligatures:none;min-height:1.05em}
+.ib-role{min-height:1.2em}
+.ib-lead{min-height:1.5em}
+.ib-quip{display:flex;gap:6px;align-items:baseline}
+.ib-slash{color:#7C5CFF;flex-shrink:0}
+.ib-kv b em{font-style:normal;color:#00F0B5}
+@media(prefers-reduced-motion:reduce){.ib-scan{animation:none;opacity:0}}
 </style>
 
 <script>
@@ -1104,13 +1120,34 @@ document.addEventListener('DOMContentLoaded', function(){
   })();
 
 
-  /* ══════ HOME: packet field ══════ */
+  /* ══════ HOME: circuit field + decoding intro band ══════ */
   (function(){
     var path = location.pathname.replace(/\/index\.html$/, '/');
     if(path !== '/' && path !== '') return;
     document.body.classList.add('cy-home');
 
-    /* ── post cards stagger in ── */
+    /* ─────────── shared decode helper ─────────── */
+    var GLY = '01ABCDEF#$%&*<>/\\{}[]=+-';
+    function decode(el, txt, speed){
+      var fin = txt, n = fin.length, f = 0;
+      var q = [];
+      for(var i=0;i<n;i++) q.push({c:fin[i], e:((Math.random()*10)|0) + 8 + Math.floor(i*(speed||0.9))});
+      if(el._raf) cancelAnimationFrame(el._raf);
+      (function step(){
+        var out='', done=0;
+        for(var i=0;i<n;i++){
+          var o=q[i];
+          if(f>=o.e){ done++; out+=o.c; }
+          else if(o.c===' '){ out+=' '; }
+          else out += GLY[(Math.random()*GLY.length)|0];
+        }
+        el.textContent = out;
+        if(done<n){ f++; el._raf = requestAnimationFrame(step); }
+        else el.textContent = fin;
+      })();
+    }
+
+    /* ─────────── post cards ─────────── */
     var cards = document.querySelectorAll('#post-list .card-wrapper, #post-list .card');
     if(cards.length && !slow && 'IntersectionObserver' in window){
       var cio = new IntersectionObserver(function(es){
@@ -1127,72 +1164,259 @@ document.addEventListener('DOMContentLoaded', function(){
       });
     }
 
-    /* ── ambient packet field ── */
+    /* ─────────── intro band ─────────── */
+    var list = document.getElementById('post-list') ||
+               document.querySelector('#main .row') ||
+               document.querySelector('#main');
+
+    if(list){
+      var POSTS = {{ site.posts.size }};
+      var NAME = 'Ongalo Glenn';
+      var ROLE = 'Security Analyst \u00b7 Nairobi \u00b7 UTC+3';
+      var LEAD1 = 'Most breaches are quiet long before they are loud.';
+      var LEAD2 = 'I work in the quiet part.';
+
+      var band = document.createElement('section');
+      band.className = 'ib';
+      band.innerHTML =
+        '<div class="ib-main">' +
+          '<span class="ib-scan"></span>' +
+          '<h1 class="ib-name" id="ib-name">' + NAME + '</h1>' +
+          '<p class="ib-role" id="ib-role">' + ROLE + '</p>' +
+          '<p class="ib-lead"><span id="ib-l1">' + LEAD1 + '</span> <b id="ib-l2">' + LEAD2 + '</b></p>' +
+          '<p class="ib-sub">Logs, access reviews, transaction patterns, and the alerts nobody else opened. ' +
+            'Cyber risk, AML and CTF compliance, and incident response at Digi Africa. Cyber Shujaa, top of class. ' +
+            'Everything below this line is working notes.</p>' +
+          '<p class="ib-quip"><span class="ib-slash">//</span> <span id="ib-quip"></span></p>' +
+          '<div class="ib-btns">' +
+            '<a class="ib-b ib-b1" href="mailto:ongaloglenn45@gmail.com">Email me</a>' +
+            '<a class="ib-b" href="/labs/">Lab writeups</a>' +
+            '<a class="ib-b" href="/about/">About</a>' +
+          '</div>' +
+        '</div>' +
+        '<aside class="ib-card">' +
+          '<div class="ib-st"><i></i>open to SOC analyst roles</div>' +
+          '<div class="ib-kv"><span>based</span><b>Nairobi, KE</b></div>' +
+          '<div class="ib-kv"><span>reply</span><b>same day, usually</b></div>' +
+          '<div class="ib-kv"><span>proof</span><b><em id="ib-n">0</em> posts, below</b></div>' +
+          '<div class="ib-kv"><span>tel</span><b><a href="tel:+254745530525">+254 745 530 525</a></b></div>' +
+        '</aside>';
+      list.parentNode.insertBefore(band, list);
+
+      var QUIPS = [
+        'nobody was ever breached by an alert someone actually read',
+        'the exploit is rarely the hard part. noticing is.',
+        'i read auth.log for fun. this is not a cry for help.',
+        'grep, then think, then grep again',
+        'an unevidenced control is an untested control'
+      ];
+      var qEl = document.getElementById('ib-quip'), qi = 0;
+
+      if(slow){
+        qEl.textContent = QUIPS[0];
+        document.getElementById('ib-n').textContent = POSTS;
+      } else {
+        decode(document.getElementById('ib-name'), NAME, 1.4);
+        setTimeout(function(){ decode(document.getElementById('ib-role'), ROLE, 0.5) }, 260);
+        setTimeout(function(){ decode(document.getElementById('ib-l1'), LEAD1, 0.32) }, 480);
+        setTimeout(function(){ decode(document.getElementById('ib-l2'), LEAD2, 0.32) }, 900);
+        setTimeout(function(){ decode(qEl, QUIPS[0], 0.2) }, 1300);
+        setInterval(function(){ qi=(qi+1)%QUIPS.length; decode(qEl, QUIPS[qi], 0.2); }, 5600);
+
+        (function(){
+          var el=document.getElementById('ib-n'), c2=0, st=Math.max(1,Math.round(POSTS/26));
+          setTimeout(function(){
+            var iv=setInterval(function(){ c2+=st; if(c2>=POSTS){c2=POSTS;clearInterval(iv)} el.textContent=c2 },34);
+          }, 700);
+        })();
+      }
+    }
+
+    /* ─────────── circuit field ─────────── */
     if(slow) return;
     (function(){
       var cv = document.createElement('canvas');
       cv.id = 'cy-bg';
       document.body.insertBefore(cv, document.body.firstChild);
       var g = cv.getContext('2d');
-      var W,H,GAP=74,cols,rows,nodes=[],packets=[],vis=true,dpr;
+
+      var W,H,dpr,vis=true;
+      var traces=[], pulses=[], bubbles=[], still=null, F=0;
+      var STEP=26;
+
+      function makeTrace(){
+        var pts=[], x, y, dir;
+        var edge=(Math.random()*4)|0;
+        if(edge===0){ x=0; y=Math.round(Math.random()*H/STEP)*STEP; dir=0; }
+        else if(edge===1){ x=W; y=Math.round(Math.random()*H/STEP)*STEP; dir=4; }
+        else if(edge===2){ x=Math.round(Math.random()*W/STEP)*STEP; y=0; dir=2; }
+        else { x=Math.round(Math.random()*W/STEP)*STEP; y=H; dir=6; }
+        pts.push([x,y]);
+        var segs = 4 + ((Math.random()*7)|0);
+        var DIRS=[[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]];
+        for(var s=0;s<segs;s++){
+          if(s>0){ dir = (dir + (Math.random()<.5 ? 1 : 7) + 8) % 8; }
+          var len = (2 + ((Math.random()*7)|0)) * STEP;
+          var d = DIRS[dir];
+          x += d[0]*len; y += d[1]*len;
+          x = Math.max(-40, Math.min(W+40, x));
+          y = Math.max(-40, Math.min(H+40, y));
+          pts.push([x,y]);
+          if(x<-30||x>W+30||y<-30||y>H+30) break;
+        }
+        var cum=[0], tot=0;
+        for(var i=1;i<pts.length;i++){
+          tot += Math.hypot(pts[i][0]-pts[i-1][0], pts[i][1]-pts[i-1][1]);
+          cum.push(tot);
+        }
+        return {pts:pts, cum:cum, len:tot};
+      }
+
+      function pointAt(tr, d){
+        if(d<=0) return tr.pts[0];
+        if(d>=tr.len) return tr.pts[tr.pts.length-1];
+        for(var i=1;i<tr.cum.length;i++){
+          if(tr.cum[i]>=d){
+            var t=(d-tr.cum[i-1])/(tr.cum[i]-tr.cum[i-1]);
+            var a=tr.pts[i-1], b=tr.pts[i];
+            return [a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t];
+          }
+        }
+        return tr.pts[tr.pts.length-1];
+      }
+
+      function strokeRange(tr, d0, d1, col, w){
+        d0=Math.max(0,d0); d1=Math.min(tr.len,d1);
+        if(d1<=d0) return;
+        g.strokeStyle=col; g.lineWidth=w; g.lineCap='round'; g.lineJoin='round';
+        g.beginPath();
+        var p0=pointAt(tr,d0); g.moveTo(p0[0],p0[1]);
+        for(var i=1;i<tr.cum.length;i++){
+          if(tr.cum[i]<=d0) continue;
+          if(tr.cum[i]>=d1) break;
+          g.lineTo(tr.pts[i][0],tr.pts[i][1]);
+        }
+        var p1=pointAt(tr,d1); g.lineTo(p1[0],p1[1]);
+        g.stroke();
+      }
+
+      function bake(){
+        still = document.createElement('canvas');
+        still.width = W*dpr; still.height = H*dpr;
+        var s = still.getContext('2d');
+        s.setTransform(dpr,0,0,dpr,0,0);
+
+        s.strokeStyle='rgba(124,92,255,.085)';
+        s.lineWidth=1.1; s.lineCap='round'; s.lineJoin='round';
+        traces.forEach(function(tr){
+          s.beginPath();
+          s.moveTo(tr.pts[0][0],tr.pts[0][1]);
+          for(var i=1;i<tr.pts.length;i++) s.lineTo(tr.pts[i][0],tr.pts[i][1]);
+          s.stroke();
+        });
+
+        traces.forEach(function(tr){
+          tr.pts.forEach(function(p,i){
+            var big = (i===0 || i===tr.pts.length-1);
+            s.fillStyle='rgba(124,92,255,.16)';
+            s.beginPath(); s.arc(p[0],p[1], big?3.2:2.1, 0, 6.283); s.fill();
+            s.fillStyle='rgba(6,8,13,.9)';
+            s.beginPath(); s.arc(p[0],p[1], big?1.5:0.9, 0, 6.283); s.fill();
+          });
+        });
+      }
 
       function build(){
-        dpr = Math.min(window.devicePixelRatio||1,2);
+        dpr = Math.min(window.devicePixelRatio||1, 2);
         W = window.innerWidth; H = window.innerHeight;
         cv.width=W*dpr; cv.height=H*dpr;
         cv.style.width=W+'px'; cv.style.height=H+'px';
         g.setTransform(dpr,0,0,dpr,0,0);
-        cols=Math.ceil(W/GAP)+1; rows=Math.ceil(H/GAP)+1;
-        nodes=[];
-        for(var y=0;y<rows;y++) for(var x=0;x<cols;x++) nodes.push({x:x*GAP,y:y*GAP,gx:x,gy:y,lit:0});
-        packets=[];
-        var n=Math.min(13,Math.round((cols*rows)/30));
-        for(var i=0;i<n;i++) packets.push(sp());
+
+        var n = Math.max(14, Math.min(38, Math.round(W*H/26000)));
+        traces=[]; for(var i=0;i<n;i++) traces.push(makeTrace());
+        bake();
+
+        pulses=[];
+        var np = Math.max(7, Math.min(18, Math.round(n*0.55)));
+        for(var p=0;p<np;p++) pulses.push(newPulse());
+
+        bubbles=[];
       }
-      function sp(){
-        var gx=(Math.random()*cols)|0, gy=(Math.random()*rows)|0;
-        var d=[[1,0],[-1,0],[0,1],[0,-1]][(Math.random()*4)|0];
-        var kk=Math.random();
-        return {gx:gx,gy:gy,dx:d[0],dy:d[1],t:0,sp:0.006+Math.random()*0.009,
-          col: kk<.12?'255,77,109':(kk<.34?'0,240,181':'124,92,255'), trail:[]};
+
+      function newPulse(){
+        var tr = traces[(Math.random()*traces.length)|0];
+        var kind = Math.random();
+        return {
+          tr: tr, d: -Math.random()*tr.len,
+          sp: 0.7 + Math.random()*1.5,
+          col: kind<.14 ? '255,77,109' : (kind<.4 ? '0,240,181' : '124,92,255')
+        };
       }
+
+      function newBubble(){
+        var kind = Math.random();
+        return {
+          x: Math.random()*W, y: H + 20,
+          r: 5 + Math.random()*22,
+          sp: 0.18 + Math.random()*0.42,
+          ph: Math.random()*6.283,
+          amp: 6 + Math.random()*16,
+          a: 0.05 + Math.random()*0.09,
+          col: kind<.45 ? '0,240,181' : '124,92,255'
+        };
+      }
+
       function draw(){
-        if(!vis){requestAnimationFrame(draw);return}
+        if(!vis){ requestAnimationFrame(draw); return; }
+        F++;
         g.clearRect(0,0,W,H);
-        g.strokeStyle='rgba(124,92,255,.045)'; g.lineWidth=1; g.beginPath();
-        for(var x=0;x<=cols;x++){g.moveTo(x*GAP,0);g.lineTo(x*GAP,H)}
-        for(var y=0;y<=rows;y++){g.moveTo(0,y*GAP);g.lineTo(W,y*GAP)}
-        g.stroke();
-        for(var i=0;i<nodes.length;i++){
-          var nd=nodes[i]; if(nd.lit>0) nd.lit-=0.016;
-          g.fillStyle='rgba(138,151,171,'+(0.055+Math.max(0,nd.lit)*0.7)+')';
-          g.beginPath(); g.arc(nd.x,nd.y,nd.lit>0?2.4:1.2,0,6.283); g.fill();
+        if(still) g.drawImage(still, 0, 0, W, H);
+
+        /* rising bubbles */
+        if(F%40===0 && bubbles.length<16) bubbles.push(newBubble());
+        for(var b=bubbles.length-1;b>=0;b--){
+          var bb=bubbles[b];
+          bb.y -= bb.sp; bb.ph += 0.011;
+          if(bb.y < -bb.r-20){ bubbles.splice(b,1); continue; }
+          var bx = bb.x + Math.sin(bb.ph)*bb.amp;
+          var grd = g.createRadialGradient(bx,bb.y,0,bx,bb.y,bb.r);
+          grd.addColorStop(0,'rgba('+bb.col+','+(bb.a*0.85)+')');
+          grd.addColorStop(0.62,'rgba('+bb.col+','+(bb.a*0.3)+')');
+          grd.addColorStop(1,'rgba('+bb.col+',0)');
+          g.fillStyle=grd;
+          g.beginPath(); g.arc(bx,bb.y,bb.r,0,6.283); g.fill();
+          g.strokeStyle='rgba('+bb.col+','+(bb.a*0.7)+')';
+          g.lineWidth=0.8;
+          g.beginPath(); g.arc(bx,bb.y,bb.r*0.93,0,6.283); g.stroke();
         }
-        for(var p=0;p<packets.length;p++){
-          var k=packets[p]; k.t+=k.sp;
-          if(k.t>=1){
-            k.t=0; k.gx+=k.dx; k.gy+=k.dy;
-            var ni=k.gy*cols+k.gx; if(nodes[ni]) nodes[ni].lit=1;
-            if(k.gx<0||k.gx>=cols||k.gy<0||k.gy>=rows){packets[p]=sp();continue}
-            if(Math.random()<.42){ if(k.dx!==0){k.dx=0;k.dy=Math.random()<.5?1:-1} else {k.dy=0;k.dx=Math.random()<.5?1:-1} }
+
+        /* pulses running the traces */
+        for(var i=0;i<pulses.length;i++){
+          var p=pulses[i];
+          p.d += p.sp;
+          if(p.d - 70 > p.tr.len){ pulses[i]=newPulse(); continue; }
+          strokeRange(p.tr, p.d-58, p.d-24, 'rgba('+p.col+',.16)', 1.3);
+          strokeRange(p.tr, p.d-24, p.d,    'rgba('+p.col+',.46)', 1.6);
+          if(p.d>=0 && p.d<=p.tr.len){
+            var pt=pointAt(p.tr,p.d);
+            g.shadowBlur=11; g.shadowColor='rgba('+p.col+',.9)';
+            g.fillStyle='rgba('+p.col+',.95)';
+            g.beginPath(); g.arc(pt[0],pt[1],2.1,0,6.283); g.fill();
+            g.shadowBlur=0;
           }
-          var px=(k.gx+k.dx*k.t)*GAP, py=(k.gy+k.dy*k.t)*GAP;
-          k.trail.push([px,py]); if(k.trail.length>16)k.trail.shift();
-          for(var t=0;t<k.trail.length;t++){
-            var f=t/k.trail.length;
-            g.fillStyle='rgba('+k.col+','+(f*f*0.5)+')';
-            g.beginPath(); g.arc(k.trail[t][0],k.trail[t][1],1+f*1.6,0,6.283); g.fill();
-          }
-          g.shadowBlur=10; g.shadowColor='rgba('+k.col+',.85)';
-          g.fillStyle='rgba('+k.col+',.95)';
-          g.beginPath(); g.arc(px,py,2.4,0,6.283); g.fill(); g.shadowBlur=0;
         }
         requestAnimationFrame(draw);
       }
+
       build(); draw();
-      setTimeout(function(){cv.classList.add('on')},120);
-      window.addEventListener('resize',build,{passive:true});
-      document.addEventListener('visibilitychange',function(){vis=!document.hidden});
+      setTimeout(function(){ cv.classList.add('on') }, 120);
+
+      var rt;
+      window.addEventListener('resize', function(){
+        clearTimeout(rt); rt=setTimeout(build, 220);
+      }, {passive:true});
+      document.addEventListener('visibilitychange', function(){ vis = !document.hidden });
     })();
   })();
 
@@ -1207,58 +1431,6 @@ document.addEventListener('DOMContentLoaded', function(){
   })();
 
 
-
-  /* ══════ HOME: intro band ══════ */
-  (function(){
-    var path = location.pathname.replace(/\/index\.html$/, '/');
-    if(path !== '/' && path !== '') return;
-
-    var list = document.getElementById('post-list') ||
-               document.querySelector('#main .row') ||
-               document.querySelector('#main');
-    if(!list) return;
-
-    var n = {{ site.posts.size }};
-
-    var band = document.createElement('section');
-    band.className = 'ib';
-    band.innerHTML =
-      '<div>' +
-        '<h1 class="ib-name">Ongalo Glenn</h1>' +
-        '<p class="ib-role">Security Analyst \u00b7 Nairobi \u00b7 UTC+3</p>' +
-        '<p class="ib-lead">Most breaches are quiet long before they are loud. <b>I work in the quiet part.</b></p>' +
-        '<p class="ib-sub">Logs, access reviews, transaction patterns, and the alerts nobody else opened. ' +
-          'Cyber risk, AML and CTF compliance, and incident response at Digi Africa. Cyber Shujaa, top of class. ' +
-          'Everything below this line is working notes.</p>' +
-        '<p class="ib-quip" id="ib-quip"></p>' +
-        '<div class="ib-btns">' +
-          '<a class="ib-b ib-b1" href="mailto:ongaloglenn45@gmail.com">Email me</a>' +
-          '<a class="ib-b" href="/labs/">Lab writeups</a>' +
-          '<a class="ib-b" href="/about/">About</a>' +
-        '</div>' +
-      '</div>' +
-      '<aside class="ib-card">' +
-        '<div class="ib-st"><i></i>open to SOC analyst roles</div>' +
-        '<div class="ib-kv"><span>based</span><b>Nairobi, KE</b></div>' +
-        '<div class="ib-kv"><span>reply</span><b>same day, usually</b></div>' +
-        '<div class="ib-kv"><span>proof</span><b>' + n + ' posts, below</b></div>' +
-        '<div class="ib-kv"><span>tel</span><b><a href="tel:+254745530525">+254 745 530 525</a></b></div>' +
-      '</aside>';
-    list.parentNode.insertBefore(band, list);
-
-    var QUIPS = [
-      'nobody was ever breached by an alert someone actually read',
-      'the exploit is rarely the hard part. noticing is.',
-      'i read auth.log for fun. this is not a cry for help.',
-      'grep, then think, then grep again',
-      'an unevidenced control is an untested control'
-    ];
-    var q = document.getElementById('ib-quip');
-    var qi = 0;
-    function put(){ q.innerHTML = '<span>//</span> ' + QUIPS[qi]; }
-    put();
-    if(!slow) setInterval(function(){ qi = (qi+1) % QUIPS.length; put(); }, 5200);
-  })();
 
 });
 </script>
