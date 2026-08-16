@@ -776,6 +776,24 @@ body.cy-home #post-list .card:hover{
 </style>
 
 <script>
+/* Evict any legacy service worker and its caches. Runs immediately. */
+(function(){
+  try{
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.getRegistrations().then(function(rs){
+        rs.forEach(function(r){ r.unregister(); });
+      }).catch(function(){});
+    }
+    if(window.caches && caches.keys){
+      caches.keys().then(function(ks){
+        ks.forEach(function(k){ caches.delete(k); });
+      }).catch(function(){});
+    }
+  }catch(e){}
+})();
+</script>
+
+<script>
 document.addEventListener('DOMContentLoaded', function(){
 
   var slow = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
