@@ -769,6 +769,26 @@ body.cy-home #post-list .card:hover{
 .ib-quip{display:flex;gap:6px;align-items:baseline}
 .ib-slash{color:#7C5CFF;flex-shrink:0}
 .ib-kv b em{font-style:normal;color:#00F0B5}
+
+/* ═══════════ TRIAGE BAY ═══════════ */
+.ts{margin-top:20px;border-top:1px solid var(--siem-line);padding-top:12px}
+.ts-h{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--siem-m);font-size:9.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--siem-steel);padding-bottom:9px;
+}
+.ts-h::before{
+  content:'';width:5px;height:5px;border-radius:50%;background:var(--siem-amber);
+  flex-shrink:0;animation:siemBeat 1.9s ease-in-out infinite;
+}
+.ts-h b{margin-left:auto;color:var(--siem-mint);font-weight:500;letter-spacing:0}
+.ts-box{
+  position:relative;width:100%;aspect-ratio:4/1;min-height:78px;
+  border:1px solid var(--siem-line);border-radius:9px;overflow:hidden;
+  background:#070A11;
+}
+.ts-box canvas{display:block;width:100%;height:100%}
+@media(prefers-reduced-motion:reduce){.ts{display:none}}
 </style>
 
 <script>
@@ -1422,6 +1442,247 @@ document.addEventListener('DOMContentLoaded', function(){
   })();
 
 
+
+
+  /* ══════ TRIAGE BAY ══════ */
+  (function(){
+    if(slow) return;
+    var anchor = document.getElementById('access-lastmod');
+    if(!anchor) return;
+
+    var sec = document.createElement('section');
+    sec.className = 'ts';
+    sec.innerHTML = '<div class="ts-h">triage bay<b><span id="ts-n">0</span> cleared</b></div>' +
+                    '<div class="ts-box"><canvas id="ts-cv"></canvas></div>';
+    anchor.parentNode.insertBefore(sec, anchor.nextSibling);
+
+    var box = sec.querySelector('.ts-box');
+    var cv  = document.getElementById('ts-cv');
+    var g   = cv.getContext('2d');
+    var counter = document.getElementById('ts-n');
+
+    var W, H, dpr, F = 0, vis = true, cleared = 0;
+    var crew = [], alerts = [], pops = [];
+
+    /* the six hats, each with its own tic */
+    var HATS = [
+      { c:'#D8DCE6', body:'#171B23', tic:'shifty' },  // black  — eyes dart, quick lean
+      { c:'#FFFFFF', body:'#7E8A9C', tic:'nod'    },  // white  — steady approving nod
+      { c:'#9AA6B5', body:'#3E4550', tic:'tilt'   },  // grey   — can't decide
+      { c:'#B07CFF', body:'#2E1B4D', tic:'spin'   },  // purple — flips both ways
+      { c:'#3DD68C', body:'#12301F', tic:'jitter' },  // green  — nervous
+      { c:'#4EA8FF', body:'#122841', tic:'scan'   }   // blue   — sweeps a ring
+    ];
+
+    function build(){
+      var r = box.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = Math.max(160, r.width); H = Math.max(60, r.height);
+      cv.width = W * dpr; cv.height = H * dpr;
+      g.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      var pad = W * 0.09;
+      var gap = (W - pad * 2) / (HATS.length - 1);
+      crew = HATS.map(function(h, i){
+        return {
+          k: h,
+          x: pad + i * gap,
+          base: H * 0.60,
+          ph: Math.random() * 6.283,
+          sp: 0.045 + Math.random() * 0.03,
+          sc: Math.max(0.62, Math.min(1, W / 260)),
+          flash: 0,
+          burst: 0
+        };
+      });
+      alerts = [];
+      pops = [];
+    }
+
+    function newAlert(){
+      var k = Math.random();
+      return {
+        x: W + 8,
+        col: k < .16 ? '#FF4D6D' : (k < .46 ? '#FFB020' : '#00F0B5'),
+        sp: 0.34 + Math.random() * 0.16,
+        rot: 0
+      };
+    }
+
+    function beltY(){ return H * 0.80; }
+
+    function drawRoom(){
+      var sky = g.createLinearGradient(0, 0, 0, H);
+      sky.addColorStop(0, '#0A0F18');
+      sky.addColorStop(1, '#06080E');
+      g.fillStyle = sky; g.fillRect(0, 0, W, H);
+
+      g.strokeStyle = 'rgba(124,92,255,.05)'; g.lineWidth = 1;
+      g.beginPath();
+      for (var x = 0; x < W; x += 18) { g.moveTo(x, 0); g.lineTo(x, beltY() - 8); }
+      g.stroke();
+
+      /* conveyor */
+      var by = beltY();
+      g.fillStyle = '#12161F'; g.fillRect(0, by, W, H - by);
+      g.strokeStyle = 'rgba(255,255,255,.09)'; g.lineWidth = 1;
+      g.beginPath(); g.moveTo(0, by + .5); g.lineTo(W, by + .5); g.stroke();
+
+      g.strokeStyle = 'rgba(124,92,255,.30)'; g.lineWidth = 1.4;
+      g.setLineDash([5, 7]);
+      g.lineDashOffset = (F * 0.55) % 12;
+      g.beginPath(); g.moveTo(0, by + 7); g.lineTo(W, by + 7); g.stroke();
+      g.setLineDash([]);
+    }
+
+    function drawMinion(m){
+      var t = m.ph, tic = m.k.tic;
+      var bob = Math.sin(t * 1.5) * 0.8;
+      var lean = 0, tilt = 0, spin = 0, eyeX = 0, squash = 1, ring = 0;
+
+      if (tic === 'shifty'){
+        eyeX = Math.sin(t * 2.6) * 1.5;
+        var d = Math.sin(t * 0.42);
+        if (d > 0.96) lean = (d - 0.96) * 60;
+      } else if (tic === 'nod'){
+        tilt = Math.sin(t * 2.1) * 0.10;
+        bob += Math.sin(t * 2.1) * 1.1;
+      } else if (tic === 'tilt'){
+        tilt = Math.sin(t * 1.1) * 0.30;
+      } else if (tic === 'spin'){
+        var s = (t * 0.30) % 6.283;
+        spin = s < 2.2 ? s * 2.855 : 0;
+      } else if (tic === 'jitter'){
+        lean = (Math.random() - 0.5) * 1.3;
+        bob += (Math.random() - 0.5) * 1.1;
+        squash = 1 + Math.sin(t * 5.5) * 0.05;
+      } else if (tic === 'scan'){
+        ring = (t * 0.30) % 3;
+        eyeX = Math.sin(t * 1.3) * 1.2;
+      }
+
+      var S = m.sc;
+      g.save();
+      g.translate(m.x + lean, m.base + bob);
+      g.rotate(tilt + spin);
+      g.scale(S, S * squash);
+
+      if (tic === 'scan' && ring < 1.6){
+        g.globalAlpha = (1 - ring / 1.6) * 0.35;
+        g.strokeStyle = m.k.c; g.lineWidth = 1;
+        g.beginPath(); g.arc(0, -8, 6 + ring * 13, 0, 6.283); g.stroke();
+        g.globalAlpha = 1;
+      }
+
+      g.fillStyle = 'rgba(0,0,0,.4)';
+      g.beginPath(); g.ellipse(0, 12, 7, 1.8, 0, 0, 6.283); g.fill();
+
+      /* body capsule */
+      g.fillStyle = m.k.body;
+      g.beginPath();
+      if (g.roundRect) g.roundRect(-6.5, -14, 13, 25, 6.5);
+      else { g.moveTo(-6.5,-7); g.arc(0,-7.5,6.5,3.14,0); g.lineTo(6.5,5); g.arc(0,5,6.5,0,3.14); g.closePath(); }
+      g.fill();
+      g.strokeStyle = 'rgba(0,0,0,.5)'; g.lineWidth = 0.7; g.stroke();
+
+      /* hat band */
+      g.fillStyle = m.k.c;
+      g.beginPath();
+      if (g.roundRect) g.roundRect(-6.5, -14.5, 13, 4.5, 2.4);
+      else g.rect(-6.5, -14.5, 13, 4.5);
+      g.fill();
+
+      /* goggle */
+      g.strokeStyle = m.k.c; g.lineWidth = 1.3;
+      g.beginPath(); g.arc(0, -5.5, 4.4, 0, 6.283); g.stroke();
+      g.fillStyle = '#EDF2F8';
+      g.beginPath(); g.arc(0, -5.5, 3.5, 0, 6.283); g.fill();
+      g.fillStyle = '#0A0D14';
+      g.beginPath(); g.arc(eyeX, -5.5, 1.7, 0, 6.283); g.fill();
+      g.fillStyle = 'rgba(255,255,255,.85)';
+      g.beginPath(); g.arc(eyeX - 0.6, -6.2, 0.55, 0, 6.283); g.fill();
+
+      /* feet */
+      g.fillStyle = m.k.c;
+      g.beginPath(); g.ellipse(-3, 11.5, 2.2, 1.4, 0, 0, 6.283); g.fill();
+      g.beginPath(); g.ellipse( 3, 11.5, 2.2, 1.4, 0, 0, 6.283); g.fill();
+
+      if (m.flash > 0){
+        g.globalAlpha = m.flash * 0.5;
+        g.fillStyle = m.k.c;
+        g.beginPath(); g.arc(0, -3, 12, 0, 6.283); g.fill();
+        g.globalAlpha = 1;
+      }
+      g.restore();
+    }
+
+    function loop(){
+      if (!vis){ requestAnimationFrame(loop); return; }
+      F++;
+      drawRoom();
+
+      if (F % 110 === 0 && alerts.length < 5) alerts.push(newAlert());
+
+      var by = beltY();
+      for (var i = alerts.length - 1; i >= 0; i--){
+        var a = alerts[i];
+        a.x -= a.sp; a.rot += 0.012;
+
+        for (var c = 0; c < crew.length; c++){
+          var m = crew[c];
+          if (Math.abs(a.x - m.x) < 3 && !a.seen){
+            a.seen = true; m.flash = 1;
+            pops.push({ x: m.x, y: m.base - 20, life: 1, col: m.k.c });
+          }
+        }
+
+        if (a.x < -10){
+          alerts.splice(i, 1);
+          cleared++;
+          if (counter) counter.textContent = cleared;
+          continue;
+        }
+
+        g.save();
+        g.translate(a.x, by + 7);
+        g.rotate(Math.sin(a.rot) * 0.12);
+        g.shadowBlur = 6; g.shadowColor = a.col;
+        g.fillStyle = a.col; g.globalAlpha = 0.9;
+        g.fillRect(-3.4, -3.4, 6.8, 6.8);
+        g.shadowBlur = 0; g.globalAlpha = 1;
+        g.fillStyle = 'rgba(0,0,0,.55)';
+        g.fillRect(-1.6, -1.6, 3.2, 3.2);
+        g.restore();
+      }
+
+      for (var k = 0; k < crew.length; k++){
+        if (crew[k].flash > 0) crew[k].flash -= 0.05;
+        crew[k].ph += crew[k].sp;
+        drawMinion(crew[k]);
+      }
+
+      for (var p = pops.length - 1; p >= 0; p--){
+        var o = pops[p];
+        o.y -= 0.5; o.life -= 0.03;
+        if (o.life <= 0){ pops.splice(p, 1); continue; }
+        g.globalAlpha = o.life;
+        g.fillStyle = o.col;
+        g.font = '600 7px "IBM Plex Mono", monospace';
+        g.textAlign = 'center';
+        g.fillText('\u2713', o.x, o.y);
+        g.globalAlpha = 1;
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    build(); loop();
+    var rt;
+    window.addEventListener('resize', function(){
+      clearTimeout(rt); rt = setTimeout(build, 200);
+    }, { passive: true });
+    document.addEventListener('visibilitychange', function(){ vis = !document.hidden; });
+  })();
 
 });
 </script>
