@@ -1212,7 +1212,11 @@ document.addEventListener('DOMContentLoaded', function(){
           '<div class="ib-kv"><span>proof</span><b><em id="ib-n">0</em> posts, below</b></div>' +
           '<div class="ib-kv"><span>tel</span><b><a href="tel:+254745530525">+254 745 530 525</a></b></div>' +
         '</aside>';
-      list.parentNode.insertBefore(band, list);
+      if(list.id === 'post-list'){
+        list.insertBefore(band, list.firstChild);   // inside the column, above card 1
+      } else {
+        list.parentNode.insertBefore(band, list);
+      }
 
       var QUIPS = [
         'nobody was ever breached by an alert someone actually read',
@@ -1448,13 +1452,16 @@ document.addEventListener('DOMContentLoaded', function(){
   (function(){
     if(slow) return;
     var anchor = document.getElementById('access-lastmod');
-    if(!anchor) return;
+    var host   = document.querySelector('#panel-wrapper .access') ||
+                 document.getElementById('panel-wrapper');
+    if(!anchor && !host) return;   // right panel is hidden below xl, nothing to attach to
 
     var sec = document.createElement('section');
     sec.className = 'ts';
     sec.innerHTML = '<div class="ts-h">triage bay<b><span id="ts-n">0</span> cleared</b></div>' +
                     '<div class="ts-box"><canvas id="ts-cv"></canvas></div>';
-    anchor.parentNode.insertBefore(sec, anchor.nextSibling);
+    if(anchor && anchor.parentNode) anchor.parentNode.insertBefore(sec, anchor.nextSibling);
+    else host.appendChild(sec);
 
     var box = sec.querySelector('.ts-box');
     var cv  = document.getElementById('ts-cv');
