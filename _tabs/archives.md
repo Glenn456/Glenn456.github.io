@@ -247,8 +247,9 @@ chart.addEventListener('click',function(ev){
 var G='!<>-_\\/[]{}=+*^?#01ABCDEF';
 function dec(el){
   var fin=el.dataset.fin||el.textContent; el.dataset.fin=fin;
+  if(el._raf){ cancelAnimationFrame(el._raf); el._raf=0; }
   var n=fin.length,f=0,q=[];
-  for(var i=0;i<n;i++)q.push({c:fin[i],s:(Math.random()*8)|0,e:((Math.random()*10)|0)+8});
+  for(var i=0;i<n;i++)q.push({c:fin[i],e:((Math.random()*10)|0)+8});
   el.classList.add('dec');
   (function step(){
     var out='',done=0;
@@ -258,14 +259,24 @@ function dec(el){
       else out+=G[(Math.random()*G.length)|0];
     }
     el.textContent=out;
-    if(done<n){f++;requestAnimationFrame(step)}
-    else{el.textContent=fin;el.classList.remove('dec')}
+    if(done<n){f++; el._raf=requestAnimationFrame(step)}
+    else{el._raf=0; el.textContent=fin; el.classList.remove('dec')}
   })();
 }
 
+/* Fires every time a row scrolls into view, not just the first.
+   Two thresholds: decode once past 45% visible, then re-arm only after the
+   row has left the viewport completely, so hovering at the edge cannot loop. */
 var dio = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
-  es.forEach(function(e){ if(e.isIntersecting){ dec(e.target); dio.unobserve(e.target) } });
-},{threshold:.5}) : null;
+  es.forEach(function(e){
+    var el=e.target, r=e.intersectionRatio;
+    if(r>=0.45){
+      if(el._armed){ el._armed=false; dec(el); }
+    } else if(r===0){
+      el._armed=true;
+    }
+  });
+},{threshold:[0,0.45]}) : null;
 
 function paint(){
   var list=POSTS.filter(function(p){
@@ -286,7 +297,13 @@ function paint(){
   });
   document.getElementById('eh-log').innerHTML=html||'<p style="padding:24px 0;font-family:var(--m);font-size:11px;color:var(--steel)">no events in this window</p>';
 
-  if(dio && !slow) root.querySelectorAll('.eh-t').forEach(function(el){ dio.observe(el) });
+  if(dio && !slow){
+    dio.disconnect();
+    root.querySelectorAll('.eh-t').forEach(function(el){
+      el._armed = true;
+      dio.observe(el);
+    });
+  }
 }
 paint();
 })();
