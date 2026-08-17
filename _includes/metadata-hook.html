@@ -776,15 +776,17 @@ body.cy-home #post-list .card:hover{
 
 /* ═══════════ TRIAGE BAY (corner overlay) ═══════════ */
 #tb{
+  --tbs:1;
   position:fixed;z-index:9997;right:20px;bottom:86px;
   width:400px;
+  transform:scale(var(--tbs));transform-origin:bottom right;
   font-family:'Chakra Petch',system-ui,sans-serif;
   border:1px solid rgba(124,92,255,.26);border-radius:12px;
   background:#070A11;overflow:hidden;
   box-shadow:0 22px 56px -20px rgba(0,0,0,.85),0 0 34px -22px rgba(124,92,255,.6);
   transition:transform .3s cubic-bezier(.34,1.3,.64,1),opacity .3s;
 }
-#tb.tuck{transform:translateY(calc(100% - 30px))}
+#tb.tuck{transform:scale(var(--tbs)) translateY(calc(100% - 30px))}
 #tb-h{
   display:flex;align-items:center;gap:8px;height:30px;padding:0 12px;
   background:rgba(124,92,255,.09);border-bottom:1px solid rgba(255,255,255,.07);
@@ -804,7 +806,9 @@ body.cy-home #post-list .card:hover{
 #tb.tuck #tb-h i{transform:rotate(180deg)}
 #tb canvas{display:block;width:400px;height:170px}
 
-@media(max-width:1100px){#tb{display:none}}
+@media(max-width:1280px){#tb{--tbs:.84}}
+@media(max-width:1000px){#tb{--tbs:.7;right:12px;bottom:78px}}
+@media(max-width:700px){#tb{display:none}}
 @media(prefers-reduced-motion:reduce){#tb{display:none}}
 </style>
 
@@ -1498,7 +1502,7 @@ document.addEventListener('DOMContentLoaded', function(){
   /* ══════ TRIAGE BAY ══════ */
   (function(){
     if(slow) return;
-    if(window.innerWidth < 1100) return;
+    if(window.innerWidth < 700) return;
 
     var W = 400, H = 170;
 
