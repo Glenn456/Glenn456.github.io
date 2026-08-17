@@ -776,7 +776,10 @@ body.cy-home #post-list .card:hover{
 </style>
 
 <script>
-/* Evict any legacy service worker and its caches. Runs immediately. */
+/* Build stamp + legacy service worker eviction. Runs immediately. */
+window.__SITE_BUILD = "{{ site.time | date: '%Y-%m-%d %H:%M:%S %Z' }}";
+document.documentElement.setAttribute('data-build', window.__SITE_BUILD);
+console.log('%c site build ' + window.__SITE_BUILD, 'background:#7C5CFF;color:#fff;padding:2px 6px;border-radius:3px');
 (function(){
   try{
     if('serviceWorker' in navigator){
@@ -1214,11 +1217,19 @@ document.addEventListener('DOMContentLoaded', function(){
           '<div class="ib-kv"><span>proof</span><b><em id="ib-n">0</em> posts, below</b></div>' +
           '<div class="ib-kv"><span>tel</span><b><a href="tel:+254745530525">+254 745 530 525</a></b></div>' +
         '</aside>';
-      if(list.id === 'post-list'){
-        list.insertBefore(band, list.firstChild);   // inside the column, above card 1
-      } else {
-        list.parentNode.insertBefore(band, list);
+      function place(){
+        if(document.querySelector('.ib')) return true;
+        var host = document.getElementById('post-list') ||
+                   document.querySelector('#main .row') ||
+                   document.querySelector('#main');
+        if(!host) return false;
+        if(host.id === 'post-list') host.insertBefore(band, host.firstChild);
+        else host.parentNode.insertBefore(band, host);
+        return true;
       }
+      place();
+      setTimeout(place, 400);
+      setTimeout(place, 1500);
 
       var QUIPS = [
         'nobody was ever breached by an alert someone actually read',
